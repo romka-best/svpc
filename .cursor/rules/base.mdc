@@ -1,0 +1,45 @@
+---
+description: NextJS with React, Tailwind CSS, and Shadcn UI
+globs: *.tsx, *.jsx
+alwaysApply: false
+---
+
+# NextJS with React, Tailwind CSS, and Shadcn UI
+
+## Introduction
+This document outlines the best practices and coding standards for developing web applications using NextJS, React, Tailwind CSS, and Shadcn UI. The focus is on writing clean, maintainable, and performant code.
+
+## Code Style and Structure
+- **TypeScript**: Use TypeScript for all code. Prefer interfaces over types and use enums.
+- **Functional Components**: Use functional components with TypeScript interfaces. Avoid class components.
+- **Modularization**: Prefer iteration and modularization over code duplication.
+- **Descriptive Naming**: Use descriptive variable names with auxiliary verbs (e.g., `isLoading`, `hasError`).
+- **File Structure**: Organize files with exported components, subcomponents, helpers, static content, and types.
+
+## Naming Conventions
+- **Directories**: Use lowercase with dashes for directories (e.g., `components/auth-wizard`).
+- **Exports**: Favor named exports for components.
+
+## UI and Styling
+- **Shadcn UI and Tailwind CSS**: Use Shadcn UI for components and Tailwind CSS for styling.
+- **Responsive Design**: Implement responsive design with a mobile-first approach using Tailwind CSS.
+
+## Performance Optimization
+- **React Server Components (RSC)**: Minimize `use client`, `useEffect`, and `setState`; favor React Server Components.
+- Use **React.memo** for pure functional components.
+- Minimize bundle size by **tree-shaking** and **code-splitting**.
+- **Suspense**: Wrap client components in Suspense with a fallback.
+- **Dynamic Loading**: Use dynamic loading for non-critical components.
+- **Image Optimization**: Optimize images using WebP format, include size data, and implement lazy loading.
+
+## Key Conventions
+- **State Management**: Use `nuqs` for URL search parameter state management.
+- **Web Vitals**: Optimize for Web Vitals (LCP, CLS, FID).
+- **Data Fetching and Routing**: Follow NextJS documentation for Data Fetching, Rendering, and Routing.
+- **Placeholder Images**: Use `https://dicebear.com` for placeholder images in seed data.
+
+## Project Structure
+- **Modular Approach**: Adopt a modular structure where each feature or domain has its own folder containing components, hooks, and utilities specific to that feature.
+
+## Conclusion
+By following these guidelines, you can ensure that NextJS project is well-structured, maintainable, and optimized for performance. This approach not only improves code quality but also enhances the overall development experience.
