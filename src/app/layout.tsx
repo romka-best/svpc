@@ -10,31 +10,34 @@ import { cn } from '@/lib/utils';
 import './globals.css';
 
 const poppins = Poppins({
-	weight: ['400', '500', '600', '700'],
-	subsets: ['latin'],
-	variable: '--font-poppins',
+  weight: [
+    '400',
+    '500',
+    '600',
+    '700',
+  ],
+  subsets: [
+    'latin',
+  ],
+  variable: '--font-poppins',
 });
 
 export const metadata: Metadata = {
-	title: 'Silicon Valley Private Circle',
-	description: 'Silicon Valley Private Circle',
+  title: 'Silicon Valley Private Circle',
+  description: 'Silicon Valley Private Circle',
 };
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-	const isDevelopment = process.env.NODE_ENV === 'development';
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+  const isDevelopment = process.env.NODE_ENV === 'development';
 
-	return (
-		<html lang="en">
-			<body className={cn(poppins.variable, 'antialiased')}>
-				{children}
-				<Analytics />
-				<SpeedInsights />
-				{isDevelopment && <VercelToolbar />}
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <body className={cn(poppins.variable, 'antialiased')}>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+        {isDevelopment && <VercelToolbar />}
+      </body>
+    </html>
+  );
 }

@@ -1,0 +1,19 @@
+import { cn } from '@/lib/utils';
+
+interface Props extends React.ComponentProps<'div'> { className?: string; }
+
+const SidebarGroup = ({
+  className, 
+  ...props 
+}: Props) => {
+  return (
+    <div
+      className={cn('relative flex w-full min-w-0 flex-col p-2', className)}
+      data-sidebar="group"
+      data-slot="sidebar-group"
+      {...props}
+    />
+  );
+};
+
+export { SidebarGroup };

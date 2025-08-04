@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.1.14",
+    "@radix-ui/react-separator": "1.1.7",
     "@radix-ui/react-slot": "1.2.3",
     "@vercel/analytics": "1.5.0",
     "@vercel/speed-insights": "1.2.0",
@@ -30,15 +31,16 @@
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
     "@next/eslint-plugin-next": "15.4.5",
+    "@stylistic/eslint-plugin": "5.2.2",
     "@tailwindcss/postcss": "4.1.11",
     "@types/node": "24.1.0",
     "@types/react": "19.1.9",
     "@types/react-dom": "19.1.7",
     "eslint": "9.32.0",
     "eslint-config-next": "15.4.5",
+    "eslint-plugin-destructuring-newline": "0.1.1",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-react-hooks": "5.2.0",
-    "eslint-plugin-tailwindcss": "^3.18.2",
     "postcss": "8.5.6",
     "typescript": "5.8.3"
   }
