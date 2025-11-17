@@ -1,19 +1,10 @@
-import { FlatCompat } from '@eslint/eslintrc';
 import stylisticPlugin from '@stylistic/eslint-plugin';
+import nextVitals from 'eslint-config-next/core-web-vitals';
 import destructuringNewlinePlugin from 'eslint-plugin-destructuring-newline';
 import importPlugin from 'eslint-plugin-import';
 
-const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
-
 const eslintConfig = [
-  ...compat.config({
-    extends: [
-      'next',
-      'next/core-web-vitals',
-      'next/typescript',
-    ],
-    settings: { next: { rootDir: 'src/' } },
-  }),
+  ...nextVitals,
   {
     plugins: { 
       '@stylistic': stylisticPlugin,
