@@ -2,8 +2,10 @@ import { Header } from '@/components/header';
 
 export default function HomePage() {
   return (
-    <main className="h-full">
+    <div className="h-auto">
       <Header />
-    </main>
+      <main className="h-full">
+      </main>
+    </div>
   );
 }

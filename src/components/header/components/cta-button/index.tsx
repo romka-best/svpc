@@ -1,6 +1,6 @@
-import { Briefcase } from 'lucide-react';
-
 import { Button } from '@/components/ui/button';
+
+import { HeaderCTAButtonContent } from './components/content';
 
 const HeaderCTAButton = () => {
   return (
@@ -11,8 +11,7 @@ const HeaderCTAButton = () => {
         size="xs"
         variant="outline"
       >
-        Get Started
-        <Briefcase className="size-4" />
+        <HeaderCTAButtonContent />
       </Button>
 
       {/* Desktop */}
@@ -21,8 +20,7 @@ const HeaderCTAButton = () => {
         size="s"
         variant="outline"
       >
-        Get Started
-        <Briefcase className="size-4" />
+        <HeaderCTAButtonContent />
       </Button>
     </>
   );
