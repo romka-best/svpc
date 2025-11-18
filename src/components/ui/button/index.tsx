@@ -1,10 +1,50 @@
 import * as React from 'react';
 
 import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
+import {
+  cva,
+  type VariantProps,
+} from 'class-variance-authority';
+import type { MotionProps } from 'motion/react';
 import * as motion from 'motion/react-client';
 
 import { cn } from '@/lib/utils';
+
+const motionButtonAnimation: MotionProps = {
+  animate: {
+    opacity: 1,
+    scale: 1,
+    filter: 'brightness(1)',
+  },
+  initial: {
+    opacity: 0.9,
+    scale: 0.98,
+    filter: 'brightness(0.95)',
+  },
+  transition: {
+    type: 'spring',
+    stiffness: 300,
+    damping: 20,
+  },
+  whileHover: {
+    scale: 1.02,
+    filter: 'brightness(1.1)',
+    transition: {
+      type: 'spring',
+      stiffness: 400,
+      damping: 25,
+    },
+  },
+  whileTap: {
+    scale: 0.98,
+    filter: 'brightness(0.9)',
+    transition: {
+      type: 'spring',
+      stiffness: 500,
+      damping: 30,
+    },
+  },
+} as const;
 
 const buttonVariants = cva(
   'flex items-center justify-center whitespace-nowrap rounded-lg disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*=\'size-\'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:cursor-pointer',
@@ -21,10 +61,10 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
-        l: 'px-5 py-2.5 gap-2 text-base',
+        l: 'px-5 py-3 gap-2 text-base',
         m: 'p-2 gap-2 text-base',
         s: 'p-2 gap-1 text-sm',
-        xs: 'p-2 gap-1 text-xs',
+        xs: 'px-2 py-1 gap-1 text-xs',
       },
     },
     defaultVariants: {
@@ -54,54 +94,31 @@ const Button = ({
   );
 
   if (asChild) {
-    return <Slot
-      className={buttonClassName}
-      data-slot="button"
-      {...props}
-    />;
+    return (
+      <motion.span
+        {...motionButtonAnimation}
+        className="will-change-transform will-change-filter"
+      >
+        <Slot
+          className={buttonClassName}
+          data-slot="button"
+          {...props}
+        />
+      </motion.span>
+    );
   }
 
   return (
     <motion.button
-      animate={{
-        opacity: 1,
-        scale: 1,
-        filter: 'brightness(1)',
-      }}
+      {...motionButtonAnimation}
       className={cn(buttonClassName, 'will-change-transform will-change-filter')}
       data-slot="button"
-      initial={{
-        opacity: 0.9,
-        scale: 0.98,
-        filter: 'brightness(0.95)',
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 300,
-        damping: 20,
-      }}
-      whileHover={{
-        scale: 1.02,
-        filter: 'brightness(1.1)',
-        transition: {
-          type: 'spring',
-          stiffness: 400,
-          damping: 25,
-        },
-      }}
-      whileTap={{
-        scale: 0.98,
-        filter: 'brightness(0.9)',
-        transition: {
-          type: 'spring',
-          stiffness: 500,
-          damping: 30,
-        },
-      }}
       {...props}
     />
   );
 };
 
-export { Button, buttonVariants };
-
+export {
+  Button,
+  buttonVariants,
+};

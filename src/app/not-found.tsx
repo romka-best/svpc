@@ -25,12 +25,15 @@ const NotFound = () => {
             This page doesn&apos;t exist.
           </p>
         </div>
-        <Link href="/">
-          <Button size="l">
+        <Button
+          asChild
+          size="l"
+        >
+          <Link href="/">
             Home Page
             <ChevronRight className="size-4" />
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </main>
     </div>
   );

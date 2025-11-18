@@ -45,10 +45,27 @@ const eslintConfig = [
         'error',
         'always',
       ],
-      // '@stylistic/object-curly-newline': [
-      //   'error',
-      //   { multiline: true },
-      // ],
+      '@stylistic/object-curly-newline': [
+        'error',
+        {
+          ObjectExpression: {
+            multiline: true,
+            minProperties: 2, 
+          },
+          ObjectPattern: {
+            multiline: true,
+            minProperties: 2, 
+          },
+          ImportDeclaration: {
+            multiline: true,
+            minProperties: 2, 
+          },
+          ExportDeclaration: {
+            multiline: true,
+            minProperties: 2, 
+          },
+        },
+      ],
       '@stylistic/curly-newline': [
         'error',
         'always',

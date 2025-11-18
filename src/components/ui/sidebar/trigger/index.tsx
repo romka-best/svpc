@@ -1,11 +1,15 @@
 'use client';
 
-import { ComponentProps, MouseEvent, useMemo } from 'react';
+import {
+  ComponentProps, 
+  MouseEvent,
+  useMemo, 
+} from 'react';
 
 import { Menu } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-is-mobile';
 
 import { useSidebar } from '../hooks/use-sidebar';
 
@@ -19,7 +23,7 @@ const SidebarTrigger = ({
   onClick,
   ...props
 }: Props) =>{
-  const isMobile = useIsMobile();
+  const { isMobile } = useIsMobile();
   const { toggleSidebar } = useSidebar();
 
   const size = useMemo(() => {

@@ -1,11 +1,24 @@
 'use client';
 
-import { useState, useCallback, useEffect, useMemo, ComponentProps } from 'react';
+import {
+  useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  ComponentProps, 
+} from 'react';
 
-import { useIsMobile } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-is-mobile';
 
-import { SIDEBAR_COOKIE_NAME, SIDEBAR_COOKIE_MAX_AGE, SIDEBAR_KEYBOARD_SHORTCUT } from '../constants';
-import { SidebarContext, SidebarContextProps } from '../context';
+import {
+  SIDEBAR_COOKIE_NAME,
+  SIDEBAR_COOKIE_MAX_AGE,
+  SIDEBAR_KEYBOARD_SHORTCUT, 
+} from '../constants';
+import {
+  SidebarContext,
+  SidebarContextProps, 
+} from '../context';
 import { SidebarState } from '../types';
 
 interface Props extends ComponentProps<'div'> {
@@ -20,7 +33,7 @@ const SidebarProvider = ({
   onOpenChange: setOpenProp,
   children,
 }: Props) => {
-  const isMobile = useIsMobile();
+  const { isMobile } = useIsMobile();
   const [
     openMobile,
     setOpenMobile,

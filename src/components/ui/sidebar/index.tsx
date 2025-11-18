@@ -9,7 +9,12 @@ import { SheetHeader } from '../sheet/header';
 import { SheetTitle } from '../sheet/title';
 
 import { useSidebar } from './hooks/use-sidebar';
-import { SidebarCollapsible, SidebarSide, SidebarState, SidebarVariant } from './types';
+import {
+  SidebarCollapsible,
+  SidebarSide,
+  SidebarState,
+  SidebarVariant, 
+} from './types';
 
 interface Props extends ComponentProps<'div'> {
   side?: SidebarSide;

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { HeaderButton } from './components/button';
+import { HeaderCTAButton } from './components/cta-button';
 import { HeaderMenu } from './components/menu';
 
 export function Header() {
@@ -16,7 +16,7 @@ export function Header() {
         </span>
       </Link>
       <div className="flex items-center gap-4">
-        <HeaderButton />
+        <HeaderCTAButton />
         <HeaderMenu />
       </div>
     </header>
