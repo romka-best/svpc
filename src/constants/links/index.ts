@@ -1,7 +1,8 @@
 export interface Link {
-  label: string;
+  label?: string;
   href: string;
   icon?: string;
+  alt?: string;
   target?: '_blank' | '_self';
 }
 
@@ -47,19 +48,19 @@ export const socialLinks: Link[] = [
   {
     icon: '/icons/linkedin.svg',
     href: '/linkedin',
-    label: 'LinkedIn',
+    alt: 'LinkedIn',
     target: '_blank',
   },
   {
     icon: '/icons/instagram.svg',
     href: '/instagram',
-    label: 'Instagram',
+    alt: 'Instagram',
     target: '_blank',
   },
   {
     icon: '/icons/youtube.svg',
     href: '/youtube',
-    label: 'YouTube',
+    alt: 'YouTube',
     target: '_blank',
   },
 ];

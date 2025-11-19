@@ -2,10 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-const AuthorInfo = () => {
+interface Props {
+  className?: string;
+}
+
+const AuthorInfo = ({ className }: Props) => {
   return (
-    <div className="flex items-center gap-4">
+    <div className={cn('flex items-center gap-4', className)}>
       <div className="flex items-center gap-1">
         <Image
           alt="Roman Danilov"

@@ -8,7 +8,7 @@ const SidebarMenuItem = ({
 }: Props) => {
   return (
     <li
-      className={cn('group/menu-item relative', className)}
+      className={cn('w-max group/menu-item relative', className)}
       data-sidebar="menu-item"
       data-slot="sidebar-menu-item"
       {...props}

@@ -48,7 +48,7 @@ const Sidebar = ({
     return (
       <div
         className={cn(
-          'bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col',
+          'bg-sidebar flex h-full w-(--sidebar-width) flex-col',
           className,
         )}
         data-slot="sidebar"
@@ -67,7 +67,7 @@ const Sidebar = ({
         {...props}
       >
         <SheetContent
-          className="bg-sidebar text-sidebar-foreground w-(--sidebar-width) p-0 [&>button]:hidden"
+          className="bg-sidebar w-(--sidebar-width) p-0 [&>button]:hidden"
           data-mobile="true"
           data-sidebar="sidebar"
           data-slot="sidebar"
@@ -88,7 +88,7 @@ const Sidebar = ({
 
   return (
     <div
-      className="group peer text-sidebar-foreground hidden sm:block"
+      className="group peer hidden sm:block"
       data-collapsible={state === SidebarState.Collapsed ? collapsible : ''}
       data-side={side}
       data-slot="sidebar"
@@ -116,7 +116,7 @@ const Sidebar = ({
               x: 0,
             }}
             className={cn(
-              'fixed inset-y-0 z-10 h-svh w-(--sidebar-width) flex mt-22.5',
+              'fixed inset-y-0 z-10 h-[100svh-5.625rem] w-(--sidebar-width) flex mt-22.5',
               side === SidebarSide.Left
                 ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
                 : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',

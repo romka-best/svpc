@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { AuthorInfo } from '@/components/ui/common/author-info';
 import { CTAButton } from '@/components/ui/common/cta-button';
-import { GroupLinks } from '@/components/ui/common/group-links';
 import { Logo } from '@/components/ui/common/logo';
 import {
   homeLinks,
@@ -11,6 +10,7 @@ import {
   socialLinks, 
 } from '@/constants/links';
 
+import { FooterLinks } from './components/links';
 
 const Footer = () => {
   return (
@@ -50,7 +50,7 @@ const Footer = () => {
 
       <div className="order-1 flex flex-col gap-7.5 sm:gap-12.5 xl:order-2 md:flex-row md:justify-between">
         <div className="flex flex-col gap-4 items-start">
-          <GroupLinks
+          <FooterLinks
             links={homeLinks}
             title="Home Page"
           />
@@ -58,14 +58,14 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-4 items-start">
-          <GroupLinks
+          <FooterLinks
             links={legalLinks}
             title="Legal information"
           />
         </div>
 
         <div className="flex flex-col gap-4">
-          <GroupLinks
+          <FooterLinks
             direction="horizontal"
             links={socialLinks}
             title="Social media"

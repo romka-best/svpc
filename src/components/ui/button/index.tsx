@@ -10,7 +10,7 @@ import * as motion from 'motion/react-client';
 
 import { cn } from '@/lib/utils';
 
-const motionButtonAnimation: MotionProps = {
+export const motionButtonAnimation: MotionProps = {
   animate: {
     opacity: 1,
     scale: 1,
