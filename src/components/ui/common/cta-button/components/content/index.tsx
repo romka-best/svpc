@@ -1,6 +1,6 @@
 import { Briefcase } from 'lucide-react';
 
-const HeaderCTAButtonContent = () => {
+const CTAButtonContent = () => {
   return (
     <>
       Get Started
@@ -9,4 +9,5 @@ const HeaderCTAButtonContent = () => {
   );
 };
 
-export { HeaderCTAButtonContent };
+export { CTAButtonContent };
+

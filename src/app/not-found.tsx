@@ -29,7 +29,7 @@ const NotFound = () => {
           asChild
           size="l"
         >
-          <Link href="/">
+          <Link href="/home">
             Home Page
             <ChevronRight className="size-4" />
           </Link>
