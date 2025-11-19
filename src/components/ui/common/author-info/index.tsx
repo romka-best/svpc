@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 const AuthorInfo = () => {
   return (
-    <div className="flex items-center gap-2">
-      <div>
+    <div className="flex items-center gap-4">
+      <div className="flex items-center gap-1">
         <Image
           alt="Roman Danilov"
           className="rounded-full"
@@ -12,15 +12,13 @@ const AuthorInfo = () => {
           src="/images/roman.png"
           width={35}
         />
-      </div>
-
-      <div>
-        <h3 className="text-base font-bold">Roman Danilov</h3>
-        <p className="text-primary text-xs">Silicon Valley Private Circle</p>
+        <div className="flex flex-col">
+          <h3 className="text-base font-bold">Roman Danilov</h3>
+          <p className="text-primary text-xs">Silicon Valley Private Circle</p>
+        </div>
       </div>
 
       <Link
-        className="ml-4"
         href="https://t.me/roman_danilov"
       >
         <Image
