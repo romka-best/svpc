@@ -1,23 +1,23 @@
 'use client';
 
 import {
-  useState,
+  ComponentProps,
   useCallback,
   useEffect,
   useMemo,
-  ComponentProps, 
+  useState,
 } from 'react';
 
 import { useIsMobile } from '@/hooks/use-is-mobile';
 
 import {
-  SIDEBAR_COOKIE_NAME,
   SIDEBAR_COOKIE_MAX_AGE,
-  SIDEBAR_KEYBOARD_SHORTCUT, 
+  SIDEBAR_COOKIE_NAME,
+  SIDEBAR_KEYBOARD_SHORTCUT,
 } from '../constants';
 import {
   SidebarContext,
-  SidebarContextProps, 
+  SidebarContextProps,
 } from '../context';
 import { SidebarState } from '../types';
 
@@ -28,16 +28,12 @@ interface Props extends ComponentProps<'div'> {
 }
 
 const SidebarProvider = ({
-  defaultOpen = true,
+  defaultOpen = false,
   open: openProp,
   onOpenChange: setOpenProp,
   children,
 }: Props) => {
   const { isMobile } = useIsMobile();
-  const [
-    openMobile,
-    setOpenMobile,
-  ] = useState(false);
 
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
@@ -45,9 +41,15 @@ const SidebarProvider = ({
     _open,
     _setOpen,
   ] = useState(defaultOpen);
+  const [
+    isTransitioning,
+    setIsTransitioning,
+  ] = useState(false);
   const open = openProp ?? _open;
   const setOpen = useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
+      if (isTransitioning) return;
+      
       const openState = typeof value === 'function' ? value(open) : value;
       if (setOpenProp) {
         setOpenProp(openState);
@@ -57,20 +59,23 @@ const SidebarProvider = ({
 
       // This sets the cookie to keep the sidebar state.
       document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+      
+      // Prevent rapid toggling
+      setIsTransitioning(true);
+      setTimeout(() => setIsTransitioning(false), 300);
     },
     [
       setOpenProp,
       open,
+      isTransitioning,
     ],
   );
 
   // Helper to toggle the sidebar.
   const toggleSidebar = useCallback(() => {
-    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open);
+    return setOpen((open) => !open);
   }, [
-    isMobile,
     setOpen,
-    setOpenMobile,
   ]);
 
   // Adds a keyboard shortcut to toggle the sidebar.
@@ -101,8 +106,6 @@ const SidebarProvider = ({
       open,
       setOpen,
       isMobile,
-      openMobile,
-      setOpenMobile,
       toggleSidebar,
     }),
     [
@@ -110,8 +113,6 @@ const SidebarProvider = ({
       open,
       setOpen,
       isMobile,
-      openMobile,
-      setOpenMobile,
       toggleSidebar,
     ],
   );

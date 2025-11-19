@@ -3,7 +3,7 @@ import Link from 'next/link';
 const Logo = () => {
   return (
     <Link
-      className="flex items-center gap-1"
+      className="flex items-center gap-1 pointer-events-auto"
       href="/"
     >
       <h1 className="text-xs font-bold">Silicon Valley</h1>

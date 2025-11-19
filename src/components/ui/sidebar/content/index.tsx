@@ -11,7 +11,7 @@ const SidebarContent = ({
   return (
     <div
       className={cn(
-        'flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden',
+        'flex min-h-0 flex-1 flex-col gap-2 pt-32 sm:pt-8 px-10 overflow-auto group-data-[collapsible=icon]:overflow-hidden',
         className,
       )}
       data-sidebar="content"

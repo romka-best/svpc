@@ -1,4 +1,11 @@
+'use client';
+
 import { ComponentProps } from 'react';
+
+import {
+  AnimatePresence,
+  motion,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -13,7 +20,7 @@ import {
   SidebarCollapsible,
   SidebarSide,
   SidebarState,
-  SidebarVariant, 
+  SidebarVariant,
 } from './types';
 
 interface Props extends ComponentProps<'div'> {
@@ -23,7 +30,7 @@ interface Props extends ComponentProps<'div'> {
 }
 
 const Sidebar = ({
-  side = SidebarSide.Left,
+  side = SidebarSide.Right,
   variant = SidebarVariant.Sidebar,
   collapsible = SidebarCollapsible.Offcanvas,
   className,
@@ -31,10 +38,10 @@ const Sidebar = ({
   ...props
 }: Props) => {
   const {
-    isMobile, 
-    state, 
-    openMobile, 
-    setOpenMobile, 
+    isMobile,
+    state,
+    open,
+    setOpen,
   } = useSidebar();
 
   if (collapsible === SidebarCollapsible.None) {
@@ -55,8 +62,8 @@ const Sidebar = ({
   if (isMobile) {
     return (
       <Sheet
-        open={openMobile}
-        onOpenChange={setOpenMobile}
+        open={open}
+        onOpenChange={setOpen}
         {...props}
       >
         <SheetContent
@@ -81,7 +88,7 @@ const Sidebar = ({
 
   return (
     <div
-      className="group peer text-sidebar-foreground hidden md:block"
+      className="group peer text-sidebar-foreground hidden sm:block"
       data-collapsible={state === SidebarState.Collapsed ? collapsible : ''}
       data-side={side}
       data-slot="sidebar"
@@ -100,29 +107,50 @@ const Sidebar = ({
         )}
         data-slot="sidebar-gap"
       />
-      <div
-        className={cn(
-          'fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex',
-          side === SidebarSide.Left
-            ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
-            : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
-          // Adjust the padding for floating and inset variants.
-          variant === SidebarVariant.Floating || variant === SidebarVariant.Inset
-            ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]'
-            : 'group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l',
-          className,
+      <AnimatePresence mode="wait">
+        {open && (
+          <motion.div
+            key="sidebar"
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            className={cn(
+              'fixed inset-y-0 z-10 h-svh w-(--sidebar-width) flex mt-22.5',
+              side === SidebarSide.Left
+                ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
+                : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
+              // Adjust the padding for floating and inset variants.
+              variant === SidebarVariant.Floating || variant === SidebarVariant.Inset
+                ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]'
+                : 'group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l',
+              className,
+            )}
+            data-slot="sidebar-container"
+            exit={{
+              opacity: 0,
+              x: side === SidebarSide.Left ? -100 : 100,
+            }}
+            initial={{
+              opacity: 0,
+              x: side === SidebarSide.Left ? -100 : 100,
+            }}
+            style={{ willChange: 'transform, opacity' }}
+            transition={{
+              duration: 0.3,
+              ease: 'easeInOut',
+            }}
+          >
+            <div
+              className="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
+              data-sidebar="sidebar"
+              data-slot="sidebar-inner"
+            >
+              {children}
+            </div>
+          </motion.div>
         )}
-        data-slot="sidebar-container"
-        {...props}
-      >
-        <div
-          className="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
-          data-sidebar="sidebar"
-          data-slot="sidebar-inner"
-        >
-          {children}
-        </div>
-      </div>
+      </AnimatePresence>
     </div>
   );
 };

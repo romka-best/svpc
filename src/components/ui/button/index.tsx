@@ -64,7 +64,7 @@ const buttonVariants = cva(
         l: 'px-5 py-3 gap-2 text-base',
         m: 'p-2 gap-2 text-base',
         s: 'p-2 gap-1 text-sm',
-        xs: 'px-2 py-1 gap-1 text-xs',
+        xs: 'px-2 py-0.5 gap-1 text-xs',
       },
     },
     defaultVariants: {

@@ -7,7 +7,7 @@ const CTAButton = () => {
     <>
       {/* Mobile */}
       <Button
-        className="flex md:hidden"
+        className="flex sm:hidden"
         size="xs"
         variant="outline"
       >
@@ -16,7 +16,7 @@ const CTAButton = () => {
 
       {/* Desktop */}
       <Button
-        className="hidden md:flex"
+        className="hidden sm:flex"
         size="s"
         variant="outline"
       >
