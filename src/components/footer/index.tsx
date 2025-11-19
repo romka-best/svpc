@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { Button } from '@/components/ui/button';
 import { AuthorInfo } from '@/components/ui/common/author-info';
 import { CTAButton } from '@/components/ui/common/cta-button';
 import { GroupLinks } from '@/components/ui/common/group-links';
@@ -10,7 +11,6 @@ import {
   socialLinks, 
 } from '@/constants/links';
 
-import { Button } from '../ui/button';
 
 const Footer = () => {
   return (
