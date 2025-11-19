@@ -39,7 +39,7 @@ const GroupLinks = ({
     <div className={cn('flex flex-col gap-7')}>
       {title && <h3 className="text-xs text-muted-foreground">{title}</h3>}
       <ul
-        className={cn('flex', {
+        className={cn('flex min-w-40 xl:min-w-50', {
           'flex-col gap-4': direction === 'vertical',
           'flex-row gap-2': direction === 'horizontal',
         })}

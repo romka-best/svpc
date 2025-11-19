@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 
 import { AuthorInfo } from '@/components/ui/common/author-info';
@@ -70,13 +69,13 @@ const Footer = () => {
         <div className="flex flex-col gap-2">
           <Link
             className="text-sm font-medium text-muted-foreground"
-            href="/"
+            href="mailto:me@romandanilov.com"
           >
             me@romandanilov.com
           </Link>
           <Link
             className="text-sm font-medium text-muted-foreground"
-            href="/"
+            href="https://t.me/roman_danilov"
           >
             @roman_danilov
           </Link>
