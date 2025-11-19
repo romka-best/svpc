@@ -1,17 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Button } from '@/components/ui/button';
+import { Link as LinkType } from '@/constants/links';
 import { cn } from '@/lib/utils';
-
-interface Link {
-  label: string;
-  href: string;
-  icon?: string;
-}
 
 interface Props {
   title?: string;
-  links: Link[];
+  links: LinkType[];
   direction?: 'horizontal' | 'vertical';
 }
 
@@ -20,7 +16,7 @@ const GroupLinks = ({
   links,
   direction = 'vertical',
 }: Props) => {
-  const renderLabel = (link: Link) => {
+  const renderLabel = (link: LinkType) => {
     if (link?.icon) {
       return (
         <Image
@@ -36,7 +32,7 @@ const GroupLinks = ({
   };
 
   return (
-    <div className={cn('flex flex-col gap-7')}>
+    <nav className={cn('flex flex-col gap-6')}>
       {title && <h3 className="text-xs text-muted-foreground">{title}</h3>}
       <ul
         className={cn('flex min-w-40 xl:min-w-50', {
@@ -44,16 +40,26 @@ const GroupLinks = ({
           'flex-row gap-2': direction === 'horizontal',
         })}
       >
-        {links.map((link: Link) => (
-          <li
+        {links.map((link: LinkType) => (
+          <Button
             key={link.href}
-            className="text-sm text-white font-medium"
+            asChild
+            className="font-medium"
+            size="s"
+            variant="link"
           >
-            <Link href={link.href}>{renderLabel(link)}</Link>
-          </li>
+            <li>
+              <Link
+                href={link.href}
+                target={link.target}
+              >
+                {renderLabel(link)}
+              </Link>
+            </li>
+          </Button>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 };
 

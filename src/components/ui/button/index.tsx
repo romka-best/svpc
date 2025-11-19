@@ -58,7 +58,7 @@ const buttonVariants = cva(
         destructive:
 					'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
+        link: 'text-white-gray !p-0 hover:text-primary',
       },
       size: {
         l: 'px-5 py-3 gap-2 text-base',
@@ -97,7 +97,7 @@ const Button = ({
     return (
       <motion.span
         {...motionButtonAnimation}
-        className="will-change-transform will-change-filter"
+        className="w-max will-change-transform will-change-filter"
       >
         <Slot
           className={buttonClassName}

@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Button } from '../../button';
+
 const AuthorInfo = () => {
   return (
     <div className="flex items-center gap-4">
@@ -18,16 +20,23 @@ const AuthorInfo = () => {
         </div>
       </div>
 
-      <Link
-        href="https://t.me/roman_danilov"
+      <Button
+        asChild
+        className="p-0"
+        variant="link"
       >
-        <Image
-          alt="telegram"
-          height={35}
-          src="/icons/telegram.svg"
-          width={35}
-        />
-      </Link>
+        <Link
+          href="https://t.me/roman_danilov"
+          target="_blank"
+        >
+          <Image
+            alt="telegram"
+            height={35}
+            src="/icons/telegram.svg"
+            width={35}
+          />
+        </Link>
+      </Button>
     </div>
   );
 };
