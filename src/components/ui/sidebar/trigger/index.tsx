@@ -1,12 +1,19 @@
 'use client';
 
 import {
-  ComponentProps, 
+  ComponentProps,
   MouseEvent,
-  useMemo, 
+  useMemo,
 } from 'react';
 
-import { Menu } from 'lucide-react';
+import {
+  Menu,
+  X,
+} from 'lucide-react';
+import {
+  AnimatePresence,
+  motion,
+} from 'motion/react';
 
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-is-mobile';
@@ -22,9 +29,12 @@ const SidebarTrigger = ({
   className,
   onClick,
   ...props
-}: Props) =>{
+}: Props) => {
   const { isMobile } = useIsMobile();
-  const { toggleSidebar } = useSidebar();
+  const {
+    toggleSidebar,
+    open,
+  } = useSidebar();
 
   const size = useMemo(() => {
     return isMobile ? 's' : 'm';
@@ -35,14 +45,77 @@ const SidebarTrigger = ({
   return (
     <Button
       className={className}
-      size={size} 			
+      size={size}
       onClick={(event) => {
-        onClick?.(event);
         toggleSidebar();
+        onClick?.(event);
       }}
       {...props}
     >
-      <Menu className="md:size-6 size-4" />
+      <AnimatePresence
+        initial={false}
+        mode="wait"
+      >
+        {open ? (
+          <motion.span
+            key="close"
+            animate={{
+              opacity: 1,
+              rotate: 0,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+              rotate: 90,
+              scale: 0.8,
+            }}
+            initial={{
+              opacity: 0,
+              rotate: -90,
+              scale: 0.8,
+            }}
+            style={{
+              display: 'inline-flex',
+              willChange: 'transform, opacity',
+            }}
+            transition={{
+              duration: 0.15,
+              ease: 'easeOut',
+            }}
+          >
+            <X className="sm:size-6 size-4" />
+          </motion.span>
+        ) : (
+          <motion.span
+            key="open"
+            animate={{
+              opacity: 1,
+              rotate: 0,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+              rotate: -90,
+              scale: 0.8,
+            }}
+            initial={{
+              opacity: 0,
+              rotate: 90,
+              scale: 0.8,
+            }}
+            style={{
+              display: 'inline-flex',
+              willChange: 'transform, opacity',
+            }}
+            transition={{
+              duration: 0.15,
+              ease: 'easeOut',
+            }}
+          >
+            <Menu className="sm:size-6 size-4" />
+          </motion.span>
+        )}
+      </AnimatePresence>
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );

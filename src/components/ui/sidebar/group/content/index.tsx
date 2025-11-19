@@ -8,7 +8,7 @@ const SidebarGroupContent = ({
 }: Props) => {
   return (
     <div
-      className={cn('w-full text-sm', className)}
+      className={cn('w-full text-base font-medium', className)}
       data-sidebar="group-content"
       data-slot="sidebar-group-content"
       {...props}

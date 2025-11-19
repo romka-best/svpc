@@ -10,7 +10,7 @@ import * as motion from 'motion/react-client';
 
 import { cn } from '@/lib/utils';
 
-const motionButtonAnimation: MotionProps = {
+export const motionButtonAnimation: MotionProps = {
   animate: {
     opacity: 1,
     scale: 1,
@@ -58,13 +58,13 @@ const buttonVariants = cva(
         destructive:
 					'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
+        link: 'text-white-gray !p-0 hover:text-primary',
       },
       size: {
         l: 'px-5 py-3 gap-2 text-base',
         m: 'p-2 gap-2 text-base',
         s: 'p-2 gap-1 text-sm',
-        xs: 'px-2 py-1 gap-1 text-xs',
+        xs: 'px-2 py-0.5 gap-1 text-xs',
       },
     },
     defaultVariants: {
@@ -97,7 +97,7 @@ const Button = ({
     return (
       <motion.span
         {...motionButtonAnimation}
-        className="will-change-transform will-change-filter"
+        className="w-max will-change-transform will-change-filter"
       >
         <Slot
           className={buttonClassName}

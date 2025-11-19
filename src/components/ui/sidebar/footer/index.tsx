@@ -10,7 +10,7 @@ const SidebarFooter = ({
 }: Props) => {
   return (
     <div
-      className={cn('flex flex-col gap-2 p-2', className)}
+      className={cn('flex flex-col gap-4 px-10 pb-20', className)}
       data-sidebar="footer"
       data-slot="sidebar-footer"
       {...props}

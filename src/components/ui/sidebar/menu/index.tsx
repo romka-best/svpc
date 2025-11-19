@@ -8,7 +8,7 @@ const SidebarMenu = ({
 }: Props) => {
   return (
     <ul
-      className={cn('flex w-full min-w-0 flex-col gap-1', className)}
+      className={cn('flex w-full min-w-0 flex-col gap-4', className)}
       data-sidebar="menu"
       data-slot="sidebar-menu"
       {...props}

@@ -23,7 +23,7 @@ export const useIsMobile = (): UseIsMobileReturn => {
   useEffect(() => {
     const checkIsMobile = () => {
       // Check using media query
-      const mediaQuery = window.matchMedia('(max-width: 768px)');
+      const mediaQuery = window.matchMedia('(max-width: 640px)');
       
       // Check using user agent (additional detection)
       const userAgent = navigator.userAgent.toLowerCase();
@@ -44,7 +44,7 @@ export const useIsMobile = (): UseIsMobileReturn => {
       
       // Combine both checks - prioritize media query but consider user agent
       const isMobileDevice = mediaQuery.matches || 
-        (isMobileUA && window.innerWidth <= 768);
+        (isMobileUA && window.innerWidth <= 640);
       
       setIsMobile(isMobileDevice);
       setIsLoading(false);
@@ -54,7 +54,7 @@ export const useIsMobile = (): UseIsMobileReturn => {
     checkIsMobile();
 
     // Listen for media query changes
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    const mediaQuery = window.matchMedia('(max-width: 640px)');
     const handleChange = () => checkIsMobile();
     
     if (mediaQuery.addEventListener) {

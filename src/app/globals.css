@@ -40,7 +40,7 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: #252529;
-  --muted-foreground: #A0A0A8;
+  --muted-foreground: #a0a0a8;
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -48,7 +48,7 @@
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --sidebar: #252529;
-  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-foreground: #575861;
   --sidebar-primary: hsl(240 5.9% 10%);
   --sidebar-primary-foreground: hsl(0 0% 98%);
   --sidebar-accent: hsl(240 4.8% 95.9%);
