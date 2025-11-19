@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
 
-import { HeaderCTAButtonContent } from './components/content';
+import { CTAButtonContent } from './components/content';
 
-const HeaderCTAButton = () => {
+const CTAButton = () => {
   return (
     <>
       {/* Mobile */}
@@ -11,7 +11,7 @@ const HeaderCTAButton = () => {
         size="xs"
         variant="outline"
       >
-        <HeaderCTAButtonContent />
+        <CTAButtonContent />
       </Button>
 
       {/* Desktop */}
@@ -20,10 +20,11 @@ const HeaderCTAButton = () => {
         size="s"
         variant="outline"
       >
-        <HeaderCTAButtonContent />
+        <CTAButtonContent />
       </Button>
     </>
   );
 };
 
-export { HeaderCTAButton };
+export { CTAButton };
+

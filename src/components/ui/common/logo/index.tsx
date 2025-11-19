@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const HeaderLogo = () => {
+const Logo = () => {
   return (
     <Link
       className="flex items-center gap-1"
@@ -15,4 +15,5 @@ const HeaderLogo = () => {
   );
 };
 
-export { HeaderLogo };
+export { Logo };
+
