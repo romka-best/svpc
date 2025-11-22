@@ -6,41 +6,57 @@ export interface Link {
   target?: '_blank' | '_self';
 }
 
+export enum LinkHref {
+  Home = '/home',
+  PrivacyPolicy = '/privacy-policy',
+}
+
+export enum LinkAnchor {
+  Hero = '#hero',
+  TourForYou = '#tour-for-you',
+  AboutMe = '#about-me',
+  MostPopularPlaces = '#most-popular-places',
+  Reviews = '#reviews',
+  CreateTour = '#create-tour',
+  FAQ = '#faq',
+  SiteMap = '#site-map',
+}
+
 export const homeLinks: Link[] = [
   {
     label: 'Start Hero',
-    href: '/home#hero',
+    href: `${LinkHref.Home}${LinkAnchor.Hero}`,
   },
   {
     label: 'Tour For You',
-    href: '/home#tour-for-you',
+    href: `${LinkHref.Home}${LinkAnchor.TourForYou}`,
   },
   {
     label: 'Silicon Valley Boy',
-    href: '/home#silicon-valley-boy',
+    href: `${LinkHref.Home}${LinkAnchor.AboutMe}`,
   },
   {
     label: 'Most popular places',
-    href: '/home#most-popular-places',
+    href: `${LinkHref.Home}${LinkAnchor.MostPopularPlaces}`,
   },
   {
     label: 'Experiences from Adventures',
-    href: '/home#experiences-from-adventures',
+    href: `${LinkHref.Home}${LinkAnchor.Reviews}`,
   },
   {
     label: 'FAQ',
-    href: '/home#faq',
+    href: `${LinkHref.Home}${LinkAnchor.FAQ}`,
   },
   {
     label: 'Site Map',
-    href: '/home#site-map',
+    href: `${LinkHref.Home}${LinkAnchor.SiteMap}`,
   },
 ];
 
 export const legalLinks: Link[] = [
   {
     label: 'Privacy Policy',
-    href: '/privacy-policy',
+    href: LinkHref.PrivacyPolicy,
   },
 ];
 
