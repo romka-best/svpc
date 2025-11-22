@@ -1,9 +1,9 @@
-import { CommonLink } from '@/components/ui/common/link';
-import { Link } from '@/constants/links';
+import { Link as LinkComponent } from '@/components/ui/base/link';
+import { Link as LinkType } from '@/constants/links';
 import { cn } from '@/lib/utils';
 
 interface Props {
-  links: Link[];
+  links: LinkType[];
   title?: string;
   direction?: 'horizontal' | 'vertical';
 }
@@ -29,7 +29,7 @@ const FooterLinks = (
             key={link.href}
             className="w-max"
           >
-            <CommonLink
+            <LinkComponent
               link={link}
             />
           </li>

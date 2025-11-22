@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 
 import { Header } from '@/components/header';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button';
 
 const NotFound = () => {
   return (

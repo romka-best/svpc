@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
-import { AuthorInfo } from '@/components/ui/common/author-info';
-import { CTAButton } from '@/components/ui/common/cta-button';
-import { Logo } from '@/components/ui/common/logo';
+import { Button } from '@/components/ui/base/button';
+import { Logo } from '@/components/ui/base/logo';
+import { AuthorInfo } from '@/components/ui/complex/author-info';
+import { CTAButton } from '@/components/ui/complex/cta-button';
 import {
   homeLinks,
   legalLinks,
-  socialLinks, 
+  socialLinks,
 } from '@/constants/links';
 
 import { FooterLinks } from './components/links';

@@ -1,14 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+import NextLink from 'next/link';
 
 import { motion } from 'motion/react';
 
 import {
   buttonVariants,
   motionButtonAnimation,
-} from '@/components/ui/button';
+} from '@/components/ui/base/button';
 import { Link as LinkType } from '@/constants/links';
 import { cn } from '@/lib/utils';
 
@@ -16,9 +16,9 @@ interface Props {
   link: LinkType;
 }
 
-const CommonLink = ({ link }: Props) => {
+const Link = ({ link }: Props) => {
   return (
-    <Link
+    <NextLink
       href={link.href}
       target={link.target}
     >
@@ -44,8 +44,8 @@ const CommonLink = ({ link }: Props) => {
           link.label
         )}
       </motion.span>
-    </Link>
+    </NextLink>
   );
 };
 
-export { CommonLink };
+export { Link };

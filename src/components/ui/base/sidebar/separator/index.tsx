@@ -1,4 +1,4 @@
-import { Separator } from '@/components/ui/separator/separator';
+import { Separator } from '@/components/ui/base/separator/separator';
 import { cn } from '@/lib/utils';
 
 const SidebarSeparator = ({

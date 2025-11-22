@@ -1,21 +1,21 @@
 'use client';
 
 import {
-  ComponentProps,
-  MouseEvent,
-  useMemo,
+    ComponentProps,
+    MouseEvent,
+    useMemo,
 } from 'react';
 
 import {
-  Menu,
-  X,
+    Menu,
+    X,
 } from 'lucide-react';
 import {
-  AnimatePresence,
-  motion,
+    AnimatePresence,
+    motion,
 } from 'motion/react';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button';
 import { useIsMobile } from '@/hooks/use-is-mobile';
 
 import { useSidebar } from '../hooks/use-sidebar';

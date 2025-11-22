@@ -1,5 +1,5 @@
-import { CTAButton } from '@/components/ui/common/cta-button';
-import { Logo } from '@/components/ui/common/logo';
+import { Logo } from '@/components/ui/base/logo';
+import { CTAButton } from '@/components/ui/complex/cta-button';
 
 import { HeaderMenu } from './components/menu';
 

@@ -1,9 +1,15 @@
 import Link from 'next/link';
 
-const Logo = () => {
+import { cn } from '@/lib/utils';
+
+interface Props {
+  className?: string;
+}
+
+const Logo = ({ className }: Props) => {
   return (
     <Link
-      className="flex items-center gap-1 pointer-events-auto"
+      className={cn('flex items-center gap-1 pointer-events-auto', className)}
       href="/"
     >
       <h1 className="text-xs font-bold">Silicon Valley</h1>

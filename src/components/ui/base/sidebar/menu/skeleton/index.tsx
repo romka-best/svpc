@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from '@/components/ui/base/skeleton';
 import { cn } from '@/lib/utils';
 
 interface Props extends React.ComponentProps<'div'> {
