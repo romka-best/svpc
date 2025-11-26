@@ -14,12 +14,10 @@ export const motionButtonAnimation: MotionProps = {
   animate: {
     opacity: 1,
     scale: 1,
-    filter: 'brightness(1)',
   },
   initial: {
     opacity: 0.9,
     scale: 0.98,
-    filter: 'brightness(0.95)',
   },
   transition: {
     type: 'spring',
@@ -28,7 +26,6 @@ export const motionButtonAnimation: MotionProps = {
   },
   whileHover: {
     scale: 1.02,
-    filter: 'brightness(1.1)',
     transition: {
       type: 'spring',
       stiffness: 400,
@@ -37,7 +34,6 @@ export const motionButtonAnimation: MotionProps = {
   },
   whileTap: {
     scale: 0.98,
-    filter: 'brightness(0.9)',
     transition: {
       type: 'spring',
       stiffness: 500,
@@ -47,7 +43,7 @@ export const motionButtonAnimation: MotionProps = {
 } as const;
 
 const buttonVariants = cva(
-  'flex items-center justify-center whitespace-nowrap rounded-lg disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*=\'size-\'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive hover:cursor-pointer',
+  'flex items-center justify-center whitespace-nowrap rounded-lg select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*=\'size-\'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive hover:cursor-pointer',
   {
     variants: {
       variant: {
@@ -97,7 +93,7 @@ const Button = ({
     return (
       <motion.span
         {...motionButtonAnimation}
-        className="w-max will-change-transform will-change-filter"
+        className="w-max will-change-transform"
       >
         <Slot
           className={buttonClassName}
@@ -111,7 +107,7 @@ const Button = ({
   return (
     <motion.button
       {...motionButtonAnimation}
-      className={cn(buttonClassName, 'will-change-transform will-change-filter')}
+      className={cn(buttonClassName, 'will-change-transform')}
       data-slot="button"
       {...props}
     />

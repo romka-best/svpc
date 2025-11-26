@@ -18,7 +18,7 @@ const HeroSection = () => {
             opacity: 1,
             y: 0,
           }}
-          className="md:text-5xl text-3xl font-medium text-center"
+          className="text-3xl font-semibold text-center md:text-5xl"
           initial={{
             opacity: 0,
             y: -50,
