@@ -1,4 +1,7 @@
-import { Link as LinkComponent } from '@/components/ui/base/link';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { Button } from '@/components/ui/base/button';
 import { Link as LinkType } from '@/constants/links';
 import { cn } from '@/lib/utils';
 
@@ -29,9 +32,27 @@ const FooterLinks = (
             key={link.href}
             className="w-max"
           >
-            <LinkComponent
-              link={link}
-            />
+            <Button
+              asChild
+              className="font-medium"
+              size="s"
+              variant="link"
+            >
+              <Link
+                href={link.href}
+                target={link.target}
+              >
+                {link.icon && (
+                  <Image
+                    alt={link.alt || ''}
+                    height={32}
+                    src={link.icon}
+                    width={32}
+                  />
+                )}
+                {link.label}
+              </Link>
+            </Button>
           </li>
         ))}
       </ul>

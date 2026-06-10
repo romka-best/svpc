@@ -1,18 +1,14 @@
 'use client';
 
-import {
-    ComponentProps,
-    MouseEvent,
-    useMemo,
-} from 'react';
+import { useMemo } from 'react';
 
 import {
-    Menu,
-    X,
+  Menu,
+  X,
 } from 'lucide-react';
 import {
-    AnimatePresence,
-    motion,
+  AnimatePresence,
+  motion,
 } from 'motion/react';
 
 import { Button } from '@/components/ui/base/button';
@@ -20,16 +16,17 @@ import { useIsMobile } from '@/hooks/use-is-mobile';
 
 import { useSidebar } from '../hooks/use-sidebar';
 
-interface Props extends ComponentProps<typeof Button> {
-  className?: string;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-}
+import type { SidebarTriggerProps } from './types';
+import {
+  sidebarTriggerCloseIconAnimation,
+  sidebarTriggerOpenIconAnimation,
+} from './variants';
 
 const SidebarTrigger = ({
   className,
   onClick,
   ...props
-}: Props) => {
+}: SidebarTriggerProps) => {
   const { isMobile } = useIsMobile();
   const {
     toggleSidebar,
@@ -59,28 +56,10 @@ const SidebarTrigger = ({
         {open ? (
           <motion.span
             key="close"
-            animate={{
-              opacity: 1,
-              rotate: 0,
-              scale: 1,
-            }}
-            exit={{
-              opacity: 0,
-              rotate: 90,
-              scale: 0.8,
-            }}
-            initial={{
-              opacity: 0,
-              rotate: -90,
-              scale: 0.8,
-            }}
+            {...sidebarTriggerCloseIconAnimation}
             style={{
               display: 'inline-flex',
               willChange: 'transform, opacity',
-            }}
-            transition={{
-              duration: 0.15,
-              ease: 'easeOut',
             }}
           >
             <X className="sm:size-6 size-4" />
@@ -88,28 +67,10 @@ const SidebarTrigger = ({
         ) : (
           <motion.span
             key="open"
-            animate={{
-              opacity: 1,
-              rotate: 0,
-              scale: 1,
-            }}
-            exit={{
-              opacity: 0,
-              rotate: -90,
-              scale: 0.8,
-            }}
-            initial={{
-              opacity: 0,
-              rotate: 90,
-              scale: 0.8,
-            }}
+            {...sidebarTriggerOpenIconAnimation}
             style={{
               display: 'inline-flex',
               willChange: 'transform, opacity',
-            }}
-            transition={{
-              duration: 0.15,
-              ease: 'easeOut',
             }}
           >
             <Menu className="sm:size-6 size-4" />

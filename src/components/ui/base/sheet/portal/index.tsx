@@ -1,6 +1,8 @@
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 
-const SheetPortal = ({ ...props }: React.ComponentProps<typeof SheetPrimitive.Portal>) => {
+import type { SheetPortalProps } from './types';
+
+const SheetPortal = ({ ...props }: SheetPortalProps) => {
   return (
     <SheetPrimitive.Portal
       data-slot="sheet-portal"

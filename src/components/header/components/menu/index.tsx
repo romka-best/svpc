@@ -1,6 +1,9 @@
 'use client';
 
-import { Link as LinkComponent } from '@/components/ui/base/link';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { Button } from '@/components/ui/base/button';
 import { Sidebar } from '@/components/ui/base/sidebar';
 import { SidebarContent } from '@/components/ui/base/sidebar/content';
 import { SidebarFooter } from '@/components/ui/base/sidebar/footer';
@@ -30,9 +33,19 @@ const HeaderMenu = () => {
               <SidebarMenu>
                 {homeLinks.map((link) => (
                   <SidebarMenuItem key={link.href}>
-                    <LinkComponent
-                      link={link}
-                    />
+                    <Button
+                      asChild
+                      className="font-medium"
+                      size="s"
+                      variant="link"
+                    >
+                      <Link
+                        href={link.href}
+                        target={link.target}
+                      >
+                        {link.label}
+                      </Link>
+                    </Button>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
@@ -44,9 +57,19 @@ const HeaderMenu = () => {
               <SidebarMenu>
                 {legalLinks.map((link) => (
                   <SidebarMenuItem key={link.href}>
-                    <LinkComponent
-                      link={link}
-                    />
+                    <Button
+                      asChild
+                      className="font-medium"
+                      size="s"
+                      variant="link"
+                    >
+                      <Link
+                        href={link.href}
+                        target={link.target}
+                      >
+                        {link.label}
+                      </Link>
+                    </Button>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
@@ -57,9 +80,27 @@ const HeaderMenu = () => {
           <SidebarMenu className="flex-row">
             {socialLinks.map((link) => (
               <SidebarMenuItem key={link.href}>
-                <LinkComponent
-                  link={link}
-                />
+                <Button
+                  asChild
+                  className="font-medium"
+                  size="s"
+                  variant="link"
+                >
+                  <Link
+                    href={link.href}
+                    target={link.target}
+                  >
+                    {link.icon && (
+                      <Image
+                        alt={link.alt || ''}
+                        height={32}
+                        src={link.icon}
+                        width={32}
+                      />
+                    )}
+                    {link.label}
+                  </Link>
+                </Button>
               </SidebarMenuItem>
             ))}
           </SidebarMenu>

@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'li'> { className?: string; }
+import type { SidebarMenuSubItemProps } from './types';
 
 const SidebarMenuSubItem = ({
   className,
   ...props
-}: Props) => {
+}: SidebarMenuSubItemProps) => {
   return (
     <li
       className={cn('group/menu-sub-item relative', className)}

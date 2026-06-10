@@ -6,16 +6,14 @@ import { cn } from '@/lib/utils';
 import { SheetOverlay } from '../overlay';
 import { SheetPortal } from '../portal';
 
-interface Props extends React.ComponentProps<typeof SheetPrimitive.Content> {
-  side?: 'top' | 'right' | 'bottom' | 'left';
-}
+import type { SheetContentProps } from './types';
 
 const SheetContent = ({
   className,
   children,
   side = 'right',
   ...props
-}: Props) => {
+}: SheetContentProps) => {
   return (
     <SheetPortal>
       <SheetOverlay />

@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'main'> { className?: string; }
+import type { SidebarInsetProps } from './types';
 
 const SidebarInset = ({
-  className, 
-  ...props 
-}: Props) => {
+  className,
+  ...props
+}: SidebarInsetProps) => {
   return (
     <main
       className={cn(

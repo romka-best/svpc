@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'div'> { className?: string; }
+import type { SidebarMenuBadgeProps } from './types';
 
 const SidebarMenuBadge = ({
   className,
   ...props
-}: Props) => {
+}: SidebarMenuBadgeProps) => {
   return (
     <div
       className={cn(

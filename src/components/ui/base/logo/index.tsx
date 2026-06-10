@@ -2,11 +2,9 @@ import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 
-interface Props {
-  className?: string;
-}
+import type { LogoProps } from './types';
 
-const Logo = ({ className }: Props) => {
+const Logo = ({ className }: LogoProps) => {
   return (
     <Link
       className={cn('flex items-center gap-1 pointer-events-auto', className)}
@@ -22,4 +20,3 @@ const Logo = ({ className }: Props) => {
 };
 
 export { Logo };
-

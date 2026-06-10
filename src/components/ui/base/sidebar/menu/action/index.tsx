@@ -2,18 +2,14 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'button'> {
-  className?: string;
-  asChild?: boolean;
-  showOnHover?: boolean;
-}
+import type { SidebarMenuActionProps } from './types';
 
 const SidebarMenuAction = ({
   className,
   asChild = false,
   showOnHover = false,
   ...props
-}: Props) => {
+}: SidebarMenuActionProps) => {
   const Comp = asChild ? Slot : 'button';
 
   return (

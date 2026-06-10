@@ -1,13 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'div'> {
-  className?: string;
-}
+import type { SkeletonProps } from './types';
 
 const Skeleton = ({
-  className, 
-  ...props 
-}: Props) => {
+  className,
+  ...props
+}: SkeletonProps) => {
   return (
     <div
       className={cn('bg-accent animate-pulse rounded-md', className)}

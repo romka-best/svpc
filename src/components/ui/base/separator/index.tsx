@@ -1,21 +1,15 @@
-import { ComponentProps } from 'react';
-
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 
 import { cn } from '@/lib/utils';
 
-interface Props extends ComponentProps<typeof SeparatorPrimitive.Root> {
-  className?: string;
-  orientation?: 'horizontal' | 'vertical';
-  decorative?: boolean;
-}
+import type { SeparatorProps } from './types';
 
 const Separator = ({
   className,
   orientation = 'horizontal',
   decorative = true,
   ...props
-}: Props) => {
+}: SeparatorProps) => {
   return (
     <SeparatorPrimitive.Root
       className={cn(

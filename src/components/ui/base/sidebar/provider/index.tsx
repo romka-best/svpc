@@ -1,7 +1,6 @@
 'use client';
 
 import {
-  ComponentProps,
   useCallback,
   useEffect,
   useMemo,
@@ -21,18 +20,14 @@ import {
 } from '../context';
 import { SidebarState } from '../types';
 
-interface Props extends ComponentProps<'div'> {
-  defaultOpen?: boolean
-  open?: boolean
-  onOpenChange?: (open: boolean) => void
-}
+import type { SidebarProviderProps } from './types';
 
 const SidebarProvider = ({
   defaultOpen = false,
   open: openProp,
   onOpenChange: setOpenProp,
   children,
-}: Props) => {
+}: SidebarProviderProps) => {
   const { isMobile } = useIsMobile();
 
   // This is the internal state of the sidebar.

@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'div'> { className?: string; }
+import type { SheetHeaderProps } from './types';
 
 const SheetHeader = ({
-  className, 
-  ...props 
-}: Props) => {
+  className,
+  ...props
+}: SheetHeaderProps) => {
   return (
     <div
       className={cn('flex flex-col gap-1.5 p-4', className)}

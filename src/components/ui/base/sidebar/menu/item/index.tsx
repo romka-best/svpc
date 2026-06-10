@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'li'> { asChild?: boolean; }
+import type { SidebarMenuItemProps } from './types';
 
 const SidebarMenuItem = ({
-  className, 
-  ...props 
-}: Props) => {
+  className,
+  ...props
+}: SidebarMenuItemProps) => {
   return (
     <li
       className={cn('w-max group/menu-item relative', className)}

@@ -2,12 +2,12 @@ import * as SheetPrimitive from '@radix-ui/react-dialog';
 
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<typeof SheetPrimitive.Overlay> { className?: string; }
+import type { SheetOverlayProps } from './types';
 
 const SheetOverlay = ({
   className,
   ...props
-}: Props) => {
+}: SheetOverlayProps) => {
   return (
     <SheetPrimitive.Overlay
       className={cn(

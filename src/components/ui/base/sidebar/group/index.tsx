@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'div'> { className?: string; }
+import type { SidebarGroupProps } from './types';
 
 const SidebarGroup = ({
-  className, 
-  ...props 
-}: Props) => {
+  className,
+  ...props
+}: SidebarGroupProps) => {
   return (
     <div
       className={cn('relative flex gap-6 w-full min-w-0 flex-col', className)}

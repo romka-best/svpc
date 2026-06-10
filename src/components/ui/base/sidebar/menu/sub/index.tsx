@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'ul'> { className?: string; }
+import type { SidebarMenuSubProps } from './types';
 
 const SidebarMenuSub = ({
   className,
-  ...props 
-}: Props) => {
+  ...props
+}: SidebarMenuSubProps) => {
   return (
     <ul
       className={cn(

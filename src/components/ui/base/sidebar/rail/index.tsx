@@ -2,12 +2,12 @@ import { cn } from '@/lib/utils';
 
 import { useSidebar } from '../hooks/use-sidebar';
 
-interface Props extends React.ComponentProps<'button'> { className?: string; }
+import type { SidebarRailProps } from './types';
 
 const SidebarRail = ({
   className,
-  ...props 
-}: Props) => {
+  ...props
+}: SidebarRailProps) => {
   const { toggleSidebar } = useSidebar();
 
   return (

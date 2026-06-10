@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'div'> { className?: string; }
+import type { SidebarGroupContentProps } from './types';
 
 const SidebarGroupContent = ({
   className,
   ...props
-}: Props) => {
+}: SidebarGroupContentProps) => {
   return (
     <div
       className={cn('w-full text-base font-medium', className)}

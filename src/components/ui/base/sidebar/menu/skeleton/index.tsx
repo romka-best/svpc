@@ -3,16 +3,13 @@ import { useMemo } from 'react';
 import { Skeleton } from '@/components/ui/base/skeleton';
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'div'> {
-  className?: string;
-  showIcon?: boolean;
-}
+import type { SidebarMenuSkeletonProps } from './types';
 
 const SidebarMenuSkeleton = ({
   className,
   showIcon = false,
   ...props
-}: Props) => {
+}: SidebarMenuSkeletonProps) => {
   // Random width between 50 to 90%.
   const width = useMemo(() => {
     return `${Math.floor(Math.random() * 40) + 50}%`;

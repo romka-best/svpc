@@ -1,7 +1,5 @@
 'use client';
 
-import { ComponentProps } from 'react';
-
 import {
   AnimatePresence,
   motion,
@@ -18,16 +16,11 @@ import { SheetTitle } from '../sheet/title';
 import { useSidebar } from './hooks/use-sidebar';
 import {
   SidebarCollapsible,
+  type SidebarProps,
   SidebarSide,
   SidebarState,
   SidebarVariant,
 } from './types';
-
-interface Props extends ComponentProps<'div'> {
-  side?: SidebarSide;
-  variant?: SidebarVariant;
-  collapsible?: SidebarCollapsible;
-}
 
 const Sidebar = ({
   side = SidebarSide.Right,
@@ -36,7 +29,7 @@ const Sidebar = ({
   className,
   children,
   ...props
-}: Props) => {
+}: SidebarProps) => {
   const {
     isMobile,
     state,

@@ -2,13 +2,13 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'button'> { asChild?: boolean; }
+import type { SidebarGroupActionProps } from './types';
 
 const SidebarGroupAction = ({
   className,
   asChild = false,
   ...props
-}: Props) => {
+}: SidebarGroupActionProps) => {
   const Comp = asChild ? Slot : 'button';
 
   return (

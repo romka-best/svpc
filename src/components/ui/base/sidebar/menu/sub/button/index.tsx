@@ -2,11 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'a'> {
-  asChild?: boolean;
-  size?: 'sm' | 'md';
-  isActive?: boolean;
-}
+import type { SidebarMenuSubButtonProps } from './types';
 
 const SidebarMenuSubButton = ({
   asChild = false,
@@ -14,7 +10,7 @@ const SidebarMenuSubButton = ({
   isActive = false,
   className,
   ...props
-}: Props) => {
+}: SidebarMenuSubButtonProps) => {
   const Comp = asChild ? Slot : 'a';
 
   return (

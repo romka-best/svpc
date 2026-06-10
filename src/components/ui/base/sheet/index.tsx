@@ -1,6 +1,8 @@
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 
-const Sheet = ({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) => {
+import type { SheetProps } from './types';
+
+const Sheet = ({ ...props }: SheetProps) => {
   return (
     <SheetPrimitive.Root
       data-slot="sheet"

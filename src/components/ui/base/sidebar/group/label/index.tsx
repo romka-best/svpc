@@ -2,13 +2,13 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'div'> { asChild?: boolean; }
+import type { SidebarGroupLabelProps } from './types';
 
 const SidebarGroupLabel = ({
   className,
   asChild = false,
   ...props
-}: Props) => {
+}: SidebarGroupLabelProps) => {
   const Comp = asChild ? Slot : 'div';
 
   return (

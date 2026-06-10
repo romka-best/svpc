@@ -1,13 +1,11 @@
-import { ComponentProps } from 'react';
-
 import { cn } from '@/lib/utils';
 
-interface Props extends ComponentProps<'div'> { className?: string; }
+import type { SidebarContentProps } from './types';
 
 const SidebarContent = ({
-  className, 
-  ...props 
-}: Props) => {
+  className,
+  ...props
+}: SidebarContentProps) => {
   return (
     <div
       className={cn(

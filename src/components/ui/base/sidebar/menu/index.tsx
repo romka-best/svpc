@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'ul'> { asChild?: boolean; }
+import type { SidebarMenuProps } from './types';
 
 const SidebarMenu = ({
   className,
-  ...props 
-}: Props) => {
+  ...props
+}: SidebarMenuProps) => {
   return (
     <ul
       className={cn('flex w-full min-w-0 flex-col gap-4', className)}

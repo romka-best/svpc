@@ -1,13 +1,11 @@
-import { ComponentProps } from 'react';
-
 import { cn } from '@/lib/utils';
 
-interface Props extends ComponentProps<'div'> { className?: string; }
+import type { SidebarHeaderProps } from './types';
 
 const SidebarHeader = ({
-  className, 
-  ...props 
-}: Props) => {
+  className,
+  ...props
+}: SidebarHeaderProps) => {
   return (
     <div
       className={cn('flex flex-col gap-2 p-2', className)}

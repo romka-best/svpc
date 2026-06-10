@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
 
-interface Props extends React.ComponentProps<'div'> { className?: string; }
+import type { SheetFooterProps } from './types';
 
 const SheetFooter = ({
   className,
-  ...props 
-}: Props) => {
+  ...props
+}: SheetFooterProps) => {
   return (
     <div
       className={cn('mt-auto flex flex-col gap-2 p-4', className)}
