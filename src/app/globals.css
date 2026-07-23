@@ -28,6 +28,12 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+  --color-black: #050729;
+  --color-dark-gray: #252529;
+  --color-gray: #575861;
+  --color-light-gray: #a0a0a8;
+  --color-white-gray: #f0f0f6;
+  --color-white: #fefeff;
 }
 
 :root {
@@ -63,5 +69,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   }
 }

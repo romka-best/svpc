@@ -1,6 +1,7 @@
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 
+import { AboutSection } from './components/about';
 import { HeroSection } from './components/hero';
 import { TourForYouSection } from './components/tour-for-you';
 
@@ -11,6 +12,7 @@ export default function HomePage() {
       <main className="h-full flex flex-col gap-15 md:gap-30">
         <HeroSection />
         <TourForYouSection />
+        <AboutSection />
       </main>
       <Footer />
     </div>
