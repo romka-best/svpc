@@ -34,6 +34,26 @@
   --color-light-gray: #a0a0a8;
   --color-white-gray: #f0f0f6;
   --color-white: #fefeff;
+  --animate-accordion-down: accordion-down 0.25s ease-out;
+  --animate-accordion-up: accordion-up 0.25s ease-out;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 :root {
