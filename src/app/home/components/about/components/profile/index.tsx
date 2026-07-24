@@ -1,6 +1,6 @@
-import Image from 'next/image';
-
 import * as motion from 'motion/react-client';
+
+import { QuoteIcon } from '@/components/icons/quote';
 
 const AboutProfile = () => {
   return (
@@ -34,15 +34,9 @@ const AboutProfile = () => {
       </p>
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-8 right-0 w-11.75"
+        className="pointer-events-none absolute -bottom-8 right-0 w-11.75 text-[#DFE0ED]"
       >
-        <Image
-          alt=""
-          className="h-auto w-full select-none"
-          height={43}
-          src="/icons/quote.svg"
-          width={47}
-        />
+        <QuoteIcon className="h-auto w-full select-none" />
       </div>
     </motion.div>
   );

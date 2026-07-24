@@ -4,6 +4,7 @@ import { Header } from '@/components/header';
 import { AboutSection } from './components/about';
 import { FaqSection } from './components/faq';
 import { HeroSection } from './components/hero';
+import { ReviewsSection } from './components/reviews';
 import { TourForYouSection } from './components/tour-for-you';
 
 export default function HomePage() {
@@ -14,6 +15,7 @@ export default function HomePage() {
         <HeroSection />
         <TourForYouSection />
         <AboutSection />
+        <ReviewsSection />
         <FaqSection />
       </main>
       <Footer />
