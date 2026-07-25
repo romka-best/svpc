@@ -16,7 +16,7 @@ const AuthorInfo = ({ className }: Props) => {
           alt="Roman Danilov"
           className="rounded-full"
           height={35}
-          src="/images/roman.png"
+          src="/images/about-guide/roman.png"
           width={35}
         />
         <div className="flex flex-col">

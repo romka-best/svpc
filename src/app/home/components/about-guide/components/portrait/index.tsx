@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import * as motion from 'motion/react-client';
 
-const AboutPortrait = () => {
+const AboutGuidePortrait = () => {
   return (
     <motion.div
       className="relative aspect-402/460 w-70 shrink-0 md:w-85 xl:w-100.5"
@@ -27,10 +27,10 @@ const AboutPortrait = () => {
         alt="Roman Danilov, your Silicon Valley guide"
         className="object-cover object-top [-webkit-mask-image:linear-gradient(to_bottom,#000_56%,transparent_92%)] mask-[linear-gradient(to_bottom,#000_56%,transparent_92%)]"
         sizes="(max-width: 1280px) 340px, 402px"
-        src="/images/roman-portrait.webp"
+        src="/images/about-guide/roman-portrait.webp"
       />
     </motion.div>
   );
 };
 
-export { AboutPortrait };
+export { AboutGuidePortrait };

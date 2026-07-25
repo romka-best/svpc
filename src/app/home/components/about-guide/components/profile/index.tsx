@@ -2,7 +2,7 @@ import * as motion from 'motion/react-client';
 
 import { QuoteIcon } from '@/components/icons/quote';
 
-const AboutProfile = () => {
+const AboutGuideProfile = () => {
   return (
     <motion.div
       className="relative flex flex-col gap-5"
@@ -42,4 +42,4 @@ const AboutProfile = () => {
   );
 };
 
-export { AboutProfile };
+export { AboutGuideProfile };

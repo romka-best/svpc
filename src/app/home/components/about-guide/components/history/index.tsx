@@ -1,9 +1,9 @@
 import * as motion from 'motion/react-client';
 
-import { AboutHistoryEntry } from './components/entry';
+import { AboutGuideHistoryEntry } from './components/entry';
 import { ABOUT_HISTORY } from './constants';
 
-const AboutHistory = () => {
+const AboutGuideHistory = () => {
   return (
     <div className="flex flex-col gap-10">
       <motion.h3
@@ -27,7 +27,7 @@ const AboutHistory = () => {
       </motion.h3>
       <ol className="flex flex-col">
         {ABOUT_HISTORY.map((entry, index) => (
-          <AboutHistoryEntry
+          <AboutGuideHistoryEntry
             key={`${entry.title}-${index}`}
             entry={entry}
             index={index}
@@ -39,4 +39,4 @@ const AboutHistory = () => {
   );
 };
 
-export { AboutHistory };
+export { AboutGuideHistory };

@@ -14,7 +14,7 @@ export enum LinkHref {
 export enum LinkAnchor {
   Hero = '#hero',
   TourForYou = '#tour-for-you',
-  AboutMe = '#about-me',
+  AboutGuide = '#about-guide',
   MostPopularPlaces = '#most-popular-places',
   Reviews = '#reviews',
   CreateTour = '#create-tour',
@@ -33,7 +33,7 @@ export const homeLinks: Link[] = [
   },
   {
     label: 'Silicon Valley Boy',
-    href: `${LinkHref.Home}${LinkAnchor.AboutMe}`,
+    href: `${LinkHref.Home}${LinkAnchor.AboutGuide}`,
   },
   {
     label: 'Most popular places',

@@ -17,7 +17,7 @@ const FaqEffects = () => {
           alt=""
           className="object-fill"
           sizes="34vw"
-          src="/images/faq-effect-1.webp"
+          src="/images/faq/effect-1.webp"
         />
       </div>
       <div className="absolute top-1/2 left-[43.5%] aspect-2170/2650 w-[76.5%] translate-y-[-48%]">
@@ -27,7 +27,7 @@ const FaqEffects = () => {
           alt=""
           className="object-fill"
           sizes="77vw"
-          src="/images/faq-effect-2.webp"
+          src="/images/faq/effect-2.webp"
         />
       </div>
     </div>

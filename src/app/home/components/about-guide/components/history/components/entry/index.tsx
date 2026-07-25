@@ -11,7 +11,7 @@ interface Props {
   isLast: boolean;
 }
 
-const AboutHistoryEntry = ({
+const AboutGuideHistoryEntry = ({
   entry,
   index,
   isLast,
@@ -85,4 +85,4 @@ const AboutHistoryEntry = ({
   );
 };
 
-export { AboutHistoryEntry };
+export { AboutGuideHistoryEntry };

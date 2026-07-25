@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const AboutEffects = () => {
+const AboutGuideEffects = () => {
   return (
     <div
       aria-hidden
@@ -12,7 +12,7 @@ const AboutEffects = () => {
           alt=""
           className="object-contain"
           sizes="343px"
-          src="/images/about-effect-1.webp"
+          src="/images/about-guide/effect-1.webp"
         />
       </div>
       <div className="absolute -right-16 top-[6%] h-90 w-56.5 md:h-130 md:w-81.75">
@@ -21,11 +21,11 @@ const AboutEffects = () => {
           alt=""
           className="object-contain"
           sizes="327px"
-          src="/images/about-effect-2.webp"
+          src="/images/about-guide/effect-2.webp"
         />
       </div>
     </div>
   );
 };
 
-export { AboutEffects };
+export { AboutGuideEffects };

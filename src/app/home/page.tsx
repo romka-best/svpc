@@ -1,7 +1,8 @@
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 
-import { AboutSection } from './components/about';
+import { AboutGuideSection } from './components/about-guide';
+import { AboutTourSection } from './components/about-tour';
 import { FaqSection } from './components/faq';
 import { HeroSection } from './components/hero';
 import { ReviewsSection } from './components/reviews';
@@ -14,7 +15,8 @@ export default function HomePage() {
       <main className="h-full flex flex-col gap-15 md:gap-30">
         <HeroSection />
         <TourForYouSection />
-        <AboutSection />
+        <AboutGuideSection />
+        <AboutTourSection />
         <ReviewsSection />
         <FaqSection />
       </main>

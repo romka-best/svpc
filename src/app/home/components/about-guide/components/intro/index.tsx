@@ -1,6 +1,6 @@
 import * as motion from 'motion/react-client';
 
-const AboutIntro = () => {
+const AboutGuideIntro = () => {
   return (
     <motion.h2
       className="max-w-4xl text-3xl font-medium leading-tight tracking-tight text-background md:text-4xl xl:text-5xl"
@@ -24,4 +24,4 @@ const AboutIntro = () => {
   );
 };
 
-export { AboutIntro };
+export { AboutGuideIntro };
