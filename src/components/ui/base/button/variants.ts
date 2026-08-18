@@ -34,18 +34,19 @@ export const motionButtonAnimation: MotionProps = {
 } as const;
 
 export const buttonVariants = cva(
-  'flex items-center justify-center whitespace-nowrap select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*=\'size-\'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive hover:cursor-pointer',
+  'flex items-center justify-center whitespace-nowrap select-none cursor-pointer disabled:cursor-not-allowed disabled:!opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*=\'size-\'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive',
   {
     variants: {
       variant: {
-        default: 'bg-primary text-white hover:bg-[#7A0505] active:bg-[#5F0404]',
-        secondary: 'bg-black text-white hover:bg-white hover:text-black active:bg-[#D9D9D9] active:text-black',
+        default: 'bg-primary text-white enabled:hover:bg-[#7A0505] enabled:active:bg-[#5F0404]',
+        secondary: 'bg-black text-white enabled:hover:bg-white enabled:hover:text-black enabled:active:bg-[#D9D9D9] enabled:active:text-black',
         outline:
-					'border-1 border-primary bg-transparent text-primary hover:border-[#7A0505] hover:text-[#7A0505] active:border-[#5F0404] active:text-[#5F0404]',
+          'border-1 border-primary bg-transparent text-primary enabled:hover:border-[#7A0505] enabled:hover:text-[#7A0505] enabled:active:border-[#5F0404] enabled:active:text-[#5F0404]',
         destructive:
-					'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-white-gray !p-0 hover:text-primary',
+          'bg-destructive text-white shadow-xs enabled:hover:bg-destructive/90 focus-visible:ring-destructive/20',
+        ghost:
+          'border-none bg-transparent text-white transition-colors duration-250 ease-out enabled:hover:bg-white/5 enabled:hover:text-white',
+        link: 'text-white-gray !p-0 enabled:hover:text-primary',
       },
       size: {
         l: 'px-5 py-3 gap-2 text-base',
@@ -67,6 +68,30 @@ export const buttonVariants = cva(
         false: '',
       },
     },
+    compoundVariants: [
+      {
+        variant: 'ghost',
+        priority: 'destructive',
+        className:
+          'enabled:hover:bg-destructive/5 enabled:hover:text-destructive',
+      },
+      {
+        variant: 'ghost',
+        priority: 'neutral',
+        className:
+          'text-light-gray enabled:hover:bg-white/10 enabled:hover:text-white',
+      },
+      {
+        variant: 'link',
+        priority: 'destructive',
+        className: 'enabled:hover:text-destructive',
+      },
+      {
+        variant: 'link',
+        priority: 'neutral',
+        className: 'enabled:hover:text-light-gray',
+      },
+    ],
     defaultVariants: {
       variant: 'default',
       size: 'm',
