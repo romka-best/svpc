@@ -6,11 +6,11 @@ const TourForYouDescription = () => {
           Premium Tour For <span className="text-primary">You</span>
         </h2>
         <p className="text-base text-center font-medium md:text-xl">
-          Explore hidden gems in the heart of Silicon Valley
+          Explore hidden gems in&nbsp;the heart of&nbsp;Silicon Valley
         </p>
       </div>
       <p className="text-sm text-center text-muted-foreground md:text-base">
-        Silicon Valley Boy offers exclusive, premium tours that provide personalized and immersive experiences in the heart of the tech world. Explore behind-the-scenes access to leading IT companies and prestigious universities, and witness firsthand the latest innovations shaping our future.
+        Silicon Valley Private Circle offers premium, private Silicon Valley tours with personalized experiences at&nbsp;the heart of&nbsp;the world&rsquo;s leading technology hub. Explore iconic tech companies, prestigious universities, and the innovations shaping our future through expert local insight and immersive storytelling. Each tour is&nbsp;tailored to&nbsp;your interests for a&nbsp;memorable, inspiring journey through Silicon Valley.
       </p>
     </div>
 

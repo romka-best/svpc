@@ -85,6 +85,9 @@ export const ATTRACTIONS: readonly Attraction[] = [
   },
   {
     categoryId: 'sights',
+    gallery: [
+      '/images/create-tour/attractions/golden-gate.webp',
+    ],
     id: 'golden-gate',
     image: '/images/create-tour/attractions/golden-gate.webp',
     price: 220,
@@ -92,8 +95,11 @@ export const ATTRACTIONS: readonly Attraction[] = [
   },
   {
     categoryId: 'sights',
+    gallery: [
+      '/images/create-tour/attractions/alcatraz.webp',
+    ],
     id: 'alcatraz',
-    image: '/images/create-tour/attractions/restaurant.webp',
+    image: '/images/create-tour/attractions/alcatraz.webp',
     price: 190,
     title: 'Alcatraz Island',
   },
@@ -106,13 +112,19 @@ export const ATTRACTIONS: readonly Attraction[] = [
   },
   {
     categoryId: 'offices',
+    gallery: [
+      '/images/create-tour/attractions/apple-park.webp',
+    ],
     id: 'apple-park',
-    image: '/images/create-tour/attractions/apple-park.jpg',
+    image: '/images/create-tour/attractions/apple-park.webp',
     price: 350,
     title: 'Apple Park',
   },
   {
     categoryId: 'offices',
+    gallery: [
+      '/images/create-tour/attractions/googleplex.webp',
+    ],
     id: 'googleplex',
     image: '/images/create-tour/attractions/googleplex.webp',
     price: 320,
@@ -162,15 +174,21 @@ export const ATTRACTIONS: readonly Attraction[] = [
   },
   {
     categoryId: 'universities',
+    gallery: [
+      '/images/create-tour/attractions/stanford.webp',
+    ],
     id: 'stanford',
-    image: '/images/create-tour/attractions/apple-park.jpg',
+    image: '/images/create-tour/attractions/stanford.webp',
     price: 200,
     title: 'Stanford University',
   },
   {
     categoryId: 'universities',
+    gallery: [
+      '/images/create-tour/attractions/berkeley.webp',
+    ],
     id: 'berkeley',
-    image: '/images/create-tour/attractions/computer-history.webp',
+    image: '/images/create-tour/attractions/berkeley.webp',
     price: 180,
     title: 'UC Berkeley',
   },
@@ -183,6 +201,9 @@ export const ATTRACTIONS: readonly Attraction[] = [
   },
   {
     categoryId: 'museums',
+    gallery: [
+      '/images/create-tour/attractions/computer-history.webp',
+    ],
     id: 'computer-history',
     image: '/images/create-tour/attractions/computer-history.webp',
     price: 160,
@@ -197,8 +218,11 @@ export const ATTRACTIONS: readonly Attraction[] = [
   },
   {
     categoryId: 'museums',
+    gallery: [
+      '/images/create-tour/attractions/de-young.webp',
+    ],
     id: 'de-young',
-    image: '/images/create-tour/attractions/restaurant.webp',
+    image: '/images/create-tour/attractions/de-young.webp',
     price: 150,
     title: 'de Young Museum',
   },

@@ -29,7 +29,12 @@ const TourForYouSpotsPlanet = ({
    * non-matching durations, so the path traces a slowly evolving ellipse
    * instead of a synchronized up/down bounce. Durations and delays are
    * derived from the index, so the layout is deterministic.
+   *
+   * Abstract Dicebear placeholders keep the slow spin (and extra scale so
+   * the rotating square never shows the circle's corners). Real photos stay
+   * upright and unzoomed so the landmark stays readable in the crop.
    */
+  const hasPhoto = Boolean(imageUrl);
   const delay = (index % 7) * 0.7;
   const driftX = index % 2 === 0 ? drift : -drift;
   const enterDelay = index * 0.08;
@@ -94,12 +99,14 @@ const TourForYouSpotsPlanet = ({
         )}
         style={{ willChange: 'transform' }}
       >
-        {/* Scaled up so the rotating square never exposes the circle's corners */}
         <motion.div
-          animate={{ rotate: index % 2 === 0 ? 360 : -360 }}
-          className="size-full scale-150"
-          style={{ willChange: 'transform' }}
-          transition={{
+          animate={hasPhoto ? undefined : { rotate: index % 2 === 0 ? 360 : -360 }}
+          className={cn(
+            'relative size-full',
+            !hasPhoto && 'scale-150',
+          )}
+          style={{ willChange: hasPhoto ? undefined : 'transform' }}
+          transition={hasPhoto ? undefined : {
             duration: 50 + (index % 6) * 12,
             ease: 'linear',
             repeat: Infinity,
@@ -108,13 +115,22 @@ const TourForYouSpotsPlanet = ({
           <Image
             alt={label}
             className="size-full object-cover"
-            height={240}
+            height={941}
             loading="eager"
+            sizes="(min-width: 1280px) 240px, (min-width: 768px) 160px, 96px"
             src={imageUrl || `https://api.dicebear.com/9.x/glass/png?seed=${encodeURIComponent(label)}`}
-            width={240}
+            unoptimized={hasPhoto}
+            width={941}
           />
         </motion.div>
-        <div className="absolute inset-0 rounded-full bg-linear-220 from-background/5 from-15% to-background/80 to-80%" />
+        <div
+          className={cn(
+            'absolute inset-0 rounded-full',
+            hasPhoto
+              ? 'bg-linear-to-b from-transparent to-black/20'
+              : 'bg-linear-220 from-background/5 from-15% to-background/80 to-80%',
+          )}
+        />
       </div>
     </motion.div>
   );

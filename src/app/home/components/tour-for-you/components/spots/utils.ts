@@ -82,7 +82,7 @@ export const calculatePlanetLayout = (
       return edge === 'top'
         ? {
           left,
-          top: offset,
+          top: offset + drift,
         }
         : {
           bottom: offset,
