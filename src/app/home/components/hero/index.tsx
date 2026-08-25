@@ -1,8 +1,7 @@
-import Link from 'next/link';
-
 import { ChevronRight } from 'lucide-react';
 import * as motion from 'motion/react-client';
 
+import { AnchorLink } from '@/components/ui/base/anchor-link';
 import { Button } from '@/components/ui/base/button';
 import { LinkAnchor } from '@/constants/links';
 
@@ -77,10 +76,10 @@ const HeroSection = () => {
           asChild
           size="l"
         >
-          <Link href={LinkAnchor.CreateTour}>
+          <AnchorLink href={LinkAnchor.CreateTour}>
             Start Journey
             <ChevronRight className="size-4" />
-          </Link>
+          </AnchorLink>
         </Button>
       </motion.div>
     </section>

@@ -118,4 +118,15 @@
     @apply bg-background text-foreground;
     font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Keeps anchored sections clear of the sticky header. */
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
 }

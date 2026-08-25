@@ -1,13 +1,12 @@
 'use client';
 
-import Link from 'next/link';
-
 import {
   ChevronRight,
-  Star, 
+  Star,
 } from 'lucide-react';
 import * as motion from 'motion/react-client';
 
+import { AnchorLink } from '@/components/ui/base/anchor-link';
 import { Badge } from '@/components/ui/base/badge';
 import { Button } from '@/components/ui/base/button';
 import { LinkAnchor } from '@/constants/links';
@@ -20,7 +19,7 @@ import {
 const AboutTourContent = () => {
   return (
     <motion.div
-      className="flex w-full max-w-167.5 shrink-0 flex-col items-start gap-6 lg:h-165.5 lg:justify-center"
+      className="flex w-full max-w-167.5 shrink-0 flex-col items-start gap-6 xl:h-165.5"
       initial={{
         opacity: 0,
         x: 40,
@@ -37,15 +36,21 @@ const AboutTourContent = () => {
         x: 0,
       }}
     >
-      <h2 className="text-3xl font-medium leading-snug tracking-tight text-white md:text-4xl xl:text-5xl">
-        We invite you to explore Silicon Valley in the most
-        {' '}
-        <span className="text-primary">
-          popular places
-        </span>
-      </h2>
+      <div className="flex flex-col gap-4">
+        <h2 className="text-3xl leading-snug font-medium tracking-tight text-balance text-white md:text-4xl xl:text-5xl">
+          A private Silicon Valley tour, planned down to the
+          {' '}
+          <span className="text-primary">
+            last stop
+          </span>
+        </h2>
 
-      <div className="flex max-w-138.75 flex-wrap content-center items-center gap-2">
+        <p className="max-w-155 text-base tracking-tight text-light-gray md:text-lg">
+          Explore iconic landmarks and hidden gems in&nbsp;a&nbsp;single day&nbsp;&mdash; driven door to&nbsp;door, at&nbsp;your pace, with a&nbsp;guide who actually lives here.
+        </p>
+      </div>
+
+      <div className="flex max-w-155 flex-wrap content-center items-center gap-2">
         {ABOUT_TOUR_TAGS.map((tag, index) => (
           <motion.div
             key={tag}
@@ -65,7 +70,7 @@ const AboutTourContent = () => {
             }}
           >
             <Badge
-              className="h-8 border-light-gray px-3.25 py-1 text-sm font-normal tracking-tight text-light-gray"
+              className="h-8 border-white/15 bg-white/3 px-3.25 py-1 text-sm font-normal tracking-tight text-light-gray"
               size="sm"
               variant="outline"
             >
@@ -91,7 +96,7 @@ const AboutTourContent = () => {
           }}
         >
           <Badge
-            className="h-8 gap-1 border-primary px-3.25 py-1 text-sm font-normal tracking-tight text-primary"
+            className="h-8 gap-1 border-primary bg-primary/10 px-3.25 py-1 text-sm font-normal tracking-tight text-primary"
             size="sm"
             variant="outline"
           >
@@ -106,6 +111,7 @@ const AboutTourContent = () => {
       </div>
 
       <motion.div
+        className="xl:mt-auto"
         initial={{
           opacity: 0,
           y: 16,
@@ -125,10 +131,10 @@ const AboutTourContent = () => {
           asChild
           size="l"
         >
-          <Link href={LinkAnchor.CreateTour}>
-            Start Journey
+          <AnchorLink href={LinkAnchor.CreateTour}>
+            Build My Itinerary
             <ChevronRight className="size-6" />
-          </Link>
+          </AnchorLink>
         </Button>
       </motion.div>
     </motion.div>
