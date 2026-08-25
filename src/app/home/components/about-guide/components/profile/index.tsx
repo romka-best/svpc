@@ -30,7 +30,7 @@ const AboutGuideProfile = () => {
         </p>
       </div>
       <p className="text-base font-light italic leading-snug tracking-tight text-dark-gray">
-        My mission is to provide an unparalleled experience of Silicon Valley, where every tour offers a deep dive into the heart of innovation. I aim to connect you with the pioneers of technology and the stories behind the breakthroughs, ensuring you leave with unforgettable memories and insights that inspire.
+        I create private Silicon Valley tours around your interests&nbsp;&mdash; taking you inside iconic tech companies, prestigious universities, and the stories behind the breakthroughs. You leave with local insight, lasting inspiration, and a&nbsp;true sense of&nbsp;the world&rsquo;s leading technology hub.
       </p>
       <div
         aria-hidden

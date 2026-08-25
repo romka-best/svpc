@@ -1,4 +1,3 @@
-import { AboutGuideEffects } from './components/effects';
 import { AboutGuideHistory } from './components/history';
 import { AboutGuideIntro } from './components/intro';
 import { AboutGuidePortrait } from './components/portrait';
@@ -11,7 +10,6 @@ const AboutGuideSection = () => {
       id="about-guide"
     >
       <div className="relative rounded-[20px] bg-white-gray px-5 py-14 md:px-10 md:py-20 xl:px-16 xl:py-24">
-        <AboutGuideEffects />
         <div className="relative z-10 mx-auto flex max-w-225 flex-col gap-8 lg:gap-4">
           <AboutGuideIntro />
           <div className="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:justify-end lg:gap-8">

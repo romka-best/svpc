@@ -23,7 +23,7 @@ const AboutGuideHistory = () => {
           y: 0,
         }}
       >
-        History
+        The story
       </motion.h3>
       <ol className="flex flex-col">
         {ABOUT_HISTORY.map((entry, index) => (

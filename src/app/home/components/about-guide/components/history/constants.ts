@@ -7,24 +7,24 @@ export interface HistoryEntry {
 
 export const ABOUT_HISTORY: HistoryEntry[] = [
   {
-    title: 'Arrival in the USA',
-    date: 'December, 19',
-    description: 'Silicon Valley Boy offers exclusive, premium tours that provide personalized and immersive experiences.',
+    title: 'Arrived as a tourist',
+    date: 'The beginning',
+    description: 'I came to visit Silicon Valley — and fell in love with it. That first trip is why I stayed, and why I know how it feels to see this place for the first time.',
   },
   {
-    title: 'Arrival in the USA',
-    date: 'December, 19',
-    description: 'Silicon Valley Boy offers exclusive, premium tours that provide personalized and immersive experiences.',
+    title: 'Chose to stay and go deeper',
+    date: 'Years on the ground',
+    description: 'Living here changed the view: tech campuses, universities, and the people behind them. I learned how the Valley actually works so your day is never a tourist script.',
   },
   {
-    title: 'Arrival in the USA',
-    date: 'December, 19',
-    description: 'Silicon Valley Boy offers exclusive, premium tours that provide personalized and immersive experiences.',
+    title: 'Built private, tailored tours',
+    date: 'Designed around you',
+    description: 'Tell me what you care about — Apple, Google, Stanford, Alcatraz, a flight over the city — and I shape the day around it.',
   },
   {
-    title: 'Conducting tours',
-    date: 'December, 19',
-    description: 'Silicon Valley Boy offers exclusive, premium tours that provide personalized and immersive experiences.',
+    title: 'Guiding private tours today',
+    date: 'Your dates, your pace',
+    description: 'A private day with a local guide. No crowds, no generic route. Create your tour below and I will take it from there.',
     highlighted: true,
   },
 ];
