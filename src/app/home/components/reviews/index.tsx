@@ -80,7 +80,7 @@ const ReviewsSection = () => {
 
   return (
     <section
-      className="px-5 py-20 md:px-10 md:py-32 xl:px-48.5 xl:py-24"
+      className="flex section-screen flex-col justify-center px-5 py-10 md:px-10 xl:px-48.5"
       id="reviews"
     >
       <div className="mx-auto flex max-w-5xl items-center gap-6 md:gap-10">

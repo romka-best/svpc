@@ -11,7 +11,7 @@ import { FAQ_ITEMS } from './constants';
 const FaqSection = () => {
   return (
     <section
-      className="relative overflow-hidden px-5 py-32 md:px-10 md:py-50 xl:px-67.5 xl:py-56"
+      className="relative flex section-screen flex-col justify-center overflow-hidden px-5 py-10 md:px-10 xl:px-67.5"
       id="faq"
     >
       <FaqEffects />

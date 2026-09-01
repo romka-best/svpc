@@ -63,7 +63,7 @@ const TourForYouSpots = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-4 pb-16 md:pb-24 xl:pb-32">
+      <div className="flex flex-col items-center justify-center gap-4">
         <h3 className="text-base font-medium">
           Several Popular Tour Spots
         </h3>

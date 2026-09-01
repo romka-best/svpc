@@ -21,7 +21,7 @@ const AboutTourSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden px-5 py-20 md:px-10 md:py-32 xl:px-20 xl:py-24"
+      className="relative flex section-screen flex-col items-center justify-center overflow-hidden px-5 py-10 md:px-10 xl:px-20"
       id="most-popular-places"
     >
       <script

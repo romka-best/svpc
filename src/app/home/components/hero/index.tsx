@@ -5,12 +5,18 @@ import { AnchorLink } from '@/components/ui/base/anchor-link';
 import { Button } from '@/components/ui/base/button';
 import { LinkAnchor } from '@/constants/links';
 
+import { HeroBackground } from './components/background';
+import { HeroFog } from './components/fog';
+import { HeroScrollHint } from './components/scroll-hint';
+
 const HeroSection = () => {
   return (
     <section
-      className="flex flex-col items-center justify-center gap-6.5 px-5 py-32 md:px-10 md:py-50 xl:px-67.5 xl:py-56"
+      className="relative isolate flex section-screen flex-col items-center justify-center gap-6.5 overflow-hidden px-5 py-10 md:px-10 xl:px-67.5"
       id="hero"
     >
+      <HeroBackground />
+      <HeroFog />
       <div className="flex flex-col items-center justify-center gap-5">
         <motion.h1
           animate={{
@@ -30,7 +36,7 @@ const HeroSection = () => {
             type: 'spring',
           }}
         >
-          Discover <span className="text-primary">Silicon Valley</span>: Your Guide to the World of <span className="text-primary">Innovation</span>!
+          Discover <span className="text-primary">Silicon Valley</span>: Your Guide to the World of <span className="text-primary">Innovation</span>
         </motion.h1>
         <motion.p
           animate={{
@@ -82,6 +88,7 @@ const HeroSection = () => {
           </AnchorLink>
         </Button>
       </motion.div>
+      <HeroScrollHint />
     </section>
   );
 };
