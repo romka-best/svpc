@@ -1,6 +1,6 @@
 const TourForYouDescription = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-5 md:px-30">
+    <div className="relative z-10 flex flex-col items-center justify-center gap-5 md:px-30">
       <div className="flex flex-col items-center justify-center gap-2.5">
         <h2 className="text-3xl font-semibold text-center md:text-4xl">
           Premium Tour For <span className="text-primary">You</span>

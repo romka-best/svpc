@@ -145,36 +145,36 @@
   background-size: 50% 100%;
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='300'%3E%3Cfilter id='n' filterUnits='userSpaceOnUse' x='0' y='0' width='720' height='300'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006 0.016' numOctaves='4' seed='17' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.85' intercept='0.25'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='720' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   mask-repeat: repeat-x;
-  transform-origin: bottom center;
+  transform-origin: center;
   will-change: translate, scale, opacity;
 }
 
 @utility fog-band-back {
   background-image:
-    radial-gradient(32% 70% at 0% 100%, rgb(var(--fog-tint) / 0.38), rgb(var(--fog-tint) / 0.28) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(32% 70% at 100% 100%, rgb(var(--fog-tint) / 0.38), rgb(var(--fog-tint) / 0.28) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(28% 52% at 34% 108%, rgb(var(--fog-tint) / 0.3), rgb(var(--fog-tint) / 0.22) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(36% 62% at 68% 104%, rgb(var(--fog-tint) / 0.34), rgb(var(--fog-tint) / 0.24) 42%, rgb(var(--fog-tint) / 0));
+    radial-gradient(32% 70% at 0% 50%, rgb(var(--fog-tint) / 0.38), rgb(var(--fog-tint) / 0.28) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(32% 70% at 100% 50%, rgb(var(--fog-tint) / 0.38), rgb(var(--fog-tint) / 0.28) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(28% 52% at 34% 58%, rgb(var(--fog-tint) / 0.3), rgb(var(--fog-tint) / 0.22) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(36% 62% at 68% 46%, rgb(var(--fog-tint) / 0.34), rgb(var(--fog-tint) / 0.24) 42%, rgb(var(--fog-tint) / 0));
   mask-size: 16.6667% 100%;
 }
 
 @utility fog-band-mid {
   background-image:
-    radial-gradient(28% 64% at 0% 100%, rgb(var(--fog-tint) / 0.44), rgb(var(--fog-tint) / 0.32) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(28% 64% at 100% 100%, rgb(var(--fog-tint) / 0.44), rgb(var(--fog-tint) / 0.32) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(24% 48% at 29% 110%, rgb(var(--fog-tint) / 0.36), rgb(var(--fog-tint) / 0.26) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(32% 72% at 66% 102%, rgb(var(--fog-tint) / 0.4), rgb(var(--fog-tint) / 0.3) 42%, rgb(var(--fog-tint) / 0));
+    radial-gradient(28% 64% at 0% 50%, rgb(var(--fog-tint) / 0.44), rgb(var(--fog-tint) / 0.32) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(28% 64% at 100% 50%, rgb(var(--fog-tint) / 0.44), rgb(var(--fog-tint) / 0.32) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(24% 48% at 29% 56%, rgb(var(--fog-tint) / 0.36), rgb(var(--fog-tint) / 0.26) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(32% 72% at 66% 44%, rgb(var(--fog-tint) / 0.4), rgb(var(--fog-tint) / 0.3) 42%, rgb(var(--fog-tint) / 0));
   mask-size: 25% 100%;
   mask-position: 140px 0;
 }
 
 @utility fog-band-front {
   background-image:
-    radial-gradient(24% 58% at 0% 100%, rgb(var(--fog-tint) / 0.5), rgb(var(--fog-tint) / 0.36) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(24% 58% at 100% 100%, rgb(var(--fog-tint) / 0.5), rgb(var(--fog-tint) / 0.36) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(20% 42% at 24% 112%, rgb(var(--fog-tint) / 0.4), rgb(var(--fog-tint) / 0.28) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(26% 68% at 52% 100%, rgb(var(--fog-tint) / 0.46), rgb(var(--fog-tint) / 0.34) 42%, rgb(var(--fog-tint) / 0)),
-    radial-gradient(21% 50% at 80% 108%, rgb(var(--fog-tint) / 0.38), rgb(var(--fog-tint) / 0.26) 42%, rgb(var(--fog-tint) / 0));
+    radial-gradient(24% 58% at 0% 50%, rgb(var(--fog-tint) / 0.5), rgb(var(--fog-tint) / 0.36) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(24% 58% at 100% 50%, rgb(var(--fog-tint) / 0.5), rgb(var(--fog-tint) / 0.36) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(20% 42% at 24% 60%, rgb(var(--fog-tint) / 0.4), rgb(var(--fog-tint) / 0.28) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(26% 68% at 52% 48%, rgb(var(--fog-tint) / 0.46), rgb(var(--fog-tint) / 0.34) 42%, rgb(var(--fog-tint) / 0)),
+    radial-gradient(21% 50% at 80% 54%, rgb(var(--fog-tint) / 0.38), rgb(var(--fog-tint) / 0.26) 42%, rgb(var(--fog-tint) / 0));
   mask-size: 50% 100%;
   mask-position: -80px 0;
 }

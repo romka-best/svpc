@@ -48,7 +48,7 @@ const HeroBackground = () => {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden mask-[linear-gradient(to_bottom,#000_70%,transparent)]"
     >
       <Image
         fill
@@ -77,7 +77,7 @@ const HeroBackground = () => {
       )}
 
       <div className="absolute inset-0 bg-background/55" />
-      <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-background" />
+      <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-transparent" />
     </div>
   );
 };

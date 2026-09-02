@@ -12,7 +12,7 @@ import { HeroScrollHint } from './components/scroll-hint';
 const HeroSection = () => {
   return (
     <section
-      className="relative isolate flex section-screen flex-col items-center justify-center gap-6.5 overflow-hidden px-5 py-10 md:px-10 xl:px-67.5"
+      className="relative z-10 isolate flex section-screen flex-col items-center justify-center gap-6.5 px-5 py-10 md:px-10 xl:px-67.5"
       id="hero"
     >
       <HeroBackground />

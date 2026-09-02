@@ -63,7 +63,7 @@ const TourForYouSpots = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="relative z-10 flex flex-col items-center justify-center gap-4">
         <h3 className="text-base font-medium">
           Several Popular Tour Spots
         </h3>
@@ -90,7 +90,7 @@ const TourForYouSpots = () => {
       <div
         ref={layerRef}
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
+        className="pointer-events-none absolute inset-0 z-0"
       >
         {positions.length > 0 && TOUR_FOR_YOU_SPOTS.map((spot, index) => (
           <TourForYouSpotsPlanet
