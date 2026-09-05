@@ -126,6 +126,8 @@
   --sidebar-border: hsl(220 13% 91%);
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
   --header-height: 3.875rem;
+  --section-gutter: 0px;
+  --section-screen-height: calc(100dvh - var(--header-height) - var(--section-gutter) - var(--section-gutter));
 }
 
 @media (min-width: 640px) {
@@ -134,8 +136,14 @@
   }
 }
 
+@media (min-width: 1024px) {
+  :root {
+    --section-gutter: 3.75rem;
+  }
+}
+
 @utility section-screen {
-  min-height: calc(100dvh - var(--header-height));
+  min-height: var(--section-screen-height);
 }
 
 @utility fog-band {
@@ -234,8 +242,8 @@
     }
   }
 
-  /* Keeps anchored sections clear of the sticky header. */
+  /* Keeps anchored sections clear of the sticky header and desktop gutters. */
   section[id] {
-    scroll-margin-top: var(--header-height);
+    scroll-margin-top: calc(var(--header-height) + var(--section-gutter));
   }
 }

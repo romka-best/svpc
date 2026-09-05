@@ -46,7 +46,7 @@ export const buttonVariants = cva(
           'bg-destructive text-white shadow-xs enabled:hover:bg-destructive/90 focus-visible:ring-destructive/20',
         ghost:
           'border-none bg-transparent text-white transition-colors duration-250 ease-out enabled:hover:bg-white/5 enabled:hover:text-white',
-        link: 'text-white-gray !p-0 enabled:hover:text-primary',
+        link: 'text-white-gray !p-0 transition-colors duration-250 ease-out enabled:hover:text-primary',
       },
       size: {
         l: 'px-5 py-3 gap-2 text-base',

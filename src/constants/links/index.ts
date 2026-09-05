@@ -67,20 +67,20 @@ export const legalLinks: Link[] = [
 export const socialLinks: Link[] = [
   {
     icon: '/icons/linkedin.svg',
-    href: '/linkedin',
+    href: 'https://linkedin.com/in/danilov-roman/',
     alt: 'LinkedIn',
     target: '_blank',
   },
   {
     icon: '/icons/instagram.svg',
-    href: '/instagram',
+    href: 'https://instagram.com/romka__best',
     alt: 'Instagram',
     target: '_blank',
   },
   {
-    icon: '/icons/youtube.svg',
-    href: '/youtube',
-    alt: 'YouTube',
+    icon: '/icons/mail.svg',
+    href: 'mailto:me@romandanilov.com',
+    alt: 'Email',
     target: '_blank',
   },
 ];

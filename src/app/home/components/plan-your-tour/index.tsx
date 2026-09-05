@@ -7,7 +7,7 @@ import { PlanYourTourProvider } from './context';
 const PlanYourTourSection = () => {
   return (
     <section
-      className="flex section-screen flex-col px-5 md:px-10 lg:h-[calc(100dvh-var(--header-height))]"
+      className="flex section-screen flex-col px-5 md:px-10 lg:h-(--section-screen-height)"
       id="plan-your-tour"
     >
       <PlanYourTourProvider>

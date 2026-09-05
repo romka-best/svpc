@@ -47,7 +47,7 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   const isButtonDisabled = disabled || isLoading;
-  const animationProps = isButtonDisabled || variant === 'link' ? {} : motionButtonAnimation;
+  const animationProps = isButtonDisabled ? {} : motionButtonAnimation;
 
   const buttonClassName = cn(
     buttonVariants({

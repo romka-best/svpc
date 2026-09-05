@@ -3,7 +3,7 @@ import { Briefcase } from 'lucide-react';
 const CTAButtonContent = () => {
   return (
     <>
-      Get Started
+      Plan Your Tour
       <Briefcase className="size-4" />
     </>
   );
