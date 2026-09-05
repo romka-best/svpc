@@ -7,7 +7,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'How much does a private Silicon Valley tour cost?',
     answer:
-      'The price depends on your dates, chosen destinations, group size, and vehicle. As you build the itinerary you will see a live tour price. That total is for your whole group for the whole trip, not a per-person ticket on a shared vehicle.',
+      'The price depends on your dates, chosen destinations, group size, and vehicle. As you plan your tour you will see a live tour price. That total is for your whole group for the whole trip, not a per-person ticket on a shared vehicle.',
   },
   {
     question: 'What is included in a private Silicon Valley tour?',
@@ -30,9 +30,9 @@ export const FAQ_ITEMS: FaqItem[] = [
       'It is always private — only your group rides along. Solo travelers, couples, families, and small groups are welcome, up to six guests.',
   },
   {
-    question: 'How do I customize my Silicon Valley tour itinerary?',
+    question: 'How do I plan my Silicon Valley tour?',
     answer:
-      'Use Build My Itinerary on this page: choose your dates, who is coming, the attractions you want, and a car. After you book, your guide confirms the route with you so the trip still feels tailored.',
+      'Use Plan Your Tour on this page: choose your dates, who is coming, the attractions you want, and a car. After you book, your guide confirms the route with you so the trip still feels tailored.',
   },
   {
     question: 'Is a private Silicon Valley tour good for families, founders, and first-time visitors?',

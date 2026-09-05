@@ -3,9 +3,9 @@ import { Header } from '@/components/header';
 
 import { AboutGuideSection } from './components/about-guide';
 import { AboutTourSection } from './components/about-tour';
-import { CreateTourSection } from './components/create-tour';
 import { FaqSection } from './components/faq';
 import { HeroSection } from './components/hero';
+import { PlanYourTourSection } from './components/plan-your-tour';
 import { ReviewsSection } from './components/reviews';
 import { TourForYouSection } from './components/tour-for-you';
 
@@ -19,7 +19,7 @@ export default function HomePage() {
         <AboutGuideSection />
         <AboutTourSection />
         <ReviewsSection />
-        <CreateTourSection />
+        <PlanYourTourSection />
         <FaqSection />
       </main>
       <Footer />

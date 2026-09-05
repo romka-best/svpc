@@ -82,7 +82,7 @@ const HeroSection = () => {
           asChild
           size="l"
         >
-          <AnchorLink href={LinkAnchor.CreateTour}>
+          <AnchorLink href={LinkAnchor.PlanYourTour}>
             Start Journey
             <ChevronRight className="size-4" />
           </AnchorLink>

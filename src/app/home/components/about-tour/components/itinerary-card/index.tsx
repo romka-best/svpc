@@ -17,7 +17,7 @@ import type { ItineraryStopCategory } from '../../constants';
 
 import type { ItineraryCardProps } from './types';
 
-/** Icons and colors mirror the categories in the Create Tour step. */
+/** Icons and colors mirror the categories in the Plan Your Tour step. */
 const CATEGORY_META: Record<ItineraryStopCategory, {
   Icon: LucideIcon;
   iconClassName: string;

@@ -7,7 +7,7 @@ import {
 
 import { CTAButtonContent } from './components/content';
 
-const CTA_HREF = `${LinkHref.Home}${LinkAnchor.CreateTour}`;
+const CTA_HREF = `${LinkHref.Home}${LinkAnchor.PlanYourTour}`;
 
 const CTAButton = () => {
   return (

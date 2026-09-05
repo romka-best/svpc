@@ -9,6 +9,7 @@ export interface Link {
 export enum LinkHref {
   Home = '/home',
   PrivacyPolicy = '/privacy-policy',
+  Sitemap = '/sitemap',
 }
 
 export enum LinkAnchor {
@@ -17,14 +18,13 @@ export enum LinkAnchor {
   AboutGuide = '#about-guide',
   MostPopularPlaces = '#most-popular-places',
   Reviews = '#reviews',
-  CreateTour = '#create-tour',
+  PlanYourTour = '#plan-your-tour',
   FAQ = '#faq',
-  SiteMap = '#site-map',
 }
 
 export const homeLinks: Link[] = [
   {
-    label: 'Start Hero',
+    label: 'Introduction',
     href: `${LinkHref.Home}${LinkAnchor.Hero}`,
   },
   {
@@ -40,16 +40,16 @@ export const homeLinks: Link[] = [
     href: `${LinkHref.Home}${LinkAnchor.MostPopularPlaces}`,
   },
   {
-    label: 'Experiences from Adventures',
+    label: 'Reviews',
     href: `${LinkHref.Home}${LinkAnchor.Reviews}`,
+  },
+  {
+    label: 'Plan Your Tour',
+    href: `${LinkHref.Home}${LinkAnchor.PlanYourTour}`,
   },
   {
     label: 'FAQ',
     href: `${LinkHref.Home}${LinkAnchor.FAQ}`,
-  },
-  {
-    label: 'Site Map',
-    href: `${LinkHref.Home}${LinkAnchor.SiteMap}`,
   },
 ];
 
@@ -57,6 +57,10 @@ export const legalLinks: Link[] = [
   {
     label: 'Privacy Policy',
     href: LinkHref.PrivacyPolicy,
+  },
+  {
+    label: 'Site Map',
+    href: LinkHref.Sitemap,
   },
 ];
 

@@ -131,8 +131,8 @@ const AboutTourContent = () => {
           asChild
           size="l"
         >
-          <AnchorLink href={LinkAnchor.CreateTour}>
-            Build My Itinerary
+          <AnchorLink href={LinkAnchor.PlanYourTour}>
+            Build Your Itinerary
             <ChevronRight className="size-6" />
           </AnchorLink>
         </Button>

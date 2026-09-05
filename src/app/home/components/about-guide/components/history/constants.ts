@@ -24,7 +24,7 @@ export const ABOUT_HISTORY: HistoryEntry[] = [
   {
     title: 'Guiding private tours today',
     date: 'Your dates, your pace',
-    description: 'A private day with a local guide. No crowds, no generic route. Create your tour below and I will take it from there.',
+    description: 'A private day with a local guide. No crowds, no generic route. Plan your tour below and I will take it from there.',
     highlighted: true,
   },
 ];

@@ -122,7 +122,7 @@ const ReviewsSection = () => {
               size="sm"
               variant="outline"
             >
-              Experiences from Adventures
+              Reviews
             </Badge>
 
             <motion.div
