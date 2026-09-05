@@ -32,11 +32,11 @@ export const homeLinks: Link[] = [
     href: `${LinkHref.Home}${LinkAnchor.TourForYou}`,
   },
   {
-    label: 'Silicon Valley Boy',
+    label: 'Silicon Valley Guide',
     href: `${LinkHref.Home}${LinkAnchor.AboutGuide}`,
   },
   {
-    label: 'Most popular places',
+    label: 'Popular Destinations',
     href: `${LinkHref.Home}${LinkAnchor.MostPopularPlaces}`,
   },
   {

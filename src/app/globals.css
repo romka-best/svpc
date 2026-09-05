@@ -210,9 +210,22 @@
     background: transparent;
   }
 
+  html {
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    scrollbar-width: none;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
   }
 
   @media (prefers-reduced-motion: no-preference) {

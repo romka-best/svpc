@@ -18,6 +18,10 @@ import { Badge } from '@/components/ui/base/badge';
 import { Button } from '@/components/ui/base/button';
 
 import { REVIEWS } from './constants';
+import {
+  getReviewInitials,
+  wrapReviewIndex,
+} from './utils';
 
 const quoteClassName = 'text-2xl font-medium italic leading-snug tracking-tight text-white md:text-3xl xl:text-4xl';
 
@@ -38,7 +42,8 @@ const ReviewsSection = () => {
     index: 0,
   });
 
-  const review = REVIEWS[index];
+  const safeIndex = wrapReviewIndex(index);
+  const review = REVIEWS[safeIndex];
 
   useLayoutEffect(() => {
     const content = contentRef.current;
@@ -61,21 +66,21 @@ const ReviewsSection = () => {
       resizeObserver.disconnect();
     };
   }, [
-    index,
+    safeIndex,
   ]);
 
   const goPrev = () => {
-    setSlide(({ index: current }) => ({
+    setSlide({
       direction: -1,
-      index: (current - 1 + REVIEWS.length) % REVIEWS.length,
-    }));
+      index: wrapReviewIndex(safeIndex - 1),
+    });
   };
 
   const goNext = () => {
-    setSlide(({ index: current }) => ({
+    setSlide({
       direction: 1,
-      index: (current + 1) % REVIEWS.length,
-    }));
+      index: wrapReviewIndex(safeIndex + 1),
+    });
   };
 
   return (
@@ -121,7 +126,7 @@ const ReviewsSection = () => {
             </Badge>
 
             <motion.div
-              key={index}
+              key={safeIndex}
               animate={{
                 opacity: 1,
                 x: 0,
@@ -138,15 +143,26 @@ const ReviewsSection = () => {
                 ease: 'easeOut',
               }}
             >
-              <div className="relative size-8.75 shrink-0 overflow-hidden rounded-full">
-                <Image
-                  fill
-                  unoptimized
-                  alt={review.author}
-                  className="object-cover"
-                  sizes="35px"
-                  src={review.avatarSrc}
-                />
+              <div className="relative size-8.75 shrink-0 overflow-hidden rounded-full bg-primary/20">
+                {review.avatarSrc
+                  ? (
+                    <Image
+                      fill
+                      unoptimized
+                      alt=""
+                      className="object-cover"
+                      sizes="35px"
+                      src={review.avatarSrc}
+                    />
+                  )
+                  : (
+                    <span
+                      aria-hidden
+                      className="flex size-full items-center justify-center text-[11px] font-semibold tracking-tight text-primary"
+                    >
+                      {getReviewInitials(review.author)}
+                    </span>
+                  )}
               </div>
               <div className="flex flex-col leading-snug tracking-tight">
                 <p className="text-base font-semibold text-white">
@@ -194,13 +210,13 @@ const ReviewsSection = () => {
             >
               <div ref={contentRef}>
                 <motion.blockquote
-                  key={index}
+                  key={safeIndex}
                   animate={{
                     opacity: 1,
                     x: 0,
                   }}
                   className={quoteClassName}
-                  data-review-index={index}
+                  data-review-index={safeIndex}
                   initial={direction === 0
                     ? false
                     : {

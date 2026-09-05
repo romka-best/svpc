@@ -1,27 +1,33 @@
 export interface Review {
   author: string;
-  avatarSrc: string;
+  avatarSrc?: string;
   quote: string;
   role: string;
 }
 
 export const REVIEWS: Review[] = [
   {
-    author: 'Max Khozyaiskikh',
+    author: 'Max',
     avatarSrc: '/images/reviews/avatar-max.webp',
-    quote: 'The Silicon Valley Boy tour ignited new ideas for my startup with exclusive access to top tech companies. Meeting industry leaders provided invaluable insights. Highly recommended for innovators looking to elevate their business.',
-    role: 'Silicon Valley Developer',
+    quote: 'I work at an AI B2B SaaS startup. First time in the Bay Area and I finally got to see Apple Park and the Googleplex. This is a tour where a local who actually knows the area shows you hidden gems.',
+    role: 'Software Engineer',
   },
   {
-    author: 'Max Khozyaiskikh',
-    avatarSrc: '/images/reviews/avatar-max.webp',
-    quote: 'Exclusive access and a personal guide made this feel unlike any other tech tour. I left with connections, clarity, and a renewed drive to build.',
-    role: 'Silicon Valley Developer',
+    author: 'Arda',
+    avatarSrc: '/images/reviews/avatar-arda.webp',
+    quote: 'So my investors recommended me to book this tour. Stanford University, then the Googleplex. I’d seen all this in pitch decks. Being there with a Silicon Valley guide who actually knows the history is a different thing.',
+    role: 'Co-Founder & CTO',
   },
   {
-    author: 'Max Khozyaiskikh',
-    avatarSrc: '/images/reviews/avatar-max.webp',
-    quote: 'From campus walks to closed-door conversations with builders, every stop was intentional. Silicon Valley Boy delivers the real story behind the innovation.',
-    role: 'Silicon Valley Developer',
+    author: 'Tim and Anna',
+    avatarSrc: '/images/reviews/avatar-tim-anna.webp',
+    quote: 'We had the kids, so a big group tour was out. Private car, Computer History Museum, walked around Berkeley, Golden Gate on the way back. Nobody rushed us. Pretty much the only way I’d do a Silicon Valley tour with a family.',
+    role: 'Family Travelers',
+  },
+  {
+    author: 'Monique',
+    avatarSrc: '/images/reviews/avatar-monique.webp',
+    quote: 'I wanted Stanford and UC Berkeley without losing half the day to Caltrain. They planned around that. Good Stanford campus tour, and I didn’t have to figure out parking. Should’ve booked this earlier.',
+    role: 'Student',
   },
 ];
