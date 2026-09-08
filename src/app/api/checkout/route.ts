@@ -51,6 +51,10 @@ export async function POST(request: Request) {
       return jsonError('Tour details are incomplete.', 400);
     }
 
+    console.error(
+      'Checkout session create failed',
+      error instanceof Error ? error.message : error,
+    );
     return jsonError('Unable to start checkout.', 500);
   }
 }
@@ -75,6 +79,10 @@ export async function GET(request: Request) {
       return jsonError(error.message, 503);
     }
 
+    console.error(
+      'Checkout session retrieve failed',
+      error instanceof Error ? error.message : error,
+    );
     return jsonError('Unable to confirm payment.', 500);
   }
 }

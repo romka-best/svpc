@@ -43,17 +43,31 @@ export const getStripeWebhookSecret = () => {
   return webhookSecret;
 };
 
-export const getAppUrl = () => {
-  const configured = process.env.NEXT_PUBLIC_APP_URL?.trim().replace(/\/$/, '');
+const toAbsoluteOrigin = (value: string) => {
+  const origin = value.trim().replace(/\/$/, '');
 
-  if (configured) {
-    return configured;
+  if (/^https?:\/\//i.test(origin)) {
+    return origin;
   }
 
-  const vercelHost = process.env.VERCEL_URL?.trim().replace(/\/$/, '');
+  const isLocal = origin === 'localhost'
+    || origin.startsWith('localhost:')
+    || origin.startsWith('127.0.0.1');
+
+  return `${isLocal ? 'http' : 'https'}://${origin}`;
+};
+
+export const getAppUrl = () => {
+  const configured = process.env.NEXT_PUBLIC_APP_URL;
+
+  if (configured) {
+    return toAbsoluteOrigin(configured);
+  }
+
+  const vercelHost = process.env.VERCEL_URL?.trim();
 
   if (vercelHost) {
-    return `https://${vercelHost}`;
+    return toAbsoluteOrigin(vercelHost);
   }
 
   return 'http://localhost:3000';

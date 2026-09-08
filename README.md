@@ -46,7 +46,7 @@ cp .env.example .env.local
 | --- | --- |
 | `STRIPE_SECRET_KEY` | Restricted secret key (`sk_test_…`) |
 | `STRIPE_WEBHOOK_SECRET` | Signing secret from `pnpm stripe:listen` or the Dashboard |
-| `NEXT_PUBLIC_APP_URL` | Origin used in Checkout return URLs (`http://localhost:3000` locally) |
+| `NEXT_PUBLIC_APP_URL` | Absolute origin for Checkout return URLs (`http://localhost:3000` locally, `https://www.siliconvalleyprivatecircle.com` in production) |
 
 ```bash
 pnpm stripe:listen   # leave running; copy the `whsec_…` into .env.local
