@@ -5,6 +5,7 @@ import { ChevronRight } from 'lucide-react';
 
 import { Header } from '@/components/header';
 import { Button } from '@/components/ui/base/button';
+import { LinkHref } from '@/constants/links';
 
 const NotFound = () => {
   return (
@@ -29,7 +30,7 @@ const NotFound = () => {
           asChild
           size="l"
         >
-          <Link href="/home">
+          <Link href={LinkHref.Home}>
             Home Page
             <ChevronRight className="size-4" />
           </Link>

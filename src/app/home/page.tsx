@@ -1,28 +1,35 @@
-import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
+import { redirect } from 'next/navigation';
 
-import { AboutGuideSection } from './components/about-guide';
-import { AboutTourSection } from './components/about-tour';
-import { FaqSection } from './components/faq';
-import { HeroSection } from './components/hero';
-import { PlanYourTourSection } from './components/plan-your-tour';
-import { ReviewsSection } from './components/reviews';
-import { TourForYouSection } from './components/tour-for-you';
+interface HomeRedirectPageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
 
-export default function HomePage() {
-  return (
-    <div className="h-auto">
-      <Header />
-      <main className="h-full flex flex-col gap-15 md:gap-30">
-        <HeroSection />
-        <TourForYouSection />
-        <AboutGuideSection />
-        <AboutTourSection />
-        <ReviewsSection />
-        <PlanYourTourSection />
-        <FaqSection />
-      </main>
-      <Footer />
-    </div>
-  );
+const getRedirectPath = (searchParams: Record<string, string | string[] | undefined>) => {
+  const query = new URLSearchParams();
+
+  Object.entries(searchParams).forEach(([
+    key,
+    value,
+  ]) => {
+    if (typeof value === 'string') {
+      query.set(key, value);
+      return;
+    }
+
+    value?.forEach((item) => {
+      query.append(key, item);
+    });
+  });
+
+  const serializedQuery = query.toString();
+
+  if (!serializedQuery) {
+    return '/';
+  }
+
+  return `/?${serializedQuery}`;
+};
+
+export default async function HomeRedirectPage({ searchParams }: HomeRedirectPageProps) {
+  redirect(getRedirectPath(await searchParams));
 }

@@ -7,7 +7,7 @@ export interface Link {
 }
 
 export enum LinkHref {
-  Home = '/home',
+  Home = '/',
   PrivacyPolicy = '/privacy-policy',
   Terms = '/terms',
   Sitemap = '/sitemap',

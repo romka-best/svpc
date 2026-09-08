@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { LinkHref } from '@/constants/links';
 import { cn } from '@/lib/utils';
 
 import type { LogoProps } from './types';
@@ -11,11 +12,11 @@ const Logo = ({ className }: LogoProps) => {
         'flex flex-nowrap items-center gap-1 whitespace-nowrap pointer-events-auto',
         className,
       )}
-      href="/"
+      href={LinkHref.Home}
     >
-      <h1 className="text-xs font-bold">
+      <span className="text-xs font-bold">
         Silicon Valley
-      </h1>
+      </span>
       <span className="rounded-full bg-primary px-2 py-1 text-xs font-bold">
         <span className="sm:hidden">
           PC

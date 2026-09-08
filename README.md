@@ -14,14 +14,12 @@ Private Silicon Valley tours — planned in five steps, paid with Stripe.
 
 Marketing site and booking flow for **Silicon Valley Private Circle**: private, door-to-door in the Bay Area.
 
-Guests build a tour on [`/home`](./src/app/home/page.tsx). The server recomputes the price, opens [Stripe](https://docs.stripe.com/payments/checkout), then confirms payment on return via a signed webhook.
+Guests build a tour on [`/`](./src/app/page.tsx). The server recomputes the price, opens [Stripe](https://docs.stripe.com/payments/checkout), then confirms payment on return via a signed webhook.
 
 | Surface | Route |
 | --- | --- |
-| Home (hero → planner) | [`/home`](./src/app/home) |
+| Home (hero → planner) | [`/`](./src/app/page.tsx) |
 | Legal | [`/privacy-policy`](./src/app/privacy-policy), [`/terms`](./src/app/terms), [`/sitemap`](./src/app/sitemap) |
-
-`/` redirects to `/home`.
 
 ## Tour planner
 
