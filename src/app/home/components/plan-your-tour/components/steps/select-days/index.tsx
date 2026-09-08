@@ -22,6 +22,10 @@ import { SelectDaysSummary } from './components/summary';
 import {
   formatRangeLabel,
   getFirstAvailableTourDate,
+  getLastSelectableTourEndDate,
+  getTourDayCount,
+  isTourDateRangeAllowed,
+  MAX_TOUR_DAYS,
   parseDateKey,
   toDateKey,
 } from './utils';
@@ -38,8 +42,15 @@ const SelectDaysStep = () => {
     startDate,
   } = answers['select-days'];
 
-  const hasRange = Boolean(startDate && endDate);
+  const hasAllowedRange = isTourDateRangeAllowed(startDate, endDate);
   const firstAvailableDate = getFirstAvailableTourDate();
+  const isPickingEnd = Boolean(startDate && (!endDate || startDate === endDate));
+  const disabled = isPickingEnd && startDate
+    ? [
+      { before: firstAvailableDate },
+      { after: getLastSelectableTourEndDate(parseDateKey(startDate)) },
+    ]
+    : { before: firstAvailableDate };
   const containerRef = useRef<HTMLDivElement>(null);
   const [
     isOpen,
@@ -80,9 +91,30 @@ const SelectDaysStep = () => {
   ]);
 
   const handleSelect = (range: DateRange | undefined) => {
+    const from = range?.from;
+
+    if (!from) {
+      patchSelectDays({
+        endDate: null,
+        startDate: null,
+      });
+      return;
+    }
+
+    const nextStartDate = toDateKey(from);
+    const nextEndDate = range?.to ? toDateKey(range.to) : null;
+
+    if (nextEndDate && getTourDayCount(nextStartDate, nextEndDate) > MAX_TOUR_DAYS) {
+      patchSelectDays({
+        endDate: toDateKey(getLastSelectableTourEndDate(from)),
+        startDate: nextStartDate,
+      });
+      return;
+    }
+
     patchSelectDays({
-      endDate: range?.to ? toDateKey(range.to) : null,
-      startDate: range?.from ? toDateKey(range.from) : null,
+      endDate: nextEndDate,
+      startDate: nextStartDate,
     });
   };
 
@@ -105,7 +137,7 @@ const SelectDaysStep = () => {
               });
             }}
           >
-            {hasRange && startDate && endDate
+            {hasAllowedRange && startDate && endDate
               ? formatRangeLabel(startDate, endDate)
               : 'Choose Dates'}
             <CalendarIcon className="size-6" />
@@ -137,9 +169,10 @@ const SelectDaysStep = () => {
                 >
                   <Calendar
                     required
+                    resetOnSelect
                     className="rounded-2xl border border-gray bg-background shadow-[0_16px_40px_rgba(0,0,0,0.55)]"
                     defaultMonth={startDate ? parseDateKey(startDate) : firstAvailableDate}
-                    disabled={{ before: firstAvailableDate }}
+                    disabled={disabled}
                     mode="range"
                     selected={selected}
                     startMonth={firstAvailableDate}
@@ -152,7 +185,7 @@ const SelectDaysStep = () => {
         </div>
       </div>
 
-      {hasRange && startDate && endDate
+      {hasAllowedRange && startDate && endDate
         ? (
           <div className="shrink-0">
             <SelectDaysSummary

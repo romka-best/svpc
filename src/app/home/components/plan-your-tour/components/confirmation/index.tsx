@@ -1,39 +1,18 @@
 'use client';
 
-import { useEffect } from 'react';
-
 import { AnimatePresence } from 'motion/react';
 
 import { usePlanYourTour } from '../../context';
 
+import { ConfirmationError } from './components/error';
 import { ConfirmationLoading } from './components/loading';
 import { ConfirmationSuccess } from './components/success';
-import { SUBMISSION_DELAY_MS } from './constants';
 
 const Confirmation = () => {
-  const {
-    completeSubmission,
-    submissionStatus,
-  } = usePlanYourTour();
-
-  useEffect(() => {
-    if (submissionStatus !== 'loading') {
-      return;
-    }
-
-    const timeoutId = window.setTimeout(() => {
-      completeSubmission();
-    }, SUBMISSION_DELAY_MS);
-
-    return () => {
-      window.clearTimeout(timeoutId);
-    };
-  }, [
-    completeSubmission,
-    submissionStatus,
-  ]);
-
-  const isLoading = submissionStatus === 'loading';
+  const { submissionStatus } = usePlanYourTour();
+  const isConfirming = submissionStatus === 'confirming';
+  const isLoading = submissionStatus === 'loading' || isConfirming;
+  const isError = submissionStatus === 'error';
 
   return (
     <div
@@ -45,11 +24,23 @@ const Confirmation = () => {
       <AnimatePresence mode="wait">
         {isLoading
           ? (
-            <ConfirmationLoading key="loading" />
+            <ConfirmationLoading
+              key="loading"
+              description={isConfirming
+                ? 'This only takes a moment'
+                : 'Will take a few seconds'}
+              title={isConfirming
+                ? 'Confirming your payment'
+                : 'Redirect to payment gateway'}
+            />
           )
-          : (
-            <ConfirmationSuccess key="success" />
-          )}
+          : isError
+            ? (
+              <ConfirmationError key="error" />
+            )
+            : (
+              <ConfirmationSuccess key="success" />
+            )}
       </AnimatePresence>
     </div>
   );

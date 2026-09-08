@@ -3,11 +3,17 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useReducer,
+  useRef,
   type ReactNode,
 } from 'react';
 
+import {
+  createCheckoutSession,
+  getCheckoutSessionStatus,
+} from '../api';
 import { isCarAvailableForParticipants } from '../components/steps/car-choice/constants';
 import {
   computeTourPrice,
@@ -15,6 +21,12 @@ import {
   INITIAL_STEP_ID,
   PLAN_YOUR_TOUR_STEPS,
 } from '../constants';
+import {
+  clearPersistedPlanYourTour,
+  loadPersistedPlanYourTour,
+  persistPlanYourTour,
+  type PersistedPlanYourTour,
+} from '../storage';
 import type {
   CarChoiceAnswer,
   ContactInformationAnswer,
@@ -27,6 +39,7 @@ import type {
   SelectParticipantsAnswer,
   SubmissionStatus,
 } from '../types';
+import { isBookingReadyForCheckout } from '../validation';
 
 type PlanYourTourAction =
   | {
@@ -63,7 +76,22 @@ type PlanYourTourAction =
     type: 'start-submission';
   }
   | {
+    type: 'start-confirmation';
+  }
+  | {
+    payload: string;
     type: 'complete-submission';
+  }
+  | {
+    payload: string;
+    type: 'fail-submission';
+  }
+  | {
+    type: 'reset-submission';
+  }
+  | {
+    payload: PersistedPlanYourTour;
+    type: 'restore-state';
   };
 
 interface PlanYourTourContextValue {
@@ -81,19 +109,51 @@ interface PlanYourTourContextValue {
   patchSelectParticipants: (payload: Partial<SelectParticipantsAnswer>) => void;
   price: number;
   progress: number;
+  resetSubmission: () => void;
   stepId: PlanYourTourStepId;
   stepIndex: number;
   steps: readonly PlanYourTourStepDefinition[];
+  submissionError: string | null;
   submissionStatus: SubmissionStatus;
   submitTour: () => void;
-  completeSubmission: () => void;
 }
 
 const PlanYourTourContext = createContext<PlanYourTourContextValue | null>(null);
 
+const CHECKOUT_ERROR_MESSAGE = 'We could not start payment. Please try again.';
+const CHECKOUT_CONFIRM_ERROR_MESSAGE = 'We could not confirm your payment. Please try again.';
+
+const INITIAL_STATE: PlanYourTourState = {
+  answers: INITIAL_ANSWERS,
+  paidSessionId: null,
+  stepId: INITIAL_STEP_ID,
+  submissionError: null,
+  submissionStatus: 'idle',
+};
+
 const getStepIndex = (stepId: PlanYourTourStepId) => {
   return PLAN_YOUR_TOUR_STEPS.findIndex((step) => {
     return step.id === stepId;
+  });
+};
+
+const replaceCheckoutUrl = () => {
+  const url = new URL(window.location.href);
+
+  url.searchParams.delete('checkout');
+  url.searchParams.delete('session_id');
+
+  if (!url.hash) {
+    url.hash = 'plan-your-tour';
+  }
+
+  window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+};
+
+const scrollToPlanYourTour = () => {
+  document.getElementById('plan-your-tour')?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
   });
 };
 
@@ -145,6 +205,7 @@ const planYourTourReducer = (
             ...action.payload,
           },
         },
+        paidSessionId: null,
       };
     }
     case 'patch-select-participants': {
@@ -165,6 +226,7 @@ const planYourTourReducer = (
             ? state.answers['car-choice']
             : { carId: null },
         },
+        paidSessionId: null,
       };
     }
     case 'patch-select-attractions': {
@@ -177,6 +239,7 @@ const planYourTourReducer = (
             ...action.payload,
           },
         },
+        paidSessionId: null,
       };
     }
     case 'patch-car-choice': {
@@ -196,6 +259,7 @@ const planYourTourReducer = (
             ...action.payload,
           },
         },
+        paidSessionId: null,
       };
     }
     case 'patch-contact-information': {
@@ -208,18 +272,51 @@ const planYourTourReducer = (
             ...action.payload,
           },
         },
+        paidSessionId: null,
       };
     }
     case 'start-submission': {
       return {
         ...state,
+        submissionError: null,
         submissionStatus: 'loading',
+      };
+    }
+    case 'start-confirmation': {
+      return {
+        ...state,
+        submissionError: null,
+        submissionStatus: 'confirming',
       };
     }
     case 'complete-submission': {
       return {
         ...state,
+        paidSessionId: action.payload,
+        submissionError: null,
         submissionStatus: 'success',
+      };
+    }
+    case 'fail-submission': {
+      return {
+        ...state,
+        submissionError: action.payload,
+        submissionStatus: 'error',
+      };
+    }
+    case 'reset-submission': {
+      return {
+        ...state,
+        submissionError: null,
+        submissionStatus: 'idle',
+      };
+    }
+    case 'restore-state': {
+      return {
+        ...state,
+        answers: action.payload.answers,
+        paidSessionId: action.payload.paidSessionId ?? null,
+        stepId: action.payload.stepId,
       };
     }
     default: {
@@ -255,14 +352,98 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
   const [
     state,
     dispatch,
-  ] = useReducer(planYourTourReducer, {
-    answers: INITIAL_ANSWERS,
-    stepId: INITIAL_STEP_ID,
-    submissionStatus: 'idle',
-  });
+  ] = useReducer(planYourTourReducer, INITIAL_STATE);
+  const shouldPersistRef = useRef(false);
 
   const stepIndex = Math.max(0, getStepIndex(state.stepId));
   const currentStep = PLAN_YOUR_TOUR_STEPS[stepIndex] ?? PLAN_YOUR_TOUR_STEPS[0];
+
+  useEffect(() => {
+    const persisted = loadPersistedPlanYourTour();
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id')?.trim();
+    const isCancelled = params.get('checkout') === 'cancelled';
+
+    if (persisted?.paidSessionId && !sessionId) {
+      clearPersistedPlanYourTour();
+    } else if (persisted) {
+      dispatch({
+        payload: persisted,
+        type: 'restore-state',
+      });
+    }
+
+    if (isCancelled) {
+      replaceCheckoutUrl();
+      scrollToPlanYourTour();
+      return;
+    }
+
+    if (!sessionId) {
+      return;
+    }
+
+    let isCancelledEffect = false;
+
+    dispatch({ type: 'start-confirmation' });
+
+    void getCheckoutSessionStatus(sessionId)
+      .then((isPaid) => {
+        if (isCancelledEffect) {
+          return;
+        }
+
+        if (isPaid) {
+          dispatch({
+            payload: sessionId,
+            type: 'complete-submission',
+          });
+        } else {
+          dispatch({ type: 'reset-submission' });
+        }
+
+        replaceCheckoutUrl();
+        scrollToPlanYourTour();
+      })
+      .catch(() => {
+        if (isCancelledEffect) {
+          return;
+        }
+
+        dispatch({
+          payload: CHECKOUT_CONFIRM_ERROR_MESSAGE,
+          type: 'fail-submission',
+        });
+        replaceCheckoutUrl();
+        scrollToPlanYourTour();
+      });
+
+    return () => {
+      isCancelledEffect = true;
+    };
+  }, [
+  ]);
+
+  useEffect(() => {
+    if (!shouldPersistRef.current) {
+      shouldPersistRef.current = true;
+      return;
+    }
+
+    if (state.submissionStatus === 'success') {
+      clearPersistedPlanYourTour();
+      return;
+    }
+
+    persistPlanYourTour({
+      answers: state.answers,
+      stepId: state.stepId,
+    });
+  }, [
+    state.answers,
+    state.stepId,
+    state.submissionStatus,
+  ]);
 
   const value = useMemo<PlanYourTourContextValue>(() => {
     const isCurrentComplete = currentStep.isComplete(state.answers);
@@ -314,8 +495,8 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
           type: 'patch-select-participants',
         });
       },
-      completeSubmission: () => {
-        dispatch({ type: 'complete-submission' });
+      resetSubmission: () => {
+        dispatch({ type: 'reset-submission' });
       },
       price: computeTourPrice(state.answers),
       progress: state.submissionStatus === 'idle'
@@ -324,15 +505,36 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
       stepId: state.stepId,
       stepIndex,
       steps: PLAN_YOUR_TOUR_STEPS,
+      submissionError: state.submissionError,
       submissionStatus: state.submissionStatus,
       submitTour: () => {
+        if (!isBookingReadyForCheckout(state.answers)) {
+          return;
+        }
+
         dispatch({ type: 'start-submission' });
+
+        void createCheckoutSession(state.answers)
+          .then((checkoutUrl) => {
+            window.location.assign(checkoutUrl);
+          })
+          .catch((error: unknown) => {
+            const message = error instanceof Error && error.message
+              ? error.message
+              : CHECKOUT_ERROR_MESSAGE;
+
+            dispatch({
+              payload: message,
+              type: 'fail-submission',
+            });
+          });
       },
     };
   }, [
     currentStep,
     state.answers,
     state.stepId,
+    state.submissionError,
     state.submissionStatus,
     stepIndex,
   ]);

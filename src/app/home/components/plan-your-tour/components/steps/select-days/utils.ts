@@ -1,6 +1,7 @@
 const DAY_MS = 24 * 60 * 60 * 1000;
 const BOOKING_LEAD_MONTHS = 1;
 const MONDAY_WEEKDAY = 1;
+const MAX_TOUR_DAYS = 14;
 
 const toDateKey = (date: Date) => {
   const year = date.getFullYear();
@@ -22,6 +23,10 @@ const parseDateKey = (value: string) => {
 
 const startOfDay = (date: Date) => {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+};
+
+const addDays = (date: Date, days: number) => {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate() + days);
 };
 
 const addMonths = (date: Date, months: number) => {
@@ -78,11 +83,28 @@ const getTourDayCount = (startDate: string, endDate: string) => {
   return Math.floor((end - start) / DAY_MS) + 1;
 };
 
+const isTourDateRangeAllowed = (startDate: string | null, endDate: string | null) => {
+  if (!startDate || !endDate) {
+    return false;
+  }
+
+  const dayCount = getTourDayCount(startDate, endDate);
+
+  return dayCount >= 1 && dayCount <= MAX_TOUR_DAYS;
+};
+
+const getLastSelectableTourEndDate = (startDate: Date) => {
+  return addDays(startDate, MAX_TOUR_DAYS - 1);
+};
+
 export {
   formatLongDate,
   formatRangeLabel,
   getFirstAvailableTourDate,
+  getLastSelectableTourEndDate,
   getTourDayCount,
+  isTourDateRangeAllowed,
+  MAX_TOUR_DAYS,
   parseDateKey,
   startOfDay,
   toDateKey,

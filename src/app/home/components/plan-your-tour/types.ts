@@ -66,10 +66,14 @@ export interface PlanYourTourStepDefinition {
 export type SubmissionStatus =
   | 'idle'
   | 'loading'
-  | 'success';
+  | 'confirming'
+  | 'success'
+  | 'error';
 
 export interface PlanYourTourState {
   answers: PlanYourTourAnswers;
+  paidSessionId: string | null;
   stepId: PlanYourTourStepId;
+  submissionError: string | null;
   submissionStatus: SubmissionStatus;
 }

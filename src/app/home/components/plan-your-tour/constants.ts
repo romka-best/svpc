@@ -4,10 +4,15 @@ import {
 } from './components/steps/car-choice/constants';
 import { isContactValueValid } from './components/steps/contact-information/constants';
 import {
-  computeAttractionTicketsTotal,
+  ATTRACTIONS_BY_ID,
+  getAttractionChildPrice,
   isAttractionSelectionComplete,
 } from './components/steps/select-attractions/constants';
-import { getTourDayCount } from './components/steps/select-days/utils';
+import {
+  formatRangeLabel,
+  getTourDayCount,
+  isTourDateRangeAllowed,
+} from './components/steps/select-days/utils';
 import type {
   GroupType,
   PlanYourTourAnswers,
@@ -44,35 +49,102 @@ export const PARTICIPANTS_MAX = 6;
 export const TOUR_PRICE_PER_DAY = 300;
 export const TOUR_PRICE_PER_PERSON_PER_DAY = 25;
 
-export const computeTourPrice = (answers: PlanYourTourAnswers) => {
+export interface TourPriceLine {
+  amount: number;
+  description?: string;
+  name: string;
+  quantity: number;
+  unitAmount: number;
+}
+
+const pluralize = (count: number, singular: string, plural: string) => {
+  return count === 1 ? singular : plural;
+};
+
+export const computeTourPriceLines = (answers: PlanYourTourAnswers) => {
   const {
     endDate,
     startDate,
   } = answers['select-days'];
 
   if (!startDate || !endDate) {
-    return 0;
+    return [
+    ];
   }
 
   const dayCount = getTourDayCount(startDate, endDate);
+
+  if (dayCount < 1) {
+    return [
+    ];
+  }
+
   const {
     adults,
     participants,
   } = answers['select-participants'];
-  const attractionTickets = computeAttractionTicketsTotal(
-    answers['select-attractions'].selectedIds,
-    adults,
-    participants,
-  );
+  const dateLabel = formatRangeLabel(startDate, endDate);
   const selectedCarId = answers['car-choice'].carId;
-  const carPricePerDay = selectedCarId
-    ? CARS_BY_ID[selectedCarId]?.price ?? 0
-    : 0;
+  const car = selectedCarId
+    ? CARS_BY_ID[selectedCarId]
+    : null;
+  const childrenCount = Math.max(0, participants - adults);
+  const lines: TourPriceLine[] = [
+    {
+      amount: dayCount * TOUR_PRICE_PER_DAY,
+      description: `${dateLabel} · ${dayCount} ${pluralize(dayCount, 'day', 'days')}`,
+      name: 'Tour',
+      quantity: dayCount,
+      unitAmount: TOUR_PRICE_PER_DAY,
+    },
+    {
+      amount: dayCount * participants * TOUR_PRICE_PER_PERSON_PER_DAY,
+      description: `${participants} ${pluralize(participants, 'guest', 'guests')} · ${dayCount} ${pluralize(dayCount, 'day', 'days')}`,
+      name: 'Lunch',
+      quantity: dayCount * participants,
+      unitAmount: TOUR_PRICE_PER_PERSON_PER_DAY,
+    },
+  ];
 
-  return dayCount * TOUR_PRICE_PER_DAY
-    + dayCount * participants * TOUR_PRICE_PER_PERSON_PER_DAY
-    + attractionTickets
-    + dayCount * carPricePerDay;
+  if (car) {
+    lines.push({
+      amount: dayCount * car.price,
+      description: `${car.label} · ${dayCount} ${pluralize(dayCount, 'day', 'days')}`,
+      name: 'Vehicle',
+      quantity: dayCount,
+      unitAmount: car.price,
+    });
+  }
+
+  answers['select-attractions'].selectedIds.forEach((id) => {
+    const attraction = ATTRACTIONS_BY_ID[id];
+
+    if (!attraction) {
+      return;
+    }
+
+    const amount = attraction.isGroupPrice
+      ? attraction.price
+      : adults * attraction.price
+        + childrenCount * getAttractionChildPrice(attraction);
+
+    lines.push({
+      amount,
+      name: attraction.title,
+      quantity: 1,
+      unitAmount: amount,
+    });
+  });
+
+  return lines.filter((line) => {
+    return line.quantity > 0;
+  });
+};
+
+export const computeTourPrice = (answers: PlanYourTourAnswers) => {
+  return computeTourPriceLines(answers).reduce((total, line) => {
+    return total + line.amount;
+  }, 0);
 };
 
 export const INITIAL_ANSWERS: PlanYourTourAnswers = {
@@ -166,9 +238,9 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
   {
     id: 'select-days',
     isComplete: (answers) => {
-      return Boolean(
-        answers['select-days'].startDate
-        && answers['select-days'].endDate,
+      return isTourDateRangeAllowed(
+        answers['select-days'].startDate,
+        answers['select-days'].endDate,
       );
     },
     label: 'Step 1',

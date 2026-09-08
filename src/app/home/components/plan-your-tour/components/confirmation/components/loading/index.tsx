@@ -8,7 +8,15 @@ import {
 import { STATUS_TRANSITION } from '../../constants';
 import { ConfirmationSpinner } from '../spinner';
 
-const ConfirmationLoading = () => {
+interface ConfirmationLoadingProps {
+  description: string;
+  title: string;
+}
+
+const ConfirmationLoading = ({
+  description,
+  title,
+}: ConfirmationLoadingProps) => {
   const shouldReduceMotion = useReducedMotion();
   const transition = shouldReduceMotion ? { duration: 0 } : STATUS_TRANSITION;
 
@@ -23,10 +31,10 @@ const ConfirmationLoading = () => {
     >
       <div className="flex flex-col items-center gap-2 text-center">
         <p className="text-xl font-semibold tracking-tight text-white">
-          Redirect to payment gateway
+          {title}
         </p>
         <p className="text-sm tracking-tight text-light-gray">
-          Will take a few seconds
+          {description}
         </p>
       </div>
       <ConfirmationSpinner />
