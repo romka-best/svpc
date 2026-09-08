@@ -9,6 +9,7 @@ export interface Link {
 export enum LinkHref {
   Home = '/home',
   PrivacyPolicy = '/privacy-policy',
+  Terms = '/terms',
   Sitemap = '/sitemap',
 }
 
@@ -57,6 +58,10 @@ export const legalLinks: Link[] = [
   {
     label: 'Privacy Policy',
     href: LinkHref.PrivacyPolicy,
+  },
+  {
+    label: 'Terms',
+    href: LinkHref.Terms,
   },
   {
     label: 'Site Map',

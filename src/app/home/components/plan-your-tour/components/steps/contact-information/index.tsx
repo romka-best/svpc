@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import {
   Check,
   ChevronLeft,
@@ -7,6 +9,7 @@ import {
 
 import { Button } from '@/components/ui/base/button';
 import { Input } from '@/components/ui/base/input';
+import { LinkHref } from '@/constants/links';
 import { cn } from '@/lib/utils';
 
 import { usePlanYourTour } from '../../../context';
@@ -112,7 +115,7 @@ const ContactInformationStep = () => {
         <div className="flex items-center gap-2">
           <button
             aria-checked={agreedToPrivacy}
-            aria-label="Agree with the privacy policy and payment rules"
+            aria-label="Agree with the privacy policy and terms"
             className={cn(
               'flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-[2px] border border-white transition-colors',
               agreedToPrivacy && 'border-primary bg-primary',
@@ -129,19 +132,40 @@ const ContactInformationStep = () => {
               )
               : null}
           </button>
-          <button
+          <p
             className="cursor-pointer text-left text-sm font-medium tracking-tight text-primary"
-            type="button"
             onClick={() => {
               patchContactInformation({ agreedToPrivacy: !agreedToPrivacy });
             }}
           >
             I agree with the
             {' '}
-            <span className="underline underline-offset-2">
-              privacy policy and payment rules
-            </span>
-          </button>
+            <Link
+              className="underline underline-offset-2"
+              href={LinkHref.PrivacyPolicy}
+              rel="noreferrer"
+              target="_blank"
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+            >
+              privacy policy
+            </Link>
+            {' '}
+            and
+            {' '}
+            <Link
+              className="underline underline-offset-2"
+              href={LinkHref.Terms}
+              rel="noreferrer"
+              target="_blank"
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+            >
+              terms
+            </Link>
+          </p>
         </div>
       </div>
 
