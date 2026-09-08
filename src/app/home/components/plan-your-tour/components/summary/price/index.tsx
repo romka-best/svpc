@@ -10,18 +10,18 @@ const PlanYourTourPrice = () => {
   const { price } = usePlanYourTour();
 
   return (
-    <div className="flex w-full flex-col items-start gap-4">
-      <CasinoPrice
-        className="text-5xl md:text-7xl xl:text-[96px] xl:tracking-[-0.03em]"
-        price={price}
-      />
+    <div className="flex w-full items-center gap-4 lg:flex-col lg:items-start">
       <Badge
-        className="h-8 border-light-gray px-3.25 py-1 text-sm font-normal tracking-tight text-light-gray"
+        className="h-8 border-gray px-3.25 py-1 text-sm font-normal tracking-tight text-gray lg:order-1 lg:border-light-gray lg:text-light-gray"
         size="sm"
         variant="outline"
       >
         Tour price
       </Badge>
+      <CasinoPrice
+        className="ml-auto text-[32px] text-background lg:ml-0 lg:text-5xl lg:text-white xl:text-[96px] xl:tracking-[-0.03em]"
+        price={price}
+      />
     </div>
   );
 };

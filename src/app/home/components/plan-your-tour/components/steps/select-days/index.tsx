@@ -15,6 +15,7 @@ import {
 
 import { Button } from '@/components/ui/base/button';
 import { Calendar } from '@/components/ui/base/calendar';
+import { cn } from '@/lib/utils';
 
 import { usePlanYourTour } from '../../../context';
 
@@ -120,14 +121,21 @@ const SelectDaysStep = () => {
 
   return (
     <div className="flex min-h-0 w-full flex-1 flex-col justify-between gap-10">
-      <div className="flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto p-2 -m-2">
+      <div className="flex min-h-0 w-full flex-1 flex-col overflow-y-auto p-2 -m-2">
         <div
           ref={containerRef}
-          className="relative w-fit"
+          className={cn(
+            'relative',
+            hasAllowedRange ? 'w-full lg:w-fit' : 'w-fit',
+          )}
         >
           <Button
             aria-expanded={isOpen}
-            className="h-12.5 shrink-0 gap-2 px-5 py-2.5 text-base tracking-tight"
+            className={cn(
+              'h-12.5 shrink-0 gap-2 px-5 py-2.5 text-base tracking-tight',
+              hasAllowedRange
+                && 'w-full justify-between max-lg:whitespace-normal lg:w-auto lg:justify-center',
+            )}
             size="l"
             type="button"
             variant="outline"
@@ -137,9 +145,11 @@ const SelectDaysStep = () => {
               });
             }}
           >
-            {hasAllowedRange && startDate && endDate
-              ? formatRangeLabel(startDate, endDate)
-              : 'Choose Dates'}
+            <span className={cn(hasAllowedRange && 'min-w-0 flex-1 text-left lg:flex-none')}>
+              {hasAllowedRange && startDate && endDate
+                ? formatRangeLabel(startDate, endDate)
+                : 'Choose Dates'}
+            </span>
             <CalendarIcon className="size-6" />
           </Button>
 

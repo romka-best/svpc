@@ -24,17 +24,17 @@ const PlanYourTourWizard = () => {
 
   if (isSubmitted) {
     return (
-      <PlanYourTourPanel>
+      <PlanYourTourPanel className="max-lg:p-5 max-lg:pb-36">
         <Confirmation />
       </PlanYourTourPanel>
     );
   }
 
   return (
-    <PlanYourTourPanel>
+    <PlanYourTourPanel className="max-lg:p-5 max-lg:pb-36">
       <div className="flex h-full min-h-0 w-full flex-1 flex-col gap-6">
         <motion.div
-          className="flex shrink-0 flex-col items-start gap-2 md:flex-row md:flex-wrap md:items-center md:gap-4"
+          className="flex shrink-0 flex-col items-start gap-2 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4"
           initial={{
             opacity: 0,
             y: 16,
@@ -57,7 +57,7 @@ const PlanYourTourWizard = () => {
           >
             {currentStep.label}
           </Badge>
-          <h3 className="text-xl font-semibold leading-snug tracking-tight text-white md:text-2xl">
+          <h3 className="text-2xl font-semibold leading-[1.2] tracking-tight text-white">
             {currentStep.title}
           </h3>
         </motion.div>

@@ -42,7 +42,7 @@ const SelectDaysSummary = ({
     >
       <div className="flex w-full flex-col items-start gap-2">
         <p className="font-medium tracking-tight text-white">
-          <span className="text-5xl leading-tight md:text-6xl">
+          <span className="text-[64px] leading-[1.2] md:text-6xl">
             {dayCount}
             {' '}
           </span>
@@ -50,7 +50,7 @@ const SelectDaysSummary = ({
             {dayCount === 1 ? 'day' : 'days'}
           </span>
         </p>
-        <p className="text-lg tracking-tight text-light-gray md:text-xl">
+        <p className="text-xl tracking-tight text-light-gray">
           {dayCount === 1
             ? (
               <span className="text-white">

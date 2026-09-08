@@ -28,7 +28,6 @@ const getPlanetMetrics = (width: number) => {
 };
 
 const TOP_BAND_RATIO = 0.4;
-const SIDE_PLANETS_MIN_WIDTH = 1280;
 const SIDE_PLANETS_MIN_COUNT = 6;
 
 interface PlanetLayout {
@@ -42,6 +41,19 @@ interface PlanetLayoutArea {
   viewportWidth: number;
 }
 
+const getSideYRatios = (viewportWidth: number) => {
+  if (viewportWidth >= 1280) {
+    return [
+      0.28,
+      0.52,
+    ];
+  }
+
+  return [
+    0.47,
+  ];
+};
+
 export const calculatePlanetLayout = (
   count: number,
   area: PlanetLayoutArea,
@@ -52,7 +64,7 @@ export const calculatePlanetLayout = (
     width,
   } = area;
 
-  if (count === 0 || width === 0) {
+  if (count === 0 || height === 0 || width === 0) {
     return {
       drift: 0,
       positions: [
@@ -91,19 +103,22 @@ export const calculatePlanetLayout = (
     });
   };
 
-  // Side planets fit next to the text column only on wide screens
-  const hasSidePlanets = viewportWidth >= SIDE_PLANETS_MIN_WIDTH && count >= SIDE_PLANETS_MIN_COUNT;
-  const sidePositions: CSSProperties[] = hasSidePlanets
-    ? [
-      {
-        left: (sidePadding - size) / 2,
-        top: (height - size) / 2,
-      },
-      {
-        right: (sidePadding - size) / 2,
-        top: (height - size) / 2,
-      },
-    ]
+  const sideInset = (sidePadding - size) / 2;
+  const sidePositions: CSSProperties[] = count >= SIDE_PLANETS_MIN_COUNT
+    ? getSideYRatios(viewportWidth).flatMap((ratio) => {
+      const top = Math.max(0, Math.min(height - size, height * ratio - size / 2));
+
+      return [
+        {
+          left: sideInset,
+          top,
+        },
+        {
+          right: sideInset,
+          top,
+        },
+      ];
+    })
     : [
     ];
 
