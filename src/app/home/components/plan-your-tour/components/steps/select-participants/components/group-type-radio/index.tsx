@@ -9,7 +9,7 @@ import type { GroupType } from '../../../../../types';
 
 interface GroupTypeRadioProps {
   onChange: (groupType: GroupType) => void;
-  value: GroupType;
+  value: GroupType | null;
 }
 
 const GroupTypeRadio = ({
@@ -19,7 +19,7 @@ const GroupTypeRadio = ({
   return (
     <RadioGroup
       className="flex flex-row flex-wrap gap-4"
-      value={value}
+      value={value ?? undefined}
       onValueChange={(nextValue) => {
         onChange(nextValue as GroupType);
       }}

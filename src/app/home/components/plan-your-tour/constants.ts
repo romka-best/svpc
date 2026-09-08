@@ -1,5 +1,13 @@
-import { isCarAvailableForParticipants } from './components/steps/car-choice/constants';
+import {
+  CARS_BY_ID,
+  isCarAvailableForParticipants,
+} from './components/steps/car-choice/constants';
 import { isContactValueValid } from './components/steps/contact-information/constants';
+import {
+  computeAttractionTicketsTotal,
+  isAttractionSelectionComplete,
+} from './components/steps/select-attractions/constants';
+import { getTourDayCount } from './components/steps/select-days/utils';
 import type {
   GroupType,
   PlanYourTourAnswers,
@@ -33,6 +41,39 @@ export const PARTICIPANTS_MIN = 1;
 export const FAMILY_GROUP_PARTICIPANTS_MIN = 2;
 export const ADULTS_MIN = 1;
 export const PARTICIPANTS_MAX = 6;
+export const TOUR_PRICE_PER_DAY = 300;
+export const TOUR_PRICE_PER_PERSON_PER_DAY = 25;
+
+export const computeTourPrice = (answers: PlanYourTourAnswers) => {
+  const {
+    endDate,
+    startDate,
+  } = answers['select-days'];
+
+  if (!startDate || !endDate) {
+    return 0;
+  }
+
+  const dayCount = getTourDayCount(startDate, endDate);
+  const {
+    adults,
+    participants,
+  } = answers['select-participants'];
+  const attractionTickets = computeAttractionTicketsTotal(
+    answers['select-attractions'].selectedIds,
+    adults,
+    participants,
+  );
+  const selectedCarId = answers['car-choice'].carId;
+  const carPricePerDay = selectedCarId
+    ? CARS_BY_ID[selectedCarId]?.price ?? 0
+    : 0;
+
+  return dayCount * TOUR_PRICE_PER_DAY
+    + dayCount * participants * TOUR_PRICE_PER_PERSON_PER_DAY
+    + attractionTickets
+    + dayCount * carPricePerDay;
+};
 
 export const INITIAL_ANSWERS: PlanYourTourAnswers = {
   'select-days': {
@@ -40,9 +81,9 @@ export const INITIAL_ANSWERS: PlanYourTourAnswers = {
     startDate: null,
   },
   'select-participants': {
-    adults: 1,
-    groupType: 'solo',
-    participants: 1,
+    adults: 0,
+    groupType: null,
+    participants: 0,
   },
   'select-attractions': {
     autoChoice: false,
@@ -131,7 +172,7 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       );
     },
     label: 'Step 1',
-    title: 'Select number of days 📆',
+    title: 'Dates 📆',
   },
   {
     id: 'select-participants',
@@ -150,15 +191,31 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       );
     },
     label: 'Step 2',
-    title: 'Select travel participants 👨‍👩‍👧‍👦',
+    title: 'Number of People 👨‍👩‍👧‍👦',
   },
   {
     id: 'select-attractions',
     isComplete: (answers) => {
-      return answers['select-attractions'].selectedIds.length > 0;
+      if (answers['select-attractions'].autoChoice) {
+        return true;
+      }
+
+      const {
+        endDate,
+        startDate,
+      } = answers['select-days'];
+
+      if (!startDate || !endDate) {
+        return false;
+      }
+
+      return isAttractionSelectionComplete(
+        answers['select-attractions'].selectedIds,
+        getTourDayCount(startDate, endDate),
+      );
     },
     label: 'Step 3',
-    title: 'Select attractions 🏛',
+    title: 'Attractions 🏛',
   },
   {
     id: 'car-choice',
@@ -175,7 +232,7 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       );
     },
     label: 'Step 4',
-    title: 'Select transportation 🚗',
+    title: 'Transportation 🚗',
   },
   {
     id: 'contact-information',
@@ -189,6 +246,6 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       return agreedToPrivacy && isContactValueValid(method, contactValue);
     },
     label: 'Step 5',
-    title: 'Contact information 📱',
+    title: 'Contact Details 📱',
   },
 ];

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import {
   ChevronLeft,
   ChevronRight,
-  Sparkles,
+  Gift,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/base/button';
@@ -13,18 +13,20 @@ import { Switch } from '@/components/ui/base/switch';
 import { cn } from '@/lib/utils';
 
 import { usePlanYourTour } from '../../../context';
+import { getTourDayCount } from '../select-days/utils';
 
 import { AttractionDetailDialog } from './components/attraction-detail-dialog';
 import { AttractionCategoryRow } from './components/category-row';
 import {
   ATTRACTION_CATEGORIES,
-  AUTO_ATTRACTION_IDS,
+  canSelectAttraction,
 } from './constants';
 
 const SelectAttractionsStep = () => {
   const {
     answers,
     canGoBack,
+    canGoNext,
     goBack,
     goNext,
     patchSelectAttractions,
@@ -34,6 +36,15 @@ const SelectAttractionsStep = () => {
     autoChoice,
     selectedIds,
   } = answers['select-attractions'];
+  const {
+    endDate,
+    startDate,
+  } = answers['select-days'];
+  const { participants } = answers['select-participants'];
+  const dayCount = startDate && endDate
+    ? getTourDayCount(startDate, endDate)
+    : 0;
+  const surpriseLabel = participants > 1 ? 'Surprise Us' : 'Surprise Me';
 
   const [
     previewAttractionId,
@@ -56,46 +67,47 @@ const SelectAttractionsStep = () => {
 
     const isSelected = selectedIds.includes(id);
 
-    patchSelectAttractions({
-      selectedIds: isSelected
-        ? selectedIds.filter((selectedId) => {
-          return selectedId !== id;
-        })
-        : [
-          ...selectedIds,
-          id,
-        ],
-    });
-  };
-
-  const hasSelectedAttractions = selectedIds.length > 0;
-
-  const handleAutoChoiceChange = (checked: boolean) => {
-    if (checked) {
+    if (isSelected) {
       patchSelectAttractions({
-        autoChoice: true,
-        selectedIds: [
-          ...AUTO_ATTRACTION_IDS,
-        ],
+        selectedIds: selectedIds.filter((selectedId) => {
+          return selectedId !== id;
+        }),
       });
 
       return;
     }
 
+    if (!canSelectAttraction(selectedIds, id, dayCount)) {
+      return;
+    }
+
     patchSelectAttractions({
-      autoChoice: false,
+      selectedIds: [
+        ...selectedIds,
+        id,
+      ],
+    });
+  };
+
+  const handleAutoChoiceChange = (checked: boolean) => {
+    if (checked) {
+      setIsPreviewOpen(false);
+    }
+
+    patchSelectAttractions({
+      autoChoice: checked,
       selectedIds: [
       ],
     });
   };
 
   return (
-    <div className="flex min-h-0 w-full flex-1 flex-col justify-between gap-6">
-      <div className="flex min-h-0 w-full flex-1 flex-col gap-4">
+    <div className="flex min-h-0 min-w-0 w-full flex-1 flex-col justify-between gap-6">
+      <div className="flex min-h-0 min-w-0 w-full flex-1 flex-col gap-4">
         <div className="flex w-full shrink-0 flex-col gap-2.5">
           <p className="flex items-center gap-2 text-base font-medium tracking-tight text-white">
-            <Sparkles className="size-4 shrink-0 text-primary" />
-            AI Choice
+            <Gift className="size-4 shrink-0 text-primary" />
+            {surpriseLabel}
           </p>
           <div className="flex items-center gap-2">
             <span
@@ -107,6 +119,7 @@ const SelectAttractionsStep = () => {
               OFF
             </span>
             <Switch
+              aria-label={surpriseLabel}
               checked={autoChoice}
               size="md"
               onCheckedChange={handleAutoChoiceChange}
@@ -124,7 +137,7 @@ const SelectAttractionsStep = () => {
 
         <div
           className={cn(
-            'flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-2 -m-2 transition-opacity duration-300',
+            'flex min-h-0 min-w-0 flex-1 flex-col gap-3 overflow-y-auto p-1 -m-1 transition-opacity duration-300',
             autoChoice && 'pointer-events-none opacity-20',
           )}
         >
@@ -132,6 +145,9 @@ const SelectAttractionsStep = () => {
             return (
               <AttractionCategoryRow
                 key={category.id}
+                canSelect={(id) => {
+                  return canSelectAttraction(selectedIds, id, dayCount);
+                }}
                 category={category}
                 disabled={autoChoice}
                 selectedIds={selectedIds}
@@ -158,7 +174,7 @@ const SelectAttractionsStep = () => {
 
         <Button
           className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight text-white-gray"
-          disabled={!hasSelectedAttractions}
+          disabled={!canGoNext}
           size="l"
           type="button"
           onClick={goNext}
@@ -175,6 +191,10 @@ const SelectAttractionsStep = () => {
           previewAttractionId && selectedIds.includes(previewAttractionId),
         )}
         open={isPreviewOpen}
+        selectDisabled={Boolean(
+          previewAttractionId
+          && !canSelectAttraction(selectedIds, previewAttractionId, dayCount),
+        )}
         onOpenChange={setIsPreviewOpen}
         onToggle={toggleAttraction}
       />

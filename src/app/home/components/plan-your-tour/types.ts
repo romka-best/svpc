@@ -29,7 +29,7 @@ export interface SelectDaysAnswer {
 
 export interface SelectParticipantsAnswer {
   adults: number;
-  groupType: GroupType;
+  groupType: GroupType | null;
   participants: number;
 }
 

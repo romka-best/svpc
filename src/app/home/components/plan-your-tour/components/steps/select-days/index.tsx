@@ -21,8 +21,8 @@ import { usePlanYourTour } from '../../../context';
 import { SelectDaysSummary } from './components/summary';
 import {
   formatRangeLabel,
+  getFirstAvailableTourDate,
   parseDateKey,
-  startOfDay,
   toDateKey,
 } from './utils';
 
@@ -39,6 +39,7 @@ const SelectDaysStep = () => {
   } = answers['select-days'];
 
   const hasRange = Boolean(startDate && endDate);
+  const firstAvailableDate = getFirstAvailableTourDate();
   const containerRef = useRef<HTMLDivElement>(null);
   const [
     isOpen,
@@ -106,7 +107,7 @@ const SelectDaysStep = () => {
           >
             {hasRange && startDate && endDate
               ? formatRangeLabel(startDate, endDate)
-              : 'Select dates'}
+              : 'Choose Dates'}
             <CalendarIcon className="size-6" />
           </Button>
 
@@ -137,10 +138,11 @@ const SelectDaysStep = () => {
                   <Calendar
                     required
                     className="rounded-2xl border border-gray bg-background shadow-[0_16px_40px_rgba(0,0,0,0.55)]"
-                    defaultMonth={startDate ? parseDateKey(startDate) : undefined}
-                    disabled={{ before: startOfDay(new Date()) }}
+                    defaultMonth={startDate ? parseDateKey(startDate) : firstAvailableDate}
+                    disabled={{ before: firstAvailableDate }}
                     mode="range"
                     selected={selected}
+                    startMonth={firstAvailableDate}
                     onSelect={handleSelect}
                   />
                 </motion.div>

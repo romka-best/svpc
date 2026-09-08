@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/base/button';
 import { cn } from '@/lib/utils';
 
 import type { Attraction } from '../../constants';
+import { AttractionPlaceholder } from '../attraction-placeholder';
 
 interface AttractionCardProps {
   attraction: Attraction;
@@ -15,6 +16,7 @@ interface AttractionCardProps {
   isSelected: boolean;
   onOpen: (id: string) => void;
   onToggle: (id: string) => void;
+  selectDisabled?: boolean;
 }
 
 const AttractionCard = ({
@@ -23,14 +25,15 @@ const AttractionCard = ({
   isSelected,
   onOpen,
   onToggle,
+  selectDisabled = false,
 }: AttractionCardProps) => {
   return (
     <div
       className={cn(
-        'relative flex h-32.5 w-45 shrink-0 flex-col items-start justify-between overflow-hidden rounded-2xl p-4 text-left transition-transform duration-250 ease-out',
+        'relative flex h-32.5 w-full min-w-0 flex-col items-start justify-between overflow-hidden rounded-2xl p-4 text-left',
         disabled
           ? 'cursor-not-allowed'
-          : 'cursor-pointer hover:scale-[1.02] active:scale-[0.98]',
+          : 'cursor-pointer transition-transform duration-150 ease-out [@media(hover:hover)]:hover:scale-[1.02] active:scale-[0.98]',
       )}
       role={disabled ? undefined : 'button'}
       tabIndex={disabled ? -1 : 0}
@@ -52,13 +55,17 @@ const AttractionCard = ({
         }
       }}
     >
-      <Image
-        fill
-        alt=""
-        className="object-cover"
-        sizes="180px"
-        src={attraction.image}
-      />
+      {attraction.image
+        ? (
+          <Image
+            fill
+            alt=""
+            className="object-cover"
+            sizes="(max-width: 640px) 50vw, 220px"
+            src={attraction.image}
+          />
+        )
+        : <AttractionPlaceholder />}
       <div
         aria-hidden
         className={cn(
@@ -77,7 +84,7 @@ const AttractionCard = ({
           'relative z-1 h-5.5 w-full gap-1 px-2 text-xs tracking-tight',
           !isSelected && 'bg-background hover:bg-white hover:text-background',
         )}
-        disabled={disabled}
+        disabled={disabled || selectDisabled}
         size="xs"
         type="button"
         variant={isSelected ? 'default' : 'secondary'}

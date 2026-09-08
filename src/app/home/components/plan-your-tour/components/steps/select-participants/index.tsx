@@ -17,6 +17,8 @@ import {
   getDefaultsForGroup,
   getMaxParticipantsForGroup,
   getMinParticipantsForGroup,
+  PARTICIPANTS_MAX,
+  PARTICIPANTS_MIN,
 } from '../../../constants';
 import { usePlanYourTour } from '../../../context';
 
@@ -26,6 +28,7 @@ const SelectParticipantsStep = () => {
   const {
     answers,
     canGoBack,
+    canGoNext,
     goBack,
     goNext,
     patchSelectParticipants,
@@ -37,11 +40,14 @@ const SelectParticipantsStep = () => {
     participants,
   } = answers['select-participants'];
 
-  const minParticipants = getMinParticipantsForGroup(groupType);
-  const maxParticipants = getMaxParticipantsForGroup(groupType);
+  const minParticipants = groupType
+    ? getMinParticipantsForGroup(groupType)
+    : PARTICIPANTS_MIN;
+  const maxParticipants = groupType
+    ? getMaxParticipantsForGroup(groupType)
+    : PARTICIPANTS_MAX;
   const childrenCount = Math.max(0, participants - adults);
-  const isFixedGroup = groupType === 'solo' || groupType === 'partners';
-  const showParticipantsSlider = !isFixedGroup;
+  const showParticipantsSlider = groupType === 'family' || groupType === 'group';
   const showAdultsSlider = groupType === 'family' || groupType === 'group';
   const showChildrenSummary = showAdultsSlider;
 
@@ -165,31 +171,35 @@ const SelectParticipantsStep = () => {
           ease: 'easeOut',
         }}
       >
-        <p className="font-medium tracking-tight text-white">
-          <span className="text-5xl leading-tight md:text-6xl">
-            {adults}
-            {' '}
-          </span>
-          <span className="text-xl text-light-gray">
-            {adults === 1 ? 'adult' : 'adults'}
-          </span>
-          {showChildrenSummary
-            ? (
-              <>
-                <span className="text-5xl leading-tight md:text-6xl">
-                  {' '}
-                </span>
-                <span className="text-4xl leading-tight md:text-5xl">
-                  {childrenCount}
-                  {' '}
-                </span>
-                <span className="text-xl text-light-gray">
-                  {childrenCount === 1 ? 'child' : 'children'}
-                </span>
-              </>
-            )
-            : null}
-        </p>
+        {groupType
+          ? (
+            <p className="font-medium tracking-tight text-white">
+              <span className="text-5xl leading-tight md:text-6xl">
+                {adults}
+                {' '}
+              </span>
+              <span className="text-xl text-light-gray">
+                {adults === 1 ? 'adult' : 'adults'}
+              </span>
+              {showChildrenSummary
+                ? (
+                  <>
+                    <span className="text-5xl leading-tight md:text-6xl">
+                      {' '}
+                    </span>
+                    <span className="text-4xl leading-tight md:text-5xl">
+                      {childrenCount}
+                      {' '}
+                    </span>
+                    <span className="text-xl text-light-gray">
+                      {childrenCount === 1 ? 'child' : 'children'}
+                    </span>
+                  </>
+                )
+                : null}
+            </p>
+          )
+          : null}
 
         <div className="flex w-full items-center justify-between gap-4">
           <Button
@@ -206,6 +216,7 @@ const SelectParticipantsStep = () => {
 
           <Button
             className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight text-white-gray"
+            disabled={!canGoNext}
             size="l"
             type="button"
             onClick={goNext}

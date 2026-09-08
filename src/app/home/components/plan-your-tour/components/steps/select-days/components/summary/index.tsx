@@ -51,17 +51,27 @@ const SelectDaysSummary = ({
           </span>
         </p>
         <p className="text-lg tracking-tight text-light-gray md:text-xl">
-          From
-          {' '}
-          <span className="text-white">
-            {formatLongDate(startDate)}
-          </span>
-          {' '}
-          to
-          {' '}
-          <span className="text-white">
-            {formatLongDate(endDate)}
-          </span>
+          {dayCount === 1
+            ? (
+              <span className="text-white">
+                {formatLongDate(startDate)}
+              </span>
+            )
+            : (
+              <>
+                From
+                {' '}
+                <span className="text-white">
+                  {formatLongDate(startDate)}
+                </span>
+                {' '}
+                to
+                {' '}
+                <span className="text-white">
+                  {formatLongDate(endDate)}
+                </span>
+              </>
+            )}
         </p>
       </div>
 

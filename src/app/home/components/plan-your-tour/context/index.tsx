@@ -8,12 +8,9 @@ import {
   type ReactNode,
 } from 'react';
 
+import { isCarAvailableForParticipants } from '../components/steps/car-choice/constants';
 import {
-  computeCarPrice,
-  isCarAvailableForParticipants,
-} from '../components/steps/car-choice/constants';
-import { computeAttractionsPrice } from '../components/steps/select-attractions/constants';
-import {
+  computeTourPrice,
   INITIAL_ANSWERS,
   INITIAL_STEP_ID,
   PLAN_YOUR_TOUR_STEPS,
@@ -250,11 +247,6 @@ const computeProgress = (
   return Math.round((completedCount / PLAN_YOUR_TOUR_STEPS.length) * 100);
 };
 
-const computePrice = (answers: PlanYourTourAnswers) => {
-  return computeAttractionsPrice(answers['select-attractions'].selectedIds)
-    + computeCarPrice(answers['car-choice'].carId);
-};
-
 interface ProviderProps {
   children: ReactNode;
 }
@@ -325,7 +317,7 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
       completeSubmission: () => {
         dispatch({ type: 'complete-submission' });
       },
-      price: computePrice(state.answers),
+      price: computeTourPrice(state.answers),
       progress: state.submissionStatus === 'idle'
         ? computeProgress(state.answers, stepIndex)
         : 100,

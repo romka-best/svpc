@@ -1,11 +1,11 @@
 import { cva } from 'class-variance-authority';
 
 export const dialogOverlayVariants = cva(
-  'fixed inset-0 z-50 bg-background/50 backdrop-blur-[1.3px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 duration-250',
+  'fixed inset-0 z-[80] bg-background/50 backdrop-blur-[1.3px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 duration-250',
 );
 
 export const dialogContentVariants = cva(
-  'bg-dark-gray relative z-50 grid w-full border border-gray outline-none duration-250 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
+  'bg-dark-gray relative z-[80] grid w-full border border-gray outline-none duration-250 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
   {
     variants: {
       size: {
