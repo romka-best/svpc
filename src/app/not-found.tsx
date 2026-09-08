@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { ChevronRight } from 'lucide-react';
 
+import { CtaLink } from '@/components/analytics/cta-link';
 import { Header } from '@/components/header';
 import { Button } from '@/components/ui/base/button';
 import { LinkHref } from '@/constants/links';
@@ -30,10 +30,14 @@ const NotFound = () => {
           asChild
           size="l"
         >
-          <Link href={LinkHref.Home}>
+          <CtaLink
+            destination="home"
+            href={LinkHref.Home}
+            location="not-found"
+          >
             Home Page
             <ChevronRight className="size-4" />
-          </Link>
+          </CtaLink>
         </Button>
       </main>
     </div>

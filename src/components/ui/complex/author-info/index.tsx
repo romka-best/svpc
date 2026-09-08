@@ -1,14 +1,21 @@
-import Image from 'next/image';
-import Link from 'next/link';
+'use client';
 
+import Image from 'next/image';
+
+import { OutboundContactLink } from '@/components/analytics/outbound-contact-link';
 import { Button } from '@/components/ui/base/button';
+import type { GuideContactLocation } from '@/lib/analytics/events';
 import { cn } from '@/lib/utils';
 
 interface Props {
   className?: string;
+  location: GuideContactLocation;
 }
 
-const AuthorInfo = ({ className }: Props) => {
+const AuthorInfo = ({
+  className,
+  location,
+}: Props) => {
   return (
     <div className={cn('flex items-center gap-4', className)}>
       <div className="flex items-center gap-1">
@@ -30,8 +37,10 @@ const AuthorInfo = ({ className }: Props) => {
         className="p-0"
         variant="link"
       >
-        <Link
+        <OutboundContactLink
+          channel="telegram"
           href="https://t.me/roman_danilov"
+          location={location}
           target="_blank"
         >
           <Image
@@ -40,7 +49,7 @@ const AuthorInfo = ({ className }: Props) => {
             src="/icons/telegram.svg"
             width={35}
           />
-        </Link>
+        </OutboundContactLink>
       </Button>
     </div>
   );

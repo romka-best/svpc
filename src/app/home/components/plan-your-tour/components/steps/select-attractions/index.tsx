@@ -10,6 +10,7 @@ import {
 
 import { Button } from '@/components/ui/base/button';
 import { Switch } from '@/components/ui/base/switch';
+import { trackAttractionSelected } from '@/lib/analytics/client';
 import { cn } from '@/lib/utils';
 
 import { usePlanYourTour } from '../../../context';
@@ -19,6 +20,7 @@ import { AttractionDetailDialog } from './components/attraction-detail-dialog';
 import { AttractionCategoryRow } from './components/category-row';
 import {
   ATTRACTION_CATEGORIES,
+  ATTRACTIONS_BY_ID,
   canSelectAttraction,
 } from './constants';
 
@@ -87,6 +89,18 @@ const SelectAttractionsStep = () => {
         id,
       ],
     });
+
+    const attraction = ATTRACTIONS_BY_ID[id];
+    const category = ATTRACTION_CATEGORIES.find((item) => {
+      return item.id === attraction?.categoryId;
+    });
+
+    if (attraction && category) {
+      trackAttractionSelected({
+        category: category.label,
+        name: attraction.title,
+      });
+    }
   };
 
   const handleAutoChoiceChange = (checked: boolean) => {

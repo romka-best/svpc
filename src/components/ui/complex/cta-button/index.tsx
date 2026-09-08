@@ -1,15 +1,22 @@
-import { AnchorLink } from '@/components/ui/base/anchor-link';
+'use client';
+
+import { CtaLink } from '@/components/analytics/cta-link';
 import { Button } from '@/components/ui/base/button';
 import {
   LinkAnchor,
   LinkHref,
 } from '@/constants/links';
+import type { CtaLocation } from '@/lib/analytics/events';
 
 import { CTAButtonContent } from './components/content';
 
 const CTA_HREF = `${LinkHref.Home}${LinkAnchor.PlanYourTour}`;
 
-const CTAButton = () => {
+interface CTAButtonProps {
+  location: CtaLocation;
+}
+
+const CTAButton = ({ location }: CTAButtonProps) => {
   return (
     <>
       {/* Mobile */}
@@ -19,9 +26,12 @@ const CTAButton = () => {
         size="xs"
         variant="outline"
       >
-        <AnchorLink href={CTA_HREF}>
+        <CtaLink
+          href={CTA_HREF}
+          location={location}
+        >
           <CTAButtonContent />
-        </AnchorLink>
+        </CtaLink>
       </Button>
 
       {/* Desktop */}
@@ -31,9 +41,12 @@ const CTAButton = () => {
         size="s"
         variant="outline"
       >
-        <AnchorLink href={CTA_HREF}>
+        <CtaLink
+          href={CTA_HREF}
+          location={location}
+        >
           <CTAButtonContent />
-        </AnchorLink>
+        </CtaLink>
       </Button>
     </>
   );

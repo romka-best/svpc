@@ -1,24 +1,26 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { ChevronRight } from 'lucide-react';
 
+import { OutboundContactLink } from '@/components/analytics/outbound-contact-link';
 import { cn } from '@/lib/utils';
 
 import { GUIDE_TELEGRAM_HREF } from '../../constants';
 
 const GuideContactCard = () => {
   return (
-    <Link
+    <OutboundContactLink
       aria-label="Open Telegram chat with Roman Danilov"
+      channel="telegram"
       className={cn(
         'flex min-h-14 w-full cursor-pointer touch-manipulation items-center gap-3 rounded-[30px] bg-dark-gray p-2 pr-4',
         'transition-colors duration-250',
         'hover:bg-[#2e2e33]',
       )}
       href={GUIDE_TELEGRAM_HREF}
+      location="confirmation"
       rel="noreferrer"
       target="_blank"
     >
@@ -45,7 +47,7 @@ const GuideContactCard = () => {
         width={32}
       />
       <ChevronRight className="size-5 shrink-0 text-white" />
-    </Link>
+    </OutboundContactLink>
   );
 };
 

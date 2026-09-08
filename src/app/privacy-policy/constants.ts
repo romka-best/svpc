@@ -68,13 +68,14 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
             items: [
               'Device, browser, and general usage data, such as pages viewed, referring URL, and an approximate location derived from IP address',
               'Performance measurements through Vercel Analytics and Vercel Speed Insights',
+              'Product interactions through Vercel Analytics custom events, such as which calls to action you click, how far you get in Plan Your Tour, which attractions you select, and whether a booking is completed. These events do not include your name, email, phone number, or Telegram username',
               'Server logs, which can include IP address, date and time, and request information',
               'A functional cookie used only to remember sidebar and menu state on your device',
             ],
           },
           {
             type: LegalDocumentBlockType.Paragraph,
-            text: 'Vercel Analytics and Speed Insights are privacy-oriented measurement tools. We use them to understand how the site performs, not to build advertising profiles or to sell your information.',
+            text: 'Vercel Analytics and Speed Insights are privacy-oriented measurement tools. We use them to understand how the site performs and how guests use Plan Your Tour, not to build advertising profiles or to sell your information.',
           },
         ],
       },

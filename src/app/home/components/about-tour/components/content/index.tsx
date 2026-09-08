@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import * as motion from 'motion/react-client';
 
-import { AnchorLink } from '@/components/ui/base/anchor-link';
+import { CtaLink } from '@/components/analytics/cta-link';
 import { Badge } from '@/components/ui/base/badge';
 import { Button } from '@/components/ui/base/button';
 import { LinkAnchor } from '@/constants/links';
@@ -131,10 +131,13 @@ const AboutTourContent = () => {
           asChild
           size="l"
         >
-          <AnchorLink href={LinkAnchor.PlanYourTour}>
+          <CtaLink
+            href={LinkAnchor.PlanYourTour}
+            location="about-tour"
+          >
             Build Your Itinerary
             <ChevronRight className="size-6" />
-          </AnchorLink>
+          </CtaLink>
         </Button>
       </motion.div>
     </motion.div>

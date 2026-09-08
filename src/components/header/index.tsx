@@ -46,7 +46,7 @@ const Header = () => {
     >
       <Logo />
       <div className="flex items-center gap-4 pointer-events-auto">
-        <CTAButton />
+        <CTAButton location="header" />
         <HeaderMenu />
       </div>
     </header>

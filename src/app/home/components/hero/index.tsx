@@ -1,11 +1,7 @@
-import { ChevronRight } from 'lucide-react';
 import * as motion from 'motion/react-client';
 
-import { AnchorLink } from '@/components/ui/base/anchor-link';
-import { Button } from '@/components/ui/base/button';
-import { LinkAnchor } from '@/constants/links';
-
 import { HeroBackground } from './components/background';
+import { HeroCta } from './components/cta';
 import { HeroFog } from './components/fog';
 import { HeroScrollHint } from './components/scroll-hint';
 
@@ -78,15 +74,7 @@ const HeroSection = () => {
           type: 'spring',
         }}
       >
-        <Button
-          asChild
-          size="l"
-        >
-          <AnchorLink href={LinkAnchor.PlanYourTour}>
-            Start Journey
-            <ChevronRight className="size-4" />
-          </AnchorLink>
-        </Button>
+        <HeroCta />
       </motion.div>
       <HeroScrollHint />
     </section>

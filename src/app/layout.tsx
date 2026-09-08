@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
-import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { VercelToolbar } from '@vercel/toolbar/next';
 
+import { WebAnalytics } from '@/components/analytics/web-analytics';
 import { cn } from '@/lib/utils';
 
 import './globals.css';
@@ -64,7 +64,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={cn(poppins.variable, 'antialiased')}>
         {children}
-        <Analytics />
+        <WebAnalytics />
         <SpeedInsights />
         {isDevelopment && <VercelToolbar />}
       </body>

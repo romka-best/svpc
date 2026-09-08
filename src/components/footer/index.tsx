@@ -1,5 +1,4 @@
-import Link from 'next/link';
-
+import { OutboundContactLink } from '@/components/analytics/outbound-contact-link';
 import { Button } from '@/components/ui/base/button';
 import { Logo } from '@/components/ui/base/logo';
 import { AuthorInfo } from '@/components/ui/complex/author-info';
@@ -24,12 +23,14 @@ const Footer = () => {
             size="s"
             variant="link"
           >
-            <Link
+            <OutboundContactLink
+              channel="email"
               href="mailto:me@romandanilov.com"
+              location="footer"
               target="_blank"
             >
               me@romandanilov.com
-            </Link>
+            </OutboundContactLink>
           </Button>
           <Button
             asChild
@@ -37,12 +38,14 @@ const Footer = () => {
             size="s"
             variant="link"
           >
-            <Link
+            <OutboundContactLink
+              channel="telegram"
               href="https://t.me/roman_danilov"
+              location="footer"
               target="_blank"
             >
               @roman_danilov
-            </Link>
+            </OutboundContactLink>
           </Button>
           <p className="text-sm font-medium text-muted-foreground">All rights reserved | {new Date().getFullYear()}</p>
         </div>
@@ -54,7 +57,7 @@ const Footer = () => {
             links={homeLinks}
             title="Home Page"
           />
-          <CTAButton />
+          <CTAButton location="footer" />
         </div>
 
         <div className="flex flex-col gap-4 items-start">
@@ -70,7 +73,7 @@ const Footer = () => {
             links={socialLinks}
             title="Social media"
           />
-          <AuthorInfo />
+          <AuthorInfo location="footer" />
         </div>
       </div>
     </footer>

@@ -11,6 +11,13 @@ import {
 } from 'react';
 
 import {
+  trackCheckoutAbandoned,
+  trackCheckoutFailed,
+  trackCheckoutStarted,
+  trackPlannerStepCompleted,
+} from '@/lib/analytics/client';
+
+import {
   createCheckoutSession,
   getCheckoutSessionStatus,
 } from '../api';
@@ -354,6 +361,7 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
     dispatch,
   ] = useReducer(planYourTourReducer, INITIAL_STATE);
   const shouldPersistRef = useRef(false);
+  const completedStepsRef = useRef(new Set<PlanYourTourStepId>());
 
   const stepIndex = Math.max(0, getStepIndex(state.stepId));
   const currentStep = PLAN_YOUR_TOUR_STEPS[stepIndex] ?? PLAN_YOUR_TOUR_STEPS[0];
@@ -374,6 +382,7 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
     }
 
     if (isCancelled) {
+      trackCheckoutAbandoned(persisted?.answers ?? INITIAL_ANSWERS);
       replaceCheckoutUrl();
       scrollToPlanYourTour();
       return;
@@ -399,6 +408,10 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
             type: 'complete-submission',
           });
         } else {
+          trackCheckoutFailed({
+            reason: 'unpaid',
+            stage: 'confirm',
+          });
           dispatch({ type: 'reset-submission' });
         }
 
@@ -413,6 +426,10 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
         dispatch({
           payload: CHECKOUT_CONFIRM_ERROR_MESSAGE,
           type: 'fail-submission',
+        });
+        trackCheckoutFailed({
+          reason: 'confirm-error',
+          stage: 'confirm',
         });
         replaceCheckoutUrl();
         scrollToPlanYourTour();
@@ -457,6 +474,15 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
         dispatch({ type: 'go-back' });
       },
       goNext: () => {
+        if (!isCurrentComplete) {
+          return;
+        }
+
+        if (!completedStepsRef.current.has(state.stepId)) {
+          completedStepsRef.current.add(state.stepId);
+          trackPlannerStepCompleted(state.stepId, state.answers);
+        }
+
         dispatch({ type: 'go-next' });
       },
       goToStep: (stepId) => {
@@ -512,6 +538,12 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
           return;
         }
 
+        if (!completedStepsRef.current.has('contact-information')) {
+          completedStepsRef.current.add('contact-information');
+          trackPlannerStepCompleted('contact-information', state.answers);
+        }
+
+        trackCheckoutStarted(state.answers);
         dispatch({ type: 'start-submission' });
 
         void createCheckoutSession(state.answers)
@@ -523,6 +555,10 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
               ? error.message
               : CHECKOUT_ERROR_MESSAGE;
 
+            trackCheckoutFailed({
+              reason: 'create-error',
+              stage: 'create',
+            });
             dispatch({
               payload: message,
               type: 'fail-submission',

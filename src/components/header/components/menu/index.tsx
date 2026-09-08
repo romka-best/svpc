@@ -104,7 +104,10 @@ const HeaderMenu = () => {
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
-          <AuthorInfo className="sm:justify-center" />
+          <AuthorInfo
+            className="sm:justify-center"
+            location="menu"
+          />
         </SidebarFooter>
       </Sidebar>
     </SidebarProvider>
