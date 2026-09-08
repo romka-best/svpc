@@ -20,7 +20,6 @@ interface CasinoDigitProps {
   spinKey: number;
 }
 
-/** Three 0–9 cycles so the reel always rolls forward. */
 const DIGIT_STRIP = Array.from({ length: 30 }, (_, index) => {
   return index % 10;
 });
@@ -52,14 +51,12 @@ const CasinoDigit = ({
     const previousDigit = previousDigitRef.current;
     previousDigitRef.current = digit;
 
-    // Initial idle render (0$) — sit on the digit, no roll.
     if (spinKey === 0 && previousDigit === null) {
       slot.set(20 + digit);
 
       return;
     }
 
-    // Always roll on price changes (incl. Strict Mode remount / 0→N / same ones digit).
     const fromDigit = previousDigit === null ? 0 : previousDigit;
     slot.set(10 + fromDigit);
 
@@ -99,6 +96,46 @@ const CasinoDigit = ({
   );
 };
 
+type PriceChar =
+  | {
+    kind: 'digit';
+    placeFromRight: number;
+    value: number;
+  }
+  | {
+    kind: 'group';
+    placeFromRight: number;
+  };
+
+const getDigitCount = (value: number) => {
+  return Math.max(1, String(value).length);
+};
+
+const getGroupedPriceChars = (digitString: string) => {
+  const chars: PriceChar[] = [
+
+  ];
+
+  digitString.split('').forEach((char, index) => {
+    const placeFromRight = digitString.length - 1 - index;
+
+    if (index > 0 && (digitString.length - index) % 3 === 0) {
+      chars.push({
+        kind: 'group',
+        placeFromRight,
+      });
+    }
+
+    chars.push({
+      kind: 'digit',
+      placeFromRight,
+      value: Number(char),
+    });
+  });
+
+  return chars;
+};
+
 interface CasinoPriceProps {
   className?: string;
   price: number;
@@ -120,7 +157,7 @@ const CasinoPrice = ({
     columnCount,
     setColumnCount,
   ] = useState(() => {
-    return Math.max(1, String(roundedPrice).length);
+    return getDigitCount(roundedPrice);
   });
 
   useLayoutEffect(() => {
@@ -129,8 +166,8 @@ const CasinoPrice = ({
     }
 
     const previousPrice = previousPriceRef.current;
-    const nextLength = Math.max(1, String(roundedPrice).length);
-    const previousLength = Math.max(1, String(previousPrice).length);
+    const nextLength = getDigitCount(roundedPrice);
+    const previousLength = getDigitCount(previousPrice);
     const isShrinking = roundedPrice < previousPrice;
 
     setSpinKey((current) => {
@@ -156,38 +193,54 @@ const CasinoPrice = ({
     roundedPrice,
   ]);
 
-  const paddedDigits = String(roundedPrice).padStart(columnCount, '0').split('');
+  const paddedDigits = String(roundedPrice).padStart(columnCount, '0');
+  const groupedChars = getGroupedPriceChars(paddedDigits);
   const firstSignificantIndex = roundedPrice === 0
-    ? paddedDigits.length - 1
-    : paddedDigits.findIndex((char) => {
-      return char !== '0';
+    ? groupedChars.length - 1
+    : groupedChars.findIndex((item) => {
+      return item.kind === 'digit' && item.value !== 0;
     });
 
   return (
     <span
-      aria-label={`${roundedPrice}${suffix}`}
+      aria-label={`${roundedPrice.toLocaleString('en-US')}${suffix}`}
       className={cn(
         'inline-flex max-w-full items-center overflow-x-auto leading-none font-medium tracking-tight text-white tabular-nums scrollbar-none',
         className,
       )}
     >
-      {paddedDigits.map((char, index) => {
-        const digit = Number(char);
-        const placeFromRight = paddedDigits.length - 1 - index;
-        const isLeadingZero = index < firstSignificantIndex;
+      {groupedChars.map((item, index) => {
+        const isLeading = index < firstSignificantIndex;
+
+        if (item.kind === 'group') {
+          return (
+            <span
+              key={`group-${item.placeFromRight}`}
+              aria-hidden
+              className={cn(
+                'inline-flex h-[1em] items-center justify-center leading-none',
+                isLeading
+                  ? 'w-0 overflow-hidden opacity-0'
+                  : 'w-[0.28em] opacity-100',
+              )}
+            >
+              ,
+            </span>
+          );
+        }
 
         return (
           <span
-            key={`place-${placeFromRight}`}
+            key={`place-${item.placeFromRight}`}
             className={cn(
               'inline-flex h-[1em] items-center',
-              isLeadingZero
+              isLeading
                 ? 'w-0 overflow-hidden opacity-0'
                 : 'w-[0.6em] opacity-100',
             )}
           >
             <CasinoDigit
-              digit={Number.isNaN(digit) ? 0 : digit}
+              digit={Number.isNaN(item.value) ? 0 : item.value}
               spinKey={spinKey}
             />
           </span>
