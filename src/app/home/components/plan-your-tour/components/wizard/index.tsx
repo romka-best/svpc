@@ -24,14 +24,14 @@ const PlanYourTourWizard = () => {
 
   if (isSubmitted) {
     return (
-      <PlanYourTourPanel className="max-lg:p-5 max-lg:pb-36">
+      <PlanYourTourPanel className="max-lg:order-2 max-lg:h-auto max-lg:min-h-0 max-lg:flex-1 max-lg:p-5">
         <Confirmation />
       </PlanYourTourPanel>
     );
   }
 
   return (
-    <PlanYourTourPanel className="max-lg:p-5 max-lg:pb-36">
+    <PlanYourTourPanel className="max-lg:order-2 max-lg:h-auto max-lg:min-h-0 max-lg:flex-1 max-lg:p-5">
       <div className="flex h-full min-h-0 w-full flex-1 flex-col gap-6">
         <motion.div
           className="flex shrink-0 flex-col items-start gap-2 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4"

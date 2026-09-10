@@ -164,7 +164,7 @@ const SelectDaysStep = () => {
         <div
           ref={containerRef}
           className={cn(
-            'relative',
+            'relative shrink-0',
             hasAllowedRange ? 'w-full lg:w-fit' : 'w-fit',
           )}
         >

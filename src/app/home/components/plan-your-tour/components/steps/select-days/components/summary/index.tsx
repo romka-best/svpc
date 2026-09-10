@@ -28,7 +28,7 @@ const SelectDaysSummary = ({
         opacity: 1,
         y: 0,
       }}
-      className="flex w-full flex-col items-end gap-6"
+      className="flex w-full shrink-0 flex-col items-end gap-4 lg:gap-6"
       initial={{
         opacity: 0,
         y: 16,
@@ -49,7 +49,7 @@ const SelectDaysSummary = ({
             {dayCount === 1 ? 'day' : 'days'}
           </span>
         </p>
-        <p className="text-xl tracking-tight text-light-gray">
+        <p className="hidden text-xl tracking-tight text-light-gray lg:block">
           {dayCount === 1
             ? (
               <span className="text-white">
