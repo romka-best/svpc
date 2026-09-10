@@ -127,7 +127,7 @@
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
   --header-height: 3.875rem;
   --section-gutter: 0px;
-  --section-screen-height: calc(100dvh - var(--header-height) - var(--section-gutter) - var(--section-gutter));
+  --section-screen-height: calc(100svh - var(--header-height) - var(--section-gutter) - var(--section-gutter));
 }
 
 @media (min-width: 640px) {

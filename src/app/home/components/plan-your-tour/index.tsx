@@ -7,7 +7,7 @@ import { PlanYourTourProvider } from './context';
 const PlanYourTourSection = () => {
   return (
     <section
-      className="flex h-[calc(100dvh-var(--header-height)-60px-60px)] min-h-[calc(100dvh-var(--header-height)-60px-60px)] scroll-mt-[calc(var(--header-height)+60px)] flex-col px-5 md:px-10 lg:h-(--section-screen-height) lg:min-h-(--section-screen-height) lg:scroll-mt-[calc(var(--header-height)+var(--section-gutter))]"
+      className="flex h-[calc(100svh-var(--header-height)-60px-60px)] min-h-[calc(100svh-var(--header-height)-60px-60px)] scroll-mt-[calc(var(--header-height)+60px)] flex-col px-5 md:px-10 lg:h-(--section-screen-height) lg:min-h-(--section-screen-height) lg:scroll-mt-[calc(var(--header-height)+var(--section-gutter))]"
       id="plan-your-tour"
     >
       <PlanYourTourProvider>

@@ -3,8 +3,7 @@
 import { ChevronRight } from 'lucide-react';
 import * as motion from 'motion/react-client';
 
-import { Button } from '@/components/ui/base/button';
-
+import { StepNavButton } from '../../../../step-nav';
 import {
   formatLongDate,
   getTourDayCount,
@@ -75,15 +74,14 @@ const SelectDaysSummary = ({
         </p>
       </div>
 
-      <Button
-        className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight text-white-gray"
-        size="l"
+      <StepNavButton
+        className="text-white-gray"
         type="button"
         onClick={onNext}
       >
         Next
         <ChevronRight className="size-6" />
-      </Button>
+      </StepNavButton>
     </motion.div>
   );
 };

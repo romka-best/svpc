@@ -8,12 +8,12 @@ import {
   Gift,
 } from 'lucide-react';
 
-import { Button } from '@/components/ui/base/button';
 import { Switch } from '@/components/ui/base/switch';
 import { trackAttractionSelected } from '@/lib/analytics/client';
 import { cn } from '@/lib/utils';
 
 import { usePlanYourTour } from '../../../context';
+import { StepNavButton } from '../../step-nav';
 import { getTourDayCount } from '../select-days/utils';
 
 import { AttractionDetailDialog } from './components/attraction-detail-dialog';
@@ -174,28 +174,25 @@ const SelectAttractionsStep = () => {
       </div>
 
       <div className="flex w-full shrink-0 items-center justify-between gap-4">
-        <Button
-          className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight"
+        <StepNavButton
           disabled={!canGoBack}
-          size="l"
           type="button"
           variant="outline"
           onClick={goBack}
         >
           <ChevronLeft className="size-6" />
           Back
-        </Button>
+        </StepNavButton>
 
-        <Button
-          className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight text-white-gray"
+        <StepNavButton
+          className="text-white-gray"
           disabled={!canGoNext}
-          size="l"
           type="button"
           onClick={goNext}
         >
           Next
           <ChevronRight className="size-6" />
-        </Button>
+        </StepNavButton>
       </div>
 
       <AttractionDetailDialog

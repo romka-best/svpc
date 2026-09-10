@@ -6,7 +6,6 @@ import {
 } from 'lucide-react';
 import * as motion from 'motion/react-client';
 
-import { Button } from '@/components/ui/base/button';
 import {
   Slider,
   SliderValue,
@@ -21,6 +20,7 @@ import {
   PARTICIPANTS_MIN,
 } from '../../../constants';
 import { usePlanYourTour } from '../../../context';
+import { StepNavButton } from '../../step-nav';
 
 import { GroupTypeRadio } from './components/group-type-radio';
 
@@ -202,28 +202,25 @@ const SelectParticipantsStep = () => {
           : null}
 
         <div className="flex w-full items-center justify-between gap-4">
-          <Button
-            className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight"
+          <StepNavButton
             disabled={!canGoBack}
-            size="l"
             type="button"
             variant="outline"
             onClick={goBack}
           >
             <ChevronLeft className="size-6" />
             Back
-          </Button>
+          </StepNavButton>
 
-          <Button
-            className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight text-white-gray"
+          <StepNavButton
+            className="text-white-gray"
             disabled={!canGoNext}
-            size="l"
             type="button"
             onClick={goNext}
           >
             Next
             <ChevronRight className="size-6" />
-          </Button>
+          </StepNavButton>
         </div>
       </motion.div>
     </div>

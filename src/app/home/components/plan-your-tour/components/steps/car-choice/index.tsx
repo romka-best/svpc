@@ -7,13 +7,13 @@ import {
   ChevronRight,
 } from 'lucide-react';
 
-import { Button } from '@/components/ui/base/button';
 import { Radio } from '@/components/ui/base/radio';
 import { RadioGroup } from '@/components/ui/base/radio-group';
 import { cn } from '@/lib/utils';
 
 import { usePlanYourTour } from '../../../context';
 import type { CarId } from '../../../types';
+import { StepNavButton } from '../../step-nav';
 
 import {
   CAR_OPTIONS,
@@ -94,28 +94,25 @@ const CarChoiceStep = () => {
       </div>
 
       <div className="flex w-full shrink-0 items-center justify-between gap-4">
-        <Button
-          className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight"
+        <StepNavButton
           disabled={!canGoBack}
-          size="l"
           type="button"
           variant="outline"
           onClick={goBack}
         >
           <ChevronLeft className="size-6" />
           Back
-        </Button>
+        </StepNavButton>
 
-        <Button
-          className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight text-white-gray"
+        <StepNavButton
+          className="text-white-gray"
           disabled={!canGoNext}
-          size="l"
           type="button"
           onClick={goNext}
         >
           Next
           <ChevronRight className="size-6" />
-        </Button>
+        </StepNavButton>
       </div>
     </div>
   );

@@ -7,12 +7,12 @@ import {
   ChevronLeft,
 } from 'lucide-react';
 
-import { Button } from '@/components/ui/base/button';
 import { Input } from '@/components/ui/base/input';
 import { LinkHref } from '@/constants/links';
 import { cn } from '@/lib/utils';
 
 import { usePlanYourTour } from '../../../context';
+import { StepNavButton } from '../../step-nav';
 
 import {
   CONTACT_METHODS,
@@ -170,27 +170,24 @@ const ContactInformationStep = () => {
       </div>
 
       <div className="flex w-full shrink-0 items-center justify-between gap-4">
-        <Button
-          className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight"
+        <StepNavButton
           disabled={!canGoBack}
-          size="l"
           type="button"
           variant="outline"
           onClick={goBack}
         >
           <ChevronLeft className="size-6" />
           Back
-        </Button>
+        </StepNavButton>
 
-        <Button
-          className="h-12.5 gap-2 px-5 py-2.5 text-base tracking-tight text-white-gray"
+        <StepNavButton
+          className="text-white-gray"
           disabled={!canGoNext}
-          size="l"
           type="button"
           onClick={submitTour}
         >
           Finish
-        </Button>
+        </StepNavButton>
       </div>
     </div>
   );

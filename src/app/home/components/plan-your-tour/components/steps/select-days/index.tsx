@@ -5,7 +5,10 @@ import {
   useRef,
   useState,
 } from 'react';
-import type { DateRange } from 'react-day-picker';
+import type {
+  DateRange,
+  Matcher,
+} from 'react-day-picker';
 
 import { Calendar as CalendarIcon } from 'lucide-react';
 import {
@@ -19,6 +22,7 @@ import { cn } from '@/lib/utils';
 
 import { usePlanYourTour } from '../../../context';
 
+import { CalendarPopover } from './components/calendar-popover';
 import { SelectDaysSummary } from './components/summary';
 import {
   formatRangeLabel,
@@ -30,6 +34,36 @@ import {
   parseDateKey,
   toDateKey,
 } from './utils';
+
+interface DateRangeCalendarProps {
+  defaultMonth: Date;
+  disabled: Matcher | Matcher[];
+  onSelect: (range: DateRange | undefined) => void;
+  selected: DateRange | undefined;
+  startMonth: Date;
+}
+
+const DateRangeCalendar = ({
+  defaultMonth,
+  disabled,
+  onSelect,
+  selected,
+  startMonth,
+}: DateRangeCalendarProps) => {
+  return (
+    <Calendar
+      required
+      resetOnSelect
+      className="rounded-2xl border border-gray bg-background shadow-[0_16px_40px_rgba(0,0,0,0.55)]"
+      defaultMonth={defaultMonth}
+      disabled={disabled}
+      mode="range"
+      selected={selected}
+      startMonth={startMonth}
+      onSelect={onSelect}
+    />
+  );
+};
 
 const SelectDaysStep = () => {
   const {
@@ -53,6 +87,8 @@ const SelectDaysStep = () => {
     ]
     : { before: firstAvailableDate };
   const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
   const [
     isOpen,
     setIsOpen,
@@ -77,7 +113,10 @@ const SelectDaysStep = () => {
         return;
       }
 
-      if (!containerRef.current?.contains(target)) {
+      const isInsideTrigger = containerRef.current?.contains(target);
+      const isInsidePopover = popoverRef.current?.contains(target);
+
+      if (!isInsideTrigger && !isInsidePopover) {
         setIsOpen(false);
       }
     };
@@ -130,6 +169,7 @@ const SelectDaysStep = () => {
           )}
         >
           <Button
+            ref={triggerRef}
             aria-expanded={isOpen}
             className={cn(
               'h-12.5 shrink-0 gap-2 px-5 py-2.5 text-base tracking-tight',
@@ -162,7 +202,7 @@ const SelectDaysStep = () => {
                     opacity: 1,
                     y: 0,
                   }}
-                  className="relative z-50 mt-3"
+                  className="relative z-50 mt-3 max-lg:hidden"
                   exit={{
                     opacity: 0,
                     y: -8,
@@ -177,13 +217,9 @@ const SelectDaysStep = () => {
                     ease: 'easeOut',
                   }}
                 >
-                  <Calendar
-                    required
-                    resetOnSelect
-                    className="rounded-2xl border border-gray bg-background shadow-[0_16px_40px_rgba(0,0,0,0.55)]"
+                  <DateRangeCalendar
                     defaultMonth={startDate ? parseDateKey(startDate) : firstAvailableDate}
                     disabled={disabled}
-                    mode="range"
                     selected={selected}
                     startMonth={firstAvailableDate}
                     onSelect={handleSelect}
@@ -192,6 +228,20 @@ const SelectDaysStep = () => {
               )
               : null}
           </AnimatePresence>
+
+          <CalendarPopover
+            anchorRef={triggerRef}
+            open={isOpen}
+            popoverRef={popoverRef}
+          >
+            <DateRangeCalendar
+              defaultMonth={startDate ? parseDateKey(startDate) : firstAvailableDate}
+              disabled={disabled}
+              selected={selected}
+              startMonth={firstAvailableDate}
+              onSelect={handleSelect}
+            />
+          </CalendarPopover>
         </div>
       </div>
 

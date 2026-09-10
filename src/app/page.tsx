@@ -11,7 +11,7 @@ import { TourForYouSection } from './home/components/tour-for-you';
 
 export default function HomePage() {
   return (
-    <div className="h-dvh">
+    <div className="min-h-svh">
       <div className="h-auto">
         <Header />
         <main className="h-full flex flex-col gap-15 md:gap-30">
