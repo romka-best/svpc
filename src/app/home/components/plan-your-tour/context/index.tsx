@@ -16,6 +16,7 @@ import {
   trackCheckoutStarted,
   trackPlannerStepCompleted,
 } from '@/lib/analytics/client';
+import { reportGoogleAdsLeadConversion } from '@/lib/analytics/google';
 
 import {
   createCheckoutSession,
@@ -547,7 +548,8 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
         dispatch({ type: 'start-submission' });
 
         void createCheckoutSession(state.answers)
-          .then((checkoutUrl) => {
+          .then(async (checkoutUrl) => {
+            await reportGoogleAdsLeadConversion();
             window.location.assign(checkoutUrl);
           })
           .catch((error: unknown) => {

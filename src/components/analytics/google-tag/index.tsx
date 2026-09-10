@@ -1,7 +1,9 @@
 import Script from 'next/script';
 
-const GOOGLE_ADS_ID = 'AW-18439105590';
-const GOOGLE_ANALYTICS_ID = 'G-CW5KHHQ9NV';
+import {
+  GOOGLE_ADS_ID,
+  GOOGLE_ANALYTICS_ID,
+} from '@/lib/analytics/google';
 
 const GoogleTag = () => {
   return (
