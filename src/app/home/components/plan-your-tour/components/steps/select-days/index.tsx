@@ -159,12 +159,12 @@ const SelectDaysStep = () => {
   };
 
   return (
-    <div className="flex min-h-0 w-full flex-1 flex-col justify-between gap-10">
+    <div className="flex min-h-0 w-full flex-1 flex-col justify-between gap-6 lg:gap-10">
       <div className="flex min-h-0 w-full flex-1 flex-col overflow-y-auto p-2 -m-2">
         <div
           ref={containerRef}
           className={cn(
-            'relative shrink-0',
+            'relative min-h-12.5 shrink-0',
             hasAllowedRange ? 'w-full lg:w-fit' : 'w-fit',
           )}
         >

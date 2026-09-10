@@ -24,17 +24,17 @@ const PlanYourTourWizard = () => {
 
   if (isSubmitted) {
     return (
-      <PlanYourTourPanel className="max-lg:order-2 max-lg:h-auto max-lg:min-h-0 max-lg:flex-1 max-lg:p-5">
+      <PlanYourTourPanel className="max-lg:col-start-1 max-lg:row-start-2 max-lg:h-full max-lg:min-h-0 max-lg:p-5">
         <Confirmation />
       </PlanYourTourPanel>
     );
   }
 
   return (
-    <PlanYourTourPanel className="max-lg:order-2 max-lg:h-auto max-lg:min-h-0 max-lg:flex-1 max-lg:p-5">
+    <PlanYourTourPanel className="max-lg:col-start-1 max-lg:row-start-2 max-lg:h-full max-lg:min-h-0 max-lg:p-5">
       <div className="flex h-full min-h-0 w-full flex-1 flex-col gap-6">
         <motion.div
-          className="flex shrink-0 flex-col items-start gap-2 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4"
+          className="flex shrink-0 flex-row flex-wrap items-center gap-x-3 gap-y-2 lg:gap-4"
           initial={{
             opacity: 0,
             y: 16,
@@ -51,13 +51,13 @@ const PlanYourTourWizard = () => {
           }}
         >
           <Badge
-            className="h-8 border-light-gray px-3.25 py-1 text-sm font-normal tracking-tight text-light-gray"
+            className="h-8 shrink-0 border-light-gray px-3.25 py-1 text-sm font-normal tracking-tight text-light-gray"
             size="sm"
             variant="outline"
           >
             {currentStep.label}
           </Badge>
-          <h3 className="text-2xl font-semibold leading-[1.2] tracking-tight text-white">
+          <h3 className="min-w-0 text-2xl font-semibold leading-[1.2] tracking-tight text-white">
             {currentStep.title}
           </h3>
         </motion.div>

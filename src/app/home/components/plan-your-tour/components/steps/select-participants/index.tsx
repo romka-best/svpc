@@ -201,7 +201,7 @@ const SelectParticipantsStep = () => {
           )
           : null}
 
-        <div className="flex w-full items-center justify-between gap-4">
+        <div className="flex w-full shrink-0 items-center justify-between gap-4">
           <StepNavButton
             disabled={!canGoBack}
             type="button"

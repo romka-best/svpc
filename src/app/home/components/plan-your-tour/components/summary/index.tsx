@@ -11,9 +11,9 @@ import { PlanYourTourProgress } from './progress';
 const PlanYourTourSummary = () => {
   return (
     <>
-      <PlanYourTourHeading className="max-lg:order-1 shrink-0 lg:hidden" />
+      <PlanYourTourHeading className="max-lg:col-start-1 max-lg:row-start-1 shrink-0 lg:hidden" />
 
-      <PlanYourTourPanel className="max-lg:order-3 max-lg:h-auto max-lg:flex-none max-lg:gap-2 max-lg:bg-white max-lg:p-4 lg:justify-between lg:gap-10">
+      <PlanYourTourPanel className="max-lg:col-start-1 max-lg:row-start-3 max-lg:h-auto max-lg:flex-none max-lg:gap-2 max-lg:bg-white max-lg:p-4 lg:justify-between lg:gap-10">
         <motion.div
           className="flex w-full flex-col gap-2 lg:gap-6"
           initial={{

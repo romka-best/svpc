@@ -118,12 +118,12 @@ const SelectAttractionsStep = () => {
   return (
     <div className="flex min-h-0 min-w-0 w-full flex-1 flex-col justify-between gap-6">
       <div className="flex min-h-0 min-w-0 w-full flex-1 flex-col gap-4">
-        <div className="flex w-full shrink-0 flex-col gap-2.5">
-          <p className="flex items-center gap-2 text-base font-medium tracking-tight text-white">
+        <div className="flex w-full shrink-0 items-center justify-between gap-3">
+          <p className="flex min-w-0 items-center gap-2 text-base font-medium tracking-tight text-white">
             <Gift className="size-4 shrink-0 text-primary" />
             {surpriseLabel}
           </p>
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <span
               className={cn(
                 'text-sm font-medium tracking-tight',
