@@ -244,7 +244,7 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       );
     },
     label: 'Step 1',
-    title: 'Dates 📆',
+    title: 'Dates',
   },
   {
     id: 'select-participants',
@@ -263,7 +263,7 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       );
     },
     label: 'Step 2',
-    title: 'Number of People 👨‍👩‍👧‍👦',
+    title: 'Number of People',
   },
   {
     id: 'select-attractions',
@@ -287,7 +287,7 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       );
     },
     label: 'Step 3',
-    title: 'Attractions 🏛',
+    title: 'Attractions',
   },
   {
     id: 'car-choice',
@@ -304,7 +304,7 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       );
     },
     label: 'Step 4',
-    title: 'Transportation 🚗',
+    title: 'Transportation',
   },
   {
     id: 'contact-information',
@@ -318,6 +318,6 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       return agreedToPrivacy && isContactValueValid(method, contactValue);
     },
     label: 'Step 5',
-    title: 'Contact Details 📱',
+    title: 'Contact Details',
   },
 ];
