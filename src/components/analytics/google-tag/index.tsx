@@ -1,12 +1,13 @@
 import Script from 'next/script';
 
 const GOOGLE_ADS_ID = 'AW-18439105590';
+const GOOGLE_ANALYTICS_ID = 'G-CW5KHHQ9NV';
 
-const GoogleAdsTag = () => {
+const GoogleTag = () => {
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
         strategy="afterInteractive"
       />
       <Script
@@ -15,14 +16,15 @@ const GoogleAdsTag = () => {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
+gtag('config', '${GOOGLE_ANALYTICS_ID}');
 gtag('config', '${GOOGLE_ADS_ID}');
 `,
         }}
-        id="google-ads-init"
+        id="google-tag-init"
         strategy="afterInteractive"
       />
     </>
   );
 };
 
-export { GoogleAdsTag };
+export { GoogleTag };

@@ -28,7 +28,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
     content: [
       {
         type: LegalDocumentBlockType.Paragraph,
-        text: 'We collect only what we need to plan, price, confirm, and run your tour, to reply to you, to operate this website, and to measure whether our Google Ads lead people here. We do not buy marketing lists.',
+        text: 'We collect only what we need to plan, price, confirm, and run your tour, to reply to you, to operate this website, to understand how people use the site, and to measure whether our Google Ads lead people here. We do not buy marketing lists.',
       },
     ],
     subsections: [
@@ -69,14 +69,14 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
               'Device, browser, and general usage data, such as pages viewed, referring URL, and an approximate location derived from IP address',
               'Performance measurements through Vercel Analytics and Vercel Speed Insights',
               'Product interactions through Vercel Analytics custom events, such as which calls to action you click, how far you get in Plan Your Tour, which attractions you select, and whether a booking is completed. These events do not include your name, email, phone number, or Telegram username',
-              'Advertising measurement through the Google tag (gtag.js) for Google Ads, which may collect device, browser, and usage data and an approximate location derived from IP address',
+              'Measurement through the Google tag (gtag.js) for Google Analytics and Google Ads, which may collect device, browser, and usage data, pages viewed, and an approximate location derived from IP address',
               'Server logs, which can include IP address, date and time, and request information',
               'A functional cookie used only to remember sidebar and menu state on your device',
             ],
           },
           {
             type: LegalDocumentBlockType.Paragraph,
-            text: 'Vercel Analytics and Speed Insights are privacy-oriented measurement tools. We use them to understand how the site performs and how guests use Plan Your Tour, not to sell your information. The Google tag is used to measure advertising performance.',
+            text: 'Vercel Analytics and Speed Insights are privacy-oriented measurement tools. We use them to understand how the site performs and how guests use Plan Your Tour, not to sell your information. The Google tag is used for Google Analytics and Google Ads conversion measurement.',
           },
         ],
       },
@@ -107,6 +107,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
           'Process payment through the payment gateway',
           'Coordinate meeting points, timing, weather, or changes on the day',
           'Operate, secure, and improve the website',
+          'Understand how people use the website',
           'Measure whether Google Ads lead to visits and bookings',
           'Meet tax, accounting, and other legal duties',
           'Establish, exercise, or defend legal claims',
@@ -114,7 +115,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
       },
       {
         type: LegalDocumentBlockType.Paragraph,
-        text: 'We do not sell personal information. We use Google Ads to measure conversions from our ads.',
+        text: 'We do not sell personal information. We use Google Analytics to understand site usage and Google Ads to measure conversions from our ads.',
       },
     ],
   },
@@ -128,7 +129,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
       {
         type: LegalDocumentBlockType.List,
         items: [
-          'Service providers. Hosting and site infrastructure (Vercel), the analytics tools named above, Google Ads conversion measurement, email or messaging delivery, and the payment gateway that processes your transaction.',
+          'Service providers. Hosting and site infrastructure (Vercel), the analytics tools named above, Google Analytics, Google Ads conversion measurement, email or messaging delivery, and the payment gateway that processes your transaction.',
           'Ticket and venue partners. If a stop requires a named reservation — for example Alcatraz or a museum — we share the guest information that venue requires.',
           'Legal requests. If we are required to disclose information by law, court order, or to protect safety, rights, or property.',
           'Business transfer. If this tour practice is transferred, related information may move with it, still under this policy or equivalent protection.',
@@ -136,7 +137,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
       },
       {
         type: LegalDocumentBlockType.Paragraph,
-        text: 'We do not sell personal information as the CCPA defines a sale. We send limited usage data to Google so we can measure Google Ads. We do not disclose personal information to third parties for their own direct marketing.',
+        text: 'We do not sell personal information as the CCPA defines a sale. We send limited usage data to Google so we can measure site usage and Google Ads. We do not disclose personal information to third parties for their own direct marketing.',
       },
     ],
   },
@@ -154,7 +155,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
     content: [
       {
         type: LegalDocumentBlockType.Paragraph,
-        text: 'We use a small functional cookie so the site can remember whether the menu is open. We also load the Google tag (gtag.js) for Google Ads conversion measurement; Google may set cookies and collect device, browser, and usage data. You can block or delete cookies in your browser; some menu state may then reset between visits, and advertising measurement may be limited.',
+        text: 'We use a small functional cookie so the site can remember whether the menu is open. We also load the Google tag (gtag.js) for Google Analytics and Google Ads; Google may set cookies and collect device, browser, and usage data. You can block or delete cookies in your browser; some menu state may then reset between visits, and Google measurement may be limited.',
       },
     ],
   },
@@ -210,7 +211,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
               'Know the categories and specific pieces of personal information we have collected, the sources, the purposes, and the categories of third parties with whom we share it',
               'Delete personal information we hold about you',
               'Correct inaccurate personal information',
-              'Opt out of the sale or sharing of personal information — we do not sell personal information. To limit Google Ads measurement cookies, use your browser cookie controls or contact us',
+              'Opt out of the sale or sharing of personal information — we do not sell personal information. To limit Google measurement cookies, use your browser cookie controls or contact us',
               'Limit the use and disclosure of sensitive personal information — we do not use sensitive personal information to infer characteristics about you',
               'Not be discriminated against for exercising these rights',
             ],
