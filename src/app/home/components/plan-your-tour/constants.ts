@@ -30,7 +30,7 @@ export const GROUP_TYPES: readonly {
   },
   {
     id: 'partners',
-    label: 'Partners',
+    label: 'Couple',
   },
   {
     id: 'family',
@@ -223,7 +223,7 @@ export const getDefaultsForGroup = (groupType: GroupType) => {
     }
     case 'group': {
       return {
-        adults: 2,
+        adults: 4,
         participants: 4,
       };
     }
@@ -263,7 +263,7 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
       );
     },
     label: 'Step 2',
-    title: 'Number of People',
+    title: 'Guests',
   },
   {
     id: 'select-attractions',

@@ -23,7 +23,6 @@ export type AttractionWeight = 1 | 2 | 3 | 4;
 export interface Attraction {
   categoryId: AttractionCategoryId;
   childPrice?: number;
-  description?: string;
   gallery?: readonly string[];
   id: string;
   image?: string;
@@ -59,7 +58,7 @@ export const ATTRACTION_CATEGORIES: readonly AttractionCategory[] = [
     color: '#0254b5',
     icon: Building2,
     id: 'offices',
-    label: 'Offices',
+    label: 'Campuses',
   },
   {
     color: '#e67e22',
@@ -95,7 +94,7 @@ export const ATTRACTIONS: readonly Attraction[] = [
     ],
     id: 'golden-gate',
     image: '/images/plan-your-tour/attractions/golden-gate.webp',
-    location: 'Golden Gate Brg, San Francisco, CA',
+    location: 'Golden Gate Bridge, San Francisco, CA',
     price: 0,
     rating: 4.7,
     title: 'Golden Gate Bridge',
@@ -352,7 +351,7 @@ export const ATTRACTIONS: readonly Attraction[] = [
     image: '/images/plan-your-tour/attractions/valley-fair.webp',
     price: 0,
     rating: 3.9,
-    title: 'Westfield Valley Fair & Santana Row',
+    title: 'Valley Fair & Santana Row',
     weight: 4,
   },
   {
@@ -376,7 +375,7 @@ export const ATTRACTIONS: readonly Attraction[] = [
     image: '/images/plan-your-tour/attractions/berkeley.webp',
     price: 0,
     rating: 4.6,
-    title: 'Berkeley University',
+    title: 'UC Berkeley',
     weight: 3,
   },
   {
@@ -448,7 +447,7 @@ export const ATTRACTIONS: readonly Attraction[] = [
     image: '/images/plan-your-tour/attractions/de-young.webp',
     price: 25,
     rating: 4.4,
-    title: 'De Young Museum',
+    title: 'de Young Museum',
     weight: 3,
   },
   {
@@ -547,7 +546,7 @@ export const ATTRACTIONS: readonly Attraction[] = [
     id: 'bike',
     image: '/images/plan-your-tour/attractions/bike.webp',
     price: 40,
-    title: 'Bike',
+    title: 'Bike Ride',
     weight: 1,
   },
   {
@@ -559,7 +558,7 @@ export const ATTRACTIONS: readonly Attraction[] = [
     image: '/images/plan-your-tour/attractions/waymo.webp',
     isGroupPrice: true,
     price: 20,
-    title: 'Waymo',
+    title: 'Waymo Ride',
     weight: 1,
   },
   {
@@ -629,7 +628,7 @@ export const ATTRACTIONS: readonly Attraction[] = [
     id: 'helicopter',
     image: '/images/plan-your-tour/attractions/helicopter.webp',
     price: 400,
-    title: 'Helicopter',
+    title: 'Helicopter Flight',
     weight: 3,
   },
   {
@@ -640,7 +639,7 @@ export const ATTRACTIONS: readonly Attraction[] = [
     id: 'airplane',
     image: '/images/plan-your-tour/attractions/airplane.webp',
     price: 300,
-    title: 'Airplane',
+    title: 'Airplane Flight',
     weight: 3,
   },
   {
@@ -652,7 +651,7 @@ export const ATTRACTIONS: readonly Attraction[] = [
     id: 'hot-air-balloon',
     image: '/images/plan-your-tour/attractions/hot-air-balloon.webp',
     price: 300,
-    title: 'Hot Air Balloon',
+    title: 'Hot Air Balloon Flight',
     weight: 4,
   },
   {
@@ -828,10 +827,8 @@ export const getAttractionDetails = (attraction: Attraction) => {
     ]);
 
   return {
-    description: attraction.description
-      ?? 'Silicon Valley Boy offers exclusive, premium tours that provide personalized and immersive experiences in the heart of the tech world. Explore behind-the-scenes access to leading IT companies and prestigious universities, and witness firsthand the latest innovations shaping our future.',
     gallery,
-    location: attraction.location ?? 'USA, Silicon Valley',
+    location: attraction.location ?? 'Silicon Valley, CA',
     rating: attraction.rating,
   };
 };

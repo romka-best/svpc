@@ -30,7 +30,7 @@ const AboutGuideProfile = () => {
         </p>
       </div>
       <p className="text-base font-light italic leading-snug tracking-tight text-dark-gray">
-        I create private Silicon Valley tours around your interests&nbsp;&mdash; taking you inside iconic tech companies, prestigious universities, and the stories behind the breakthroughs. You leave with local insight, lasting inspiration, and a&nbsp;true sense of&nbsp;the world&rsquo;s leading technology hub.
+        I build private Silicon Valley tours around what you care about&nbsp;&mdash; Apple, Google, Stanford, the stories behind the campuses. You leave with a local&rsquo;s view of the place, not a script.
       </p>
       <div
         aria-hidden

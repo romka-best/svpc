@@ -147,9 +147,10 @@ const ReviewsSection = () => {
                 {review.avatarSrc
                   ? (
                     <Image
+                      aria-hidden
                       fill
                       unoptimized
-                      alt=""
+                      alt={review.author}
                       className="object-cover"
                       sizes="35px"
                       src={review.avatarSrc}

@@ -55,7 +55,7 @@ const Footer = () => {
         <div className="flex flex-col gap-4 items-start">
           <FooterLinks
             links={homeLinks}
-            title="Home Page"
+            title="Home"
           />
           <CTAButton location="footer" />
         </div>
@@ -63,7 +63,7 @@ const Footer = () => {
         <div className="flex flex-col gap-4 items-start">
           <FooterLinks
             links={legalLinks}
-            title="Legal information"
+            title="Legal"
           />
         </div>
 

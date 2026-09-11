@@ -77,7 +77,7 @@ const ItineraryCard = ({
       >
         <Image
           fill
-          alt=""
+          alt={title}
           className="object-cover"
           sizes="265px"
           src={imageSrc}

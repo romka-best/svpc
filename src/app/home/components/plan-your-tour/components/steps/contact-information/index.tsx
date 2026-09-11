@@ -47,7 +47,7 @@ const ContactInformationStep = () => {
       <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto p-2 -m-2">
         <div className="flex flex-col gap-2">
           <p className="text-base font-semibold tracking-tight text-white">
-            Select a method of communication
+            Contact method
           </p>
           <div className="flex flex-wrap gap-2">
             {CONTACT_METHODS.map((item) => {
@@ -83,7 +83,7 @@ const ContactInformationStep = () => {
             className="text-base font-semibold tracking-tight text-white"
             htmlFor="contact-value"
           >
-            Communication contact
+            {selectedMethod.label}
           </label>
           <Input
             aria-invalid={showValueError}
@@ -115,7 +115,7 @@ const ContactInformationStep = () => {
         <div className="flex items-center gap-2">
           <button
             aria-checked={agreedToPrivacy}
-            aria-label="Agree with the privacy policy and terms"
+            aria-label="Agree to the privacy policy and terms"
             className={cn(
               'flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-[2px] border border-white transition-colors',
               agreedToPrivacy && 'border-primary bg-primary',
@@ -138,7 +138,7 @@ const ContactInformationStep = () => {
               patchContactInformation({ agreedToPrivacy: !agreedToPrivacy });
             }}
           >
-            I agree with the
+            I agree to the
             {' '}
             <Link
               className="underline underline-offset-2"
@@ -149,7 +149,7 @@ const ContactInformationStep = () => {
                 event.stopPropagation();
               }}
             >
-              privacy policy
+              Privacy Policy
             </Link>
             {' '}
             and
@@ -163,7 +163,7 @@ const ContactInformationStep = () => {
                 event.stopPropagation();
               }}
             >
-              terms
+              Terms
             </Link>
           </p>
         </div>
@@ -186,7 +186,7 @@ const ContactInformationStep = () => {
           type="button"
           onClick={submitTour}
         >
-          Finish
+          Book Your Tour
         </StepNavButton>
       </div>
     </div>

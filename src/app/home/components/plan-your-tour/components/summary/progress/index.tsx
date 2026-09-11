@@ -11,7 +11,7 @@ const PlanYourTourProgress = () => {
     <div className="flex w-full flex-col gap-2 lg:gap-4">
       <div className="flex w-full items-start justify-between gap-4 px-2 text-sm font-medium tracking-tight lg:px-0 lg:text-base">
         <p className="text-background lg:text-white">
-          Progress of planning your tour
+          Your Progress
         </p>
         <p className="shrink-0 text-primary tabular-nums">
           {`${progress}%`}

@@ -28,7 +28,7 @@ const HeaderMenu = () => {
       <Sidebar>
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>Home Page</SidebarGroupLabel>
+            <SidebarGroupLabel>Home</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {homeLinks.map((link) => (
@@ -87,12 +87,13 @@ const HeaderMenu = () => {
                   variant="link"
                 >
                   <Link
+                    aria-label={link.label ? undefined : link.alt}
                     href={link.href}
                     target={link.target}
                   >
                     {link.icon && (
                       <Image
-                        alt={link.alt || ''}
+                        alt={link.alt || link.label || ''}
                         height={32}
                         src={link.icon}
                         width={32}

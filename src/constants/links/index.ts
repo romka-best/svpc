@@ -64,7 +64,7 @@ export const legalLinks: Link[] = [
     href: LinkHref.Terms,
   },
   {
-    label: 'Site Map',
+    label: 'Sitemap',
     href: LinkHref.Sitemap,
   },
 ];

@@ -46,7 +46,7 @@ export const ITINERARY_STOPS: ItineraryStop[] = [
   {
     category: 'dining',
     duration: '1 hr',
-    imageSrc: '/images/about-tour/card-lunch.webp',
+    imageSrc: '/images/about-tour/card-los-altos.webp',
     location: 'Los Altos, CA',
     time: '12:45 PM',
     title: 'Lunch in downtown Los Altos',
@@ -67,7 +67,7 @@ export const ITINERARY_STOPS: ItineraryStop[] = [
     imageSrc: '/images/about-tour/card-startup-pitch.webp',
     location: 'San Francisco, CA',
     time: '6:00 PM',
-    title: 'Startup Pitch Evening',
+    title: 'Startup Pitch',
     travelFromPrevious: '20 min drive',
   },
 ];
@@ -85,7 +85,7 @@ export const ABOUT_TOUR_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'TouristTrip',
   description:
-    'A private, guided day through Silicon Valley — Stanford University, the Googleplex, the Computer History Museum and the Golden Gate Bridge — driven door to door and tailored to your interests.',
+    'A private, guided day through Silicon Valley — Stanford University, the Googleplex, the Computer History Museum, and the Golden Gate Bridge — driven door to door and tailored to your interests.',
   itinerary: {
     '@type': 'ItemList',
     itemListElement: ITINERARY_STOPS.map((stop, index) => ({
@@ -103,5 +103,5 @@ export const ABOUT_TOUR_JSON_LD = {
     '@type': 'TravelAgency',
     name: 'Silicon Valley Private Circle',
   },
-  touristType: 'Founders, investors, engineers, students and curious travellers',
+  touristType: 'Founders, investors, engineers, students, and curious travelers',
 };

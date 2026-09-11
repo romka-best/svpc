@@ -16,7 +16,7 @@ const HeroCta = () => {
         href={LinkAnchor.PlanYourTour}
         location="hero"
       >
-        Start Journey
+        Plan Your Tour
         <ChevronRight className="size-4" />
       </CtaLink>
     </Button>

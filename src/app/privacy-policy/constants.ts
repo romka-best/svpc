@@ -3,7 +3,7 @@ import {
   type LegalDocumentSection,
 } from '@/components/legal-document/types';
 
-export const PRIVACY_POLICY_UPDATED_ON = 'September 9, 2026';
+export const PRIVACY_POLICY_UPDATED_ON = 'September 10, 2026';
 
 export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
   {
@@ -11,7 +11,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
     content: [
       {
         type: LegalDocumentBlockType.Paragraph,
-        text: 'Silicon Valley Private Circle (“we,” “us,” or “our”) is a private tour practice operated by Roman Danilov in the San Francisco Bay Area, California, United States. We offer private, custom tours of Silicon Valley and San Francisco — door-to-door transportation, a local guide, and a route built around your interests. We do not run shared group tours.',
+        text: 'Silicon Valley Private Circle (“we,” “us,” or “our”) is a private tour company operated by Roman Danilov in the San Francisco Bay Area, California, United States. We offer private, custom tours of Silicon Valley and San Francisco — door-to-door transportation, a local guide, and a route built around your interests. We do not run shared group tours.',
       },
       {
         type: LegalDocumentBlockType.Paragraph,
@@ -43,7 +43,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
             type: LegalDocumentBlockType.List,
             items: [
               'Preferred tour dates',
-              'Group type (solo, partners, family, or group) and the number of guests',
+              'Group type (solo, couple, family, or group) and the number of guests',
               'The attractions you want to visit, or a request that we choose them for you',
               'Vehicle preference',
               'A contact method and the matching details: email address, phone number, or Telegram username',
@@ -132,7 +132,7 @@ export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
           'Service providers. Hosting and site infrastructure (Vercel), the analytics tools named above, Google Analytics, Google Ads conversion measurement, email or messaging delivery, and the payment gateway that processes your transaction.',
           'Ticket and venue partners. If a stop requires a named reservation — for example Alcatraz or a museum — we share the guest information that venue requires.',
           'Legal requests. If we are required to disclose information by law, court order, or to protect safety, rights, or property.',
-          'Business transfer. If this tour practice is transferred, related information may move with it, still under this policy or equivalent protection.',
+          'Business transfer. If this tour company is transferred, related information may move with it, still under this policy or equivalent protection.',
         ],
       },
       {

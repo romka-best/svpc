@@ -35,7 +35,7 @@ const NotFound = () => {
             href={LinkHref.Home}
             location="not-found"
           >
-            Home Page
+            Home
             <ChevronRight className="size-4" />
           </CtaLink>
         </Button>

@@ -25,7 +25,7 @@ const GuideContactCard = () => {
       target="_blank"
     >
       <Image
-        alt=""
+        alt="Roman Danilov"
         className="size-10 shrink-0 rounded-full object-cover"
         height={40}
         src="/images/about-guide/roman.png"
@@ -36,17 +36,20 @@ const GuideContactCard = () => {
           Roman Danilov
         </span>
         <span className="text-xs tracking-tight text-primary">
-          Silicon Valley Boy
+          Silicon Valley Guide
         </span>
       </span>
       <Image
-        alt=""
+        alt="Telegram"
         className="size-8 shrink-0"
         height={32}
         src="/icons/telegram.svg"
         width={32}
       />
-      <ChevronRight className="size-5 shrink-0 text-white" />
+      <ChevronRight
+        aria-hidden
+        className="size-5 shrink-0 text-white"
+      />
     </OutboundContactLink>
   );
 };

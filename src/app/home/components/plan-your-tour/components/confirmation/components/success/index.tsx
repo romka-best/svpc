@@ -54,10 +54,10 @@ const ConfirmationSuccess = () => {
       <div className="relative z-1 flex w-max max-w-full flex-col gap-4">
         <div className="flex flex-col gap-2 text-center">
           <p className="whitespace-nowrap text-xl font-semibold tracking-tight text-white">
-            Payment completed successfully
+            You’re booked
           </p>
           <p className="text-sm tracking-tight text-light-gray">
-            We will contact you shortly
+            We’ll be in touch soon
           </p>
         </div>
         <div className="w-0 min-w-full">

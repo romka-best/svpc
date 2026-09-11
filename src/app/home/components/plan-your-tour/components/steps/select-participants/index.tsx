@@ -76,7 +76,7 @@ const SelectParticipantsStep = () => {
           ? (
             <div className="flex w-full flex-col gap-4">
               <p className="text-base font-semibold tracking-tight text-white">
-                Number of participants
+                Group size
               </p>
               <div className="flex w-full items-center gap-2">
                 <span className="shrink-0 text-base font-medium tracking-tight text-white">
@@ -120,7 +120,7 @@ const SelectParticipantsStep = () => {
           ? (
             <div className="flex w-full flex-col gap-4">
               <p className="text-base font-semibold tracking-tight text-white">
-                Select number of adults
+                Number of adults
               </p>
               <div className="flex w-full items-center gap-2">
                 <span className="shrink-0 text-base font-medium tracking-tight text-white">

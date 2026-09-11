@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     default: 'Silicon Valley Private Circle | Private Silicon Valley Tours',
     template: '%s | Silicon Valley Private Circle',
   },
-  description: 'Private, guided Silicon Valley tours built around you. Visit Apple Park, the Googleplex, Stanford, the Computer History Museum and San Francisco in one day, driven door to door by a local guide.',
+  description: 'Private, guided Silicon Valley tours built around you. Visit Apple Park, the Googleplex, Stanford, the Computer History Museum, and San Francisco in one day, driven door to door by a local guide.',
   keywords: [
     'Silicon Valley tour',
     'private Silicon Valley tour',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Silicon Valley Private Circle | Private Silicon Valley Tours',
-    description: 'A private day through Silicon Valley — Stanford, the Googleplex, the Computer History Museum, Apple Park and the Golden Gate Bridge, tailored to your interests.',
+    description: 'A private day through Silicon Valley — Stanford, the Googleplex, the Computer History Museum, Apple Park, and the Golden Gate Bridge, tailored to your interests.',
     siteName: 'Silicon Valley Private Circle',
     locale: 'en_US',
     type: 'website',

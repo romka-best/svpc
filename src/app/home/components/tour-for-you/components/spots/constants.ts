@@ -21,7 +21,7 @@ export const TOUR_FOR_YOU_SPOTS: Spot[] = [
     imageUrl: '/images/tour-for-you/stanford.webp',
   },
   {
-    label: 'Berkeley University',
+    label: 'UC Berkeley',
     imageUrl: '/images/tour-for-you/berkeley.webp',
   },
   {
@@ -29,7 +29,7 @@ export const TOUR_FOR_YOU_SPOTS: Spot[] = [
     imageUrl: '/images/tour-for-you/computer-history.webp',
   },
   {
-    label: 'De Young Museum',
+    label: 'de Young Museum',
     imageUrl: '/images/tour-for-you/de-young.webp',
   },
   {

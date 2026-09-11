@@ -19,7 +19,11 @@ const AboutGuideIntro = () => {
         y: 0,
       }}
     >
-      Silicon Valley <span className="text-primary">Private Circle</span> takes you inside the world&rsquo;s leading technology hub&nbsp;&mdash; a&nbsp;private journey you&rsquo;ll <span className="text-primary">never forget</span>
+      Private Tours With a
+      {' '}
+      <span className="text-primary">
+        Local Guide
+      </span>
     </motion.h2>
   );
 };

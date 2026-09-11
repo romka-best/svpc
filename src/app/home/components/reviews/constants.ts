@@ -9,13 +9,13 @@ export const REVIEWS: Review[] = [
   {
     author: 'Max',
     avatarSrc: '/images/reviews/avatar-max.webp',
-    quote: 'I work at an AI B2B SaaS startup. First time in the Bay Area and I finally got to see Apple Park and the Googleplex. This is a tour where a local who actually knows the area shows you hidden gems.',
+    quote: 'First time in the Bay Area, and I finally got to see Apple Park and the Googleplex. A local who actually knows the area showed us the hidden gems.',
     role: 'Software Engineer',
   },
   {
     author: 'Arda',
     avatarSrc: '/images/reviews/avatar-arda.webp',
-    quote: 'So my investors recommended me to book this tour. Stanford University, then the Googleplex. I’d seen all this in pitch decks. Being there with a Silicon Valley guide who actually knows the history is a different thing.',
+    quote: 'My investors recommended this tour. Stanford University, then the Googleplex. I’d seen all this in pitch decks. Being there with a Silicon Valley guide who actually knows the history is a different thing.',
     role: 'Co-Founder & CTO',
   },
   {

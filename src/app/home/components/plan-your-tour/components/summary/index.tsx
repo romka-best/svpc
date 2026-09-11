@@ -7,6 +7,7 @@ import { PlanYourTourPanel } from '../panel';
 import { PlanYourTourHeading } from './heading';
 import { PlanYourTourPrice } from './price';
 import { PlanYourTourProgress } from './progress';
+import { PlanYourTourSnapshot } from './snapshot';
 
 const PlanYourTourSummary = () => {
   return (
@@ -36,6 +37,7 @@ const PlanYourTourSummary = () => {
         </motion.div>
 
         <motion.div
+          className="flex w-full flex-col gap-3 lg:gap-4"
           initial={{
             opacity: 0,
             y: 20,
@@ -52,6 +54,7 @@ const PlanYourTourSummary = () => {
             y: 0,
           }}
         >
+          <PlanYourTourSnapshot />
           <PlanYourTourPrice />
         </motion.div>
       </PlanYourTourPanel>

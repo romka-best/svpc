@@ -7,7 +7,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'How much does a private Silicon Valley tour cost?',
     answer:
-      'The price depends on your dates, chosen destinations, group size, and vehicle. As you plan your tour you will see a live tour price. That total is for your whole group for the whole trip, not a per-person ticket on a shared vehicle.',
+      'The price depends on your dates, chosen destinations, group size, and vehicle. As you plan your tour, you will see a live tour price. That total is for your whole group for the whole trip, not a per-person ticket on a shared vehicle.',
   },
   {
     question: 'What is included in a private Silicon Valley tour?',

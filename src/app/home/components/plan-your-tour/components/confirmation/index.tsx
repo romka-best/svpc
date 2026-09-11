@@ -28,10 +28,10 @@ const Confirmation = () => {
               key="loading"
               description={isConfirming
                 ? 'This only takes a moment'
-                : 'Will take a few seconds'}
+                : 'This only takes a few seconds'}
               title={isConfirming
                 ? 'Confirming your payment'
-                : 'Redirect to payment gateway'}
+                : 'Redirecting to checkout'}
             />
           )
           : isError

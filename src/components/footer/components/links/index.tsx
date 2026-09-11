@@ -39,12 +39,13 @@ const FooterLinks = (
               variant="link"
             >
               <Link
+                aria-label={link.label ? undefined : link.alt}
                 href={link.href}
                 target={link.target}
               >
                 {link.icon && (
                   <Image
-                    alt={link.alt || ''}
+                    alt={link.alt || link.label || ''}
                     height={32}
                     src={link.icon}
                     width={32}

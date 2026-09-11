@@ -3,7 +3,7 @@ import {
   type LegalDocumentSection,
 } from '@/components/legal-document/types';
 
-export const TERMS_UPDATED_ON = 'September 7, 2026';
+export const TERMS_UPDATED_ON = 'September 10, 2026';
 
 export const TERMS_SECTIONS: LegalDocumentSection[] = [
   {
@@ -24,7 +24,7 @@ export const TERMS_SECTIONS: LegalDocumentSection[] = [
     content: [
       {
         type: LegalDocumentBlockType.Paragraph,
-        text: 'Silicon Valley Private Circle (“we,” “us,” or “our”) is a private tour practice operated by Roman Danilov in the San Francisco Bay Area, California, United States. We provide private, custom ground tours of Silicon Valley and San Francisco — a local guide, a private vehicle, and a route built around your interests. We do not run shared group tours, and we do not sell airline tickets or cruise packages.',
+        text: 'Silicon Valley Private Circle (“we,” “us,” or “our”) is a private tour company operated by Roman Danilov in the San Francisco Bay Area, California, United States. We provide private, custom ground tours of Silicon Valley and San Francisco — a local guide, a private vehicle, and a route built around your interests. We do not run shared group tours, and we do not sell airline tickets or cruise packages.',
       },
     ],
   },
@@ -91,7 +91,7 @@ export const TERMS_SECTIONS: LegalDocumentSection[] = [
           },
           {
             type: LegalDocumentBlockType.Paragraph,
-            text: 'If payment fails, is reversed, or is charged back, the booking is not confirmed or may be cancelled. You remain responsible for the amount due unless we cancel under these Terms.',
+            text: 'If payment fails, is reversed, or is charged back, the booking is not confirmed or may be canceled. You remain responsible for the amount due unless we cancel under these Terms.',
           },
         ],
       },

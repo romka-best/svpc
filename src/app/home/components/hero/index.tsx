@@ -32,7 +32,7 @@ const HeroSection = () => {
             type: 'spring',
           }}
         >
-          Discover <span className="text-primary">Silicon Valley</span>: Your Guide to the World of <span className="text-primary">Innovation</span>
+          Private <span className="text-primary">Silicon Valley</span> Tours, Planned Around <span className="text-primary">You</span>
         </motion.h1>
         <motion.p
           animate={{
@@ -53,7 +53,7 @@ const HeroSection = () => {
             type: 'spring',
           }}
         >
-          Gain exclusive access to industry giants and esteemed universities, and see firsthand the cutting-edge advancements that are shaping our tomorrow.
+          From Apple Park to the Golden Gate, and whatever else you want — door to door in a private car, at your pace.
         </motion.p>
       </div>
       <motion.div

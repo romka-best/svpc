@@ -37,7 +37,7 @@ const CarChoiceStep = () => {
     <div className="flex min-h-0 w-full flex-1 flex-col justify-between gap-6">
       <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-2 -m-2">
         <p className="text-base font-semibold tracking-tight text-white">
-          Select transportation
+          Select a vehicle
         </p>
 
         <RadioGroup

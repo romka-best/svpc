@@ -58,8 +58,9 @@ const AttractionCard = ({
       {attraction.image
         ? (
           <Image
+            aria-hidden
             fill
-            alt=""
+            alt={attraction.title}
             className="object-cover"
             sizes="(max-width: 640px) 50vw, 220px"
             src={attraction.image}
@@ -93,7 +94,10 @@ const AttractionCard = ({
           onToggle(attraction.id);
         }}
       >
-        <Check className="size-4 shrink-0" />
+        <Check
+          aria-hidden
+          className="size-4 shrink-0"
+        />
         {isSelected ? 'Selected' : 'Select'}
       </Button>
     </div>

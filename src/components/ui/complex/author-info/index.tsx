@@ -38,13 +38,14 @@ const AuthorInfo = ({
         variant="link"
       >
         <OutboundContactLink
+          aria-label="Open Telegram chat with Roman Danilov"
           channel="telegram"
           href="https://t.me/roman_danilov"
           location={location}
           target="_blank"
         >
           <Image
-            alt="telegram"
+            alt="Telegram"
             height={35}
             src="/icons/telegram.svg"
             width={35}

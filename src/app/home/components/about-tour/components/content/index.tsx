@@ -135,7 +135,7 @@ const AboutTourContent = () => {
             href={LinkAnchor.PlanYourTour}
             location="about-tour"
           >
-            Build Your Itinerary
+            Plan Your Tour
             <ChevronRight className="size-6" />
           </CtaLink>
         </Button>
