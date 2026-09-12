@@ -112,9 +112,7 @@ const getDigitCount = (value: number) => {
 };
 
 const getGroupedPriceChars = (digitString: string) => {
-  const chars: PriceChar[] = [
-
-  ];
+  const chars: PriceChar[] = [];
 
   digitString.split('').forEach((char, index) => {
     const placeFromRight = digitString.length - 1 - index;

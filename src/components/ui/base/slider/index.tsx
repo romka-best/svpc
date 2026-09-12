@@ -2,12 +2,12 @@
 
 import {
   Children,
-  isValidElement,
-  useCallback,
-  useState,
   type ComponentRef,
+  isValidElement,
   type ReactNode,
   type Ref,
+  useCallback,
+  useState,
 } from 'react';
 
 import * as SliderPrimitive from '@radix-ui/react-slider';
@@ -29,9 +29,7 @@ import {
   sliderVariants,
 } from './variants';
 
-const getSliderValueProps = (
-  child: ReactNode,
-): {
+const getSliderValueProps = (child: ReactNode): {
   children?: ReactNode;
   position: SliderValuePosition;
 } | undefined => {
@@ -103,13 +101,12 @@ const Slider = ({
     : undefined;
 
   return (
-    <SliderContext.Provider
-      value={{
-        currentValue,
-        max,
-        min,
-        size: size ?? 'md',
-      }}
+    <SliderContext.Provider value={{
+      currentValue,
+      max,
+      min,
+      size: size ?? 'md',
+    }}
     >
       <div
         className={cn('group flex w-full flex-col gap-2', className)}
@@ -140,18 +137,16 @@ const Slider = ({
           onValueChange={handleValueChange}
           {...props}
         >
-          <SliderPrimitive.Track
-            className={cn(sliderTrackVariants({
-              size,
+          <SliderPrimitive.Track className={cn(sliderTrackVariants({
+            size,
+            variant,
+            status,
+          }))}
+          >
+            <SliderPrimitive.Range className={cn(sliderRangeVariants({
               variant,
               status,
             }))}
-          >
-            <SliderPrimitive.Range
-              className={cn(sliderRangeVariants({
-                variant,
-                status,
-              }))}
             />
           </SliderPrimitive.Track>
 
@@ -169,13 +164,12 @@ const Slider = ({
             >
               {showThumbValue
                 ? (
-                  <span
-                    className={cn(
-                      'absolute left-1/2 -translate-x-1/2 whitespace-nowrap font-medium tracking-tight text-primary',
-                      size === 'sm' && 'top-3.5 text-xs',
-                      size === 'md' && 'top-4 text-base',
-                      size === 'lg' && 'top-5 text-base',
-                    )}
+                  <span className={cn(
+                    'absolute left-1/2 -translate-x-1/2 whitespace-nowrap font-medium tracking-tight text-primary',
+                    size === 'sm' && 'top-3.5 text-xs',
+                    size === 'md' && 'top-4 text-base',
+                    size === 'lg' && 'top-5 text-base',
+                  )}
                   >
                     {thumbValueContent ?? currentValue[index]}
                   </span>

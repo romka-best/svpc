@@ -38,11 +38,10 @@ const GroupTypeRadio = ({
               id={id}
               value={option.id}
             />
-            <span
-              className={cn(
-                'text-sm font-medium tracking-tight',
-                isSelected ? 'text-white' : 'text-light-gray',
-              )}
+            <span className={cn(
+              'text-sm font-medium tracking-tight',
+              isSelected ? 'text-white' : 'text-light-gray',
+            )}
             >
               {option.label}
             </span>

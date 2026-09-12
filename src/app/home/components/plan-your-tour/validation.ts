@@ -44,9 +44,7 @@ export const isPlanYourTourStepId = (value: unknown): value is PlanYourTourStepI
   return typeof value === 'string' && STEP_IDS.has(value as PlanYourTourStepId);
 };
 
-export const isPlanYourTourAnswers = (
-  value: unknown,
-): value is PlanYourTourAnswers => {
+export const isPlanYourTourAnswers = (value: unknown): value is PlanYourTourAnswers => {
   if (!isRecord(value)) {
     return false;
   }

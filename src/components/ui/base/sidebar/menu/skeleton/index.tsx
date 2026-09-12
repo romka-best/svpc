@@ -24,9 +24,7 @@ const SidebarMenuSkeleton = ({
       <Skeleton
         className="h-4 max-w-(--skeleton-width) flex-1"
         data-sidebar="menu-skeleton-text"
-        style={
-          { '--skeleton-width': '70%' } as React.CSSProperties
-        }
+        style={{ '--skeleton-width': '70%' } as React.CSSProperties}
       />
     </div>
   );

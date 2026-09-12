@@ -51,8 +51,7 @@ const ConfirmationConfetti = () => {
     return () => {
       observer.disconnect();
     };
-  }, [
-  ]);
+  }, []);
 
   const halfHeight = Math.max(size.height / 2 - CONFETTI_EDGE_PADDING, 0);
   const halfWidth = Math.max(size.width / 2 - CONFETTI_EDGE_PADDING, 0);
@@ -183,11 +182,10 @@ const ConfirmationConfetti = () => {
                 },
               }}
             >
-              <span
-                className={cn(
-                  'absolute top-0 left-0 block -translate-x-1/2 -translate-y-1/2 leading-none drop-shadow-sm',
-                  particle.sizeClassName,
-                )}
+              <span className={cn(
+                'absolute top-0 left-0 block -translate-x-1/2 -translate-y-1/2 leading-none drop-shadow-sm',
+                particle.sizeClassName,
+              )}
               >
                 {particle.icon}
               </span>

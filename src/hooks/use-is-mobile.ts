@@ -24,7 +24,7 @@ export const useIsMobile = (): UseIsMobileReturn => {
     const checkIsMobile = () => {
       // Check using media query
       const mediaQuery = window.matchMedia('(max-width: 640px)');
-      
+
       // Check using user agent (additional detection)
       const userAgent = navigator.userAgent.toLowerCase();
       const mobileKeywords = [
@@ -32,20 +32,17 @@ export const useIsMobile = (): UseIsMobileReturn => {
         'webos',
         'iphone',
         'ipad',
-        'ipod', 
+        'ipod',
         'blackberry',
         'windows phone',
         'mobile',
       ];
-      
-      const isMobileUA = mobileKeywords.some(keyword => 
-        userAgent.includes(keyword),
-      );
-      
+
+      const isMobileUA = mobileKeywords.some(keyword => userAgent.includes(keyword));
+
       // Combine both checks - prioritize media query but consider user agent
-      const isMobileDevice = mediaQuery.matches || 
-        (isMobileUA && window.innerWidth <= 640);
-      
+      const isMobileDevice = mediaQuery.matches || (isMobileUA && window.innerWidth <= 640);
+
       setIsMobile(isMobileDevice);
       setIsLoading(false);
     };
@@ -56,7 +53,7 @@ export const useIsMobile = (): UseIsMobileReturn => {
     // Listen for media query changes
     const mediaQuery = window.matchMedia('(max-width: 640px)');
     const handleChange = () => checkIsMobile();
-    
+
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener('change', handleChange);
     } else {
@@ -75,8 +72,7 @@ export const useIsMobile = (): UseIsMobileReturn => {
       }
       window.removeEventListener('resize', checkIsMobile);
     };
-  }, [
-  ]);
+  }, []);
 
   return {
     isMobile,

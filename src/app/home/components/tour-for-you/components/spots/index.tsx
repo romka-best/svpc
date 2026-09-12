@@ -48,8 +48,7 @@ const TourForYouSpots = () => {
     observer.observe(layer);
 
     return () => observer.disconnect();
-  }, [
-  ]);
+  }, []);
 
   const {
     drift,

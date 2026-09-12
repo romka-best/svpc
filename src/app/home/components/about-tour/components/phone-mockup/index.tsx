@@ -8,8 +8,8 @@ import {
 import Image from 'next/image';
 
 import {
-  type MotionValue,
   motion,
+  type MotionValue,
   useMotionValue,
   useMotionValueEvent,
 } from 'motion/react';

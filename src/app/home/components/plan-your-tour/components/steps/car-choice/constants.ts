@@ -34,14 +34,12 @@ export const CAR_OPTIONS: readonly CarOption[] = [
   },
 ];
 
-export const CARS_BY_ID = Object.fromEntries(
-  CAR_OPTIONS.map((car) => {
-    return [
-      car.id,
-      car,
-    ];
-  }),
-) as Record<CarId, CarOption>;
+export const CARS_BY_ID = Object.fromEntries(CAR_OPTIONS.map((car) => {
+  return [
+    car.id,
+    car,
+  ];
+})) as Record<CarId, CarOption>;
 
 export const LARGE_GROUP_MIN_PARTICIPANTS = 5;
 

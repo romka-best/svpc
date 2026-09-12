@@ -18,7 +18,6 @@ export interface RadioGroupContextValue {
 
 export type RadioGroupProps = ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Root
-> &
-VariantProps<typeof radioGroupVariants> & {
+> & VariantProps<typeof radioGroupVariants> & {
   variant?: RadioGroupVariant;
 };

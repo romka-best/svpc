@@ -738,14 +738,12 @@ export const ATTRACTIONS: readonly Attraction[] = [
   },
 ];
 
-export const ATTRACTIONS_BY_ID = Object.fromEntries(
-  ATTRACTIONS.map((attraction) => {
-    return [
-      attraction.id,
-      attraction,
-    ];
-  }),
-) as Record<string, Attraction>;
+export const ATTRACTIONS_BY_ID = Object.fromEntries(ATTRACTIONS.map((attraction) => {
+  return [
+    attraction.id,
+    attraction,
+  ];
+})) as Record<string, Attraction>;
 
 export const ATTRACTION_WEIGHT_PER_DAY = 8;
 
@@ -823,8 +821,7 @@ export const getAttractionDetails = (attraction: Attraction) => {
     ? [
       attraction.image,
     ]
-    : [
-    ]);
+    : []);
 
   return {
     gallery,

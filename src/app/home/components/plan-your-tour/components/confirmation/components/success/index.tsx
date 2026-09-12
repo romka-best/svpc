@@ -25,9 +25,7 @@ const ConfirmationSuccess = () => {
     >
       {shouldReduceMotion
         ? null
-        : (
-          <ConfirmationConfetti />
-        )}
+        : <ConfirmationConfetti />}
       <motion.span
         animate={{
           opacity: 1,

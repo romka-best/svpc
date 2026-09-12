@@ -66,9 +66,7 @@ const AboutGuideHistoryEntry = ({
       >
         <div className="flex flex-col gap-0.5">
           <div className="flex items-center gap-2">
-            {entry.highlighted && (
-              <Star className="size-4 shrink-0 fill-primary text-primary" />
-            )}
+            {entry.highlighted && <Star className="size-4 shrink-0 fill-primary text-primary" />}
             <h4 className="text-base font-semibold text-dark-gray">
               {entry.title}
             </h4>

@@ -2,12 +2,12 @@
 
 import {
   createContext,
+  type ReactNode,
   useContext,
   useEffect,
   useMemo,
   useReducer,
   useRef,
-  type ReactNode,
 } from 'react';
 
 import {
@@ -32,8 +32,8 @@ import {
 import {
   clearPersistedPlanYourTour,
   loadPersistedPlanYourTour,
-  persistPlanYourTour,
   type PersistedPlanYourTour,
+  persistPlanYourTour,
 } from '../storage';
 import type {
   CarChoiceAnswer,
@@ -439,8 +439,7 @@ const PlanYourTourProvider = ({ children }: ProviderProps) => {
     return () => {
       isCancelledEffect = true;
     };
-  }, [
-  ]);
+  }, []);
 
   useEffect(() => {
     if (!shouldPersistRef.current) {

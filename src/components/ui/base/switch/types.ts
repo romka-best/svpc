@@ -10,7 +10,6 @@ export type SwitchVariant = 'primary' | 'secondary' | 'filled';
 
 export type SwitchProps = ComponentPropsWithoutRef<
   typeof SwitchPrimitives.Root
-> &
-VariantProps<typeof switchVariants> & {
+> & VariantProps<typeof switchVariants> & {
   isLoading?: boolean;
 };

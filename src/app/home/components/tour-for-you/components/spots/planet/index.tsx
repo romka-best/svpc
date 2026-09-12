@@ -123,13 +123,12 @@ const TourForYouSpotsPlanet = ({
             width={941}
           />
         </motion.div>
-        <div
-          className={cn(
-            'absolute inset-0 rounded-full',
-            hasPhoto
-              ? 'bg-linear-to-b from-transparent to-black/20'
-              : 'bg-linear-220 from-background/5 from-15% to-background/80 to-80%',
-          )}
+        <div className={cn(
+          'absolute inset-0 rounded-full',
+          hasPhoto
+            ? 'bg-linear-to-b from-transparent to-black/20'
+            : 'bg-linear-220 from-background/5 from-15% to-background/80 to-80%',
+        )}
         />
       </div>
     </motion.div>

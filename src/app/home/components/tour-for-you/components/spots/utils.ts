@@ -67,8 +67,7 @@ export const calculatePlanetLayout = (
   if (count === 0 || height === 0 || width === 0) {
     return {
       drift: 0,
-      positions: [
-      ],
+      positions: [],
     };
   }
 
@@ -119,8 +118,7 @@ export const calculatePlanetLayout = (
         },
       ];
     })
-    : [
-    ];
+    : [];
 
   const bandCount = count - sidePositions.length;
   const topCount = Math.max(1, Math.round(bandCount * TOP_BAND_RATIO));

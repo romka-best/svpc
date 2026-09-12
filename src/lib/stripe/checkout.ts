@@ -4,7 +4,7 @@ import { computeTourPriceLines } from '@/app/home/components/plan-your-tour/cons
 import type { PlanYourTourAnswers } from '@/app/home/components/plan-your-tour/types';
 import {
   LinkAnchor,
-  LinkHref, 
+  LinkHref,
 } from '@/constants/links';
 
 import { getStripeClient } from './client';
@@ -101,8 +101,6 @@ export const retrieveTourCheckoutSession = async (sessionId: string) => {
   return stripe.checkout.sessions.retrieve(sessionId);
 };
 
-export const isPaidCheckoutSession = (
-  session: Pick<Stripe.Checkout.Session, 'payment_status'>,
-) => {
+export const isPaidCheckoutSession = (session: Pick<Stripe.Checkout.Session, 'payment_status'>) => {
   return session.payment_status === 'paid';
 };

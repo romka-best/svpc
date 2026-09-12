@@ -67,11 +67,10 @@ const CarChoiceStep = () => {
                     id={inputId}
                     value={car.id}
                   />
-                  <span
-                    className={cn(
-                      'text-sm font-medium tracking-tight',
-                      isSelected ? 'text-white' : 'text-light-gray',
-                    )}
+                  <span className={cn(
+                    'text-sm font-medium tracking-tight',
+                    isSelected ? 'text-white' : 'text-light-gray',
+                  )}
                   >
                     {car.label}
                   </span>

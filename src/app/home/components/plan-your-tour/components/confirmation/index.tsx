@@ -35,12 +35,8 @@ const Confirmation = () => {
             />
           )
           : isError
-            ? (
-              <ConfirmationError key="error" />
-            )
-            : (
-              <ConfirmationSuccess key="success" />
-            )}
+            ? <ConfirmationError key="error" />
+            : <ConfirmationSuccess key="success" />}
       </AnimatePresence>
     </div>
   );

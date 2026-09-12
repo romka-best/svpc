@@ -110,8 +110,7 @@ const SelectAttractionsStep = () => {
 
     patchSelectAttractions({
       autoChoice: checked,
-      selectedIds: [
-      ],
+      selectedIds: [],
     });
   };
 
@@ -124,11 +123,10 @@ const SelectAttractionsStep = () => {
             {surpriseLabel}
           </p>
           <div className="flex shrink-0 items-center gap-2">
-            <span
-              className={cn(
-                'text-sm font-medium tracking-tight',
-                autoChoice ? 'text-light-gray' : 'text-white',
-              )}
+            <span className={cn(
+              'text-sm font-medium tracking-tight',
+              autoChoice ? 'text-light-gray' : 'text-white',
+            )}
             >
               OFF
             </span>
@@ -138,22 +136,20 @@ const SelectAttractionsStep = () => {
               size="md"
               onCheckedChange={handleAutoChoiceChange}
             />
-            <span
-              className={cn(
-                'text-sm font-medium tracking-tight',
-                autoChoice ? 'text-white' : 'text-light-gray',
-              )}
+            <span className={cn(
+              'text-sm font-medium tracking-tight',
+              autoChoice ? 'text-white' : 'text-light-gray',
+            )}
             >
               ON
             </span>
           </div>
         </div>
 
-        <div
-          className={cn(
-            'flex min-h-0 min-w-0 flex-1 flex-col gap-3 overflow-y-auto p-1 -m-1 transition-opacity duration-300',
-            autoChoice && 'pointer-events-none opacity-20',
-          )}
+        <div className={cn(
+          'flex min-h-0 min-w-0 flex-1 flex-col gap-3 overflow-y-auto p-1 -m-1 transition-opacity duration-300',
+          autoChoice && 'pointer-events-none opacity-20',
+        )}
         >
           {ATTRACTION_CATEGORIES.map((category) => {
             return (
@@ -198,14 +194,10 @@ const SelectAttractionsStep = () => {
       <AttractionDetailDialog
         attractionId={previewAttractionId}
         disabled={autoChoice}
-        isSelected={Boolean(
-          previewAttractionId && selectedIds.includes(previewAttractionId),
-        )}
+        isSelected={Boolean(previewAttractionId && selectedIds.includes(previewAttractionId))}
         open={isPreviewOpen}
-        selectDisabled={Boolean(
-          previewAttractionId
-          && !canSelectAttraction(selectedIds, previewAttractionId, dayCount),
-        )}
+        selectDisabled={Boolean(previewAttractionId
+          && !canSelectAttraction(selectedIds, previewAttractionId, dayCount))}
         onOpenChange={setIsPreviewOpen}
         onToggle={toggleAttraction}
       />

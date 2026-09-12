@@ -36,8 +36,7 @@ const Header = () => {
     return () => {
       observer.disconnect();
     };
-  }, [
-  ]);
+  }, []);
 
   return (
     <header

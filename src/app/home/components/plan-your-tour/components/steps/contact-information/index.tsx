@@ -127,9 +127,7 @@ const ContactInformationStep = () => {
             }}
           >
             {agreedToPrivacy
-              ? (
-                <Check className="size-3 text-white" />
-              )
+              ? <Check className="size-3 text-white" />
               : null}
           </button>
           <p

@@ -3,6 +3,9 @@ import type { NextConfig } from 'next';
 import withVercelToolbar from '@vercel/toolbar/plugins/next';
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: [
+    '10.0.0.167',
+  ],
   async headers() {
     return [
       {

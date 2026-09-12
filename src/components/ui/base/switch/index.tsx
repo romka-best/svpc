@@ -1,9 +1,9 @@
 'use client';
 
 import {
-  useState,
   type ComponentRef,
   type Ref,
+  useState,
 } from 'react';
 
 import * as SwitchPrimitives from '@radix-ui/react-switch';

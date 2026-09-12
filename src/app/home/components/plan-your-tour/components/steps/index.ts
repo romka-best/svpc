@@ -8,9 +8,6 @@ import { SelectAttractionsStep } from './select-attractions';
 import { SelectDaysStep } from './select-days';
 import { SelectParticipantsStep } from './select-participants';
 
-/**
- * Maps step ids → UI. Add a component here when implementing the next Figma step.
- */
 export const PLAN_YOUR_TOUR_STEP_COMPONENTS: Record<PlanYourTourStepId, ComponentType> = {
   'car-choice': CarChoiceStep,
   'contact-information': ContactInformationStep,

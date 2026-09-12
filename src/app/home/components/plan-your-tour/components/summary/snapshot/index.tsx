@@ -66,8 +66,7 @@ const VALUE_TRANSITION = {
 } as const;
 
 const getSnapshotFacts = (answers: PlanYourTourAnswers) => {
-  const facts: SnapshotFact[] = [
-  ];
+  const facts: SnapshotFact[] = [];
   const {
     endDate,
     startDate,

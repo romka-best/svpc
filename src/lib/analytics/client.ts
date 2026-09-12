@@ -7,8 +7,8 @@ import type {
 
 import {
   ANALYTICS_EVENT,
-  clipAnalyticsValue,
   type CheckoutFailureStage,
+  clipAnalyticsValue,
   type CtaDestination,
   type CtaLocation,
   type GuideContactChannel,

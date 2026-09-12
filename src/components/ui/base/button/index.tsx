@@ -75,9 +75,7 @@ const Button = ({
             {variant !== 'link' && loadingIcon}
             {loadingText || (variant === 'link' && children)}
           </>
-        ) : (
-          children
-        )}
+        ) : children}
       </MotionSlot>
     );
   }
@@ -95,9 +93,7 @@ const Button = ({
           {variant !== 'link' && loadingIcon}
           {loadingText || (variant === 'link' && children)}
         </>
-      ) : (
-        children
-      )}
+      ) : children}
     </motion.button>
   );
 };

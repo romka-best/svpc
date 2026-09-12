@@ -32,7 +32,13 @@ const HeroSection = () => {
             type: 'spring',
           }}
         >
-          Private <span className="text-primary">Silicon Valley</span> Tours, Planned Around <span className="text-primary">You</span>
+          Private
+          {' '}
+          <span className="text-primary">Silicon Valley</span>
+          {' '}
+          Tours, Planned Around
+          {' '}
+          <span className="text-primary">You</span>
         </motion.h1>
         <motion.p
           animate={{

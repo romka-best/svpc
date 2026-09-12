@@ -6,7 +6,7 @@ import importPlugin from 'eslint-plugin-import';
 const eslintConfig = [
   ...nextVitals,
   {
-    plugins: { 
+    plugins: {
       '@stylistic': stylisticPlugin,
       'destructuring-newline': destructuringNewlinePlugin,
       import: importPlugin,
@@ -25,6 +25,57 @@ const eslintConfig = [
         'error',
         'prefer-double',
       ],
+      '@stylistic/jsx-curly-spacing': [
+        'error',
+        {
+          when: 'never',
+          children: true,
+        },
+      ],
+      '@stylistic/jsx-curly-newline': [
+        'error',
+        'never',
+      ],
+      '@stylistic/jsx-one-expression-per-line': [
+        'error',
+        { allow: 'literal' },
+      ],
+      '@stylistic/jsx-wrap-multilines': [
+        'error',
+        {
+          declaration: 'parens-new-line',
+          assignment: 'parens-new-line',
+          return: 'parens-new-line',
+          arrow: 'parens-new-line',
+          condition: 'parens-new-line',
+          logical: 'parens-new-line',
+          prop: 'ignore',
+        },
+      ],
+      '@stylistic/no-extra-parens': [
+        'error',
+        'all',
+        {
+          ignoreJSX: 'multi-line',
+          nestedBinaryExpressions: false,
+          nestedConditionalExpressions: false,
+          ternaryOperandBinaryExpressions: false,
+        },
+      ],
+      '@stylistic/operator-linebreak': [
+        'error',
+        'before',
+        { overrides: { '=': 'after' } },
+      ],
+      '@stylistic/jsx-tag-spacing': [
+        'error',
+        {
+          closingSlash: 'never',
+          beforeSelfClosing: 'always',
+          afterOpening: 'never',
+          beforeClosing: 'allow',
+        },
+      ],
       '@stylistic/comma-dangle': [
         'error',
         'always-multiline',
@@ -33,9 +84,25 @@ const eslintConfig = [
         'error',
         'always',
       ],
+      '@stylistic/no-trailing-spaces': [
+        'error',
+      ],
       '@stylistic/semi': [
         'error',
         'always',
+      ],
+      '@stylistic/member-delimiter-style': [
+        'error',
+        {
+          multiline: {
+            delimiter: 'semi',
+            requireLast: true,
+          },
+          singleline: {
+            delimiter: 'semi',
+            requireLast: false,
+          },
+        },
       ],
       '@stylistic/object-property-newline': [
         'error',
@@ -50,19 +117,77 @@ const eslintConfig = [
         {
           ObjectExpression: {
             multiline: true,
-            minProperties: 2, 
+            minProperties: 2,
           },
           ObjectPattern: {
             multiline: true,
-            minProperties: 2, 
+            minProperties: 2,
           },
           ImportDeclaration: {
             multiline: true,
-            minProperties: 2, 
+            minProperties: 2,
           },
           ExportDeclaration: {
             multiline: true,
-            minProperties: 2, 
+            minProperties: 2,
+          },
+        },
+      ],
+      '@stylistic/exp-list-style': [
+        'error',
+        {
+          overrides: {
+            '()': 'off',
+            '[]': 'off',
+            '{}': 'off',
+            '<>': 'off',
+            ImportDeclaration: {
+              singleLine: {
+                maxItems: 1,
+                spacing: 'always',
+              },
+            },
+            ExportNamedDeclaration: {
+              singleLine: {
+                maxItems: 1,
+                spacing: 'always',
+              },
+            },
+            ArrowFunctionExpression: {
+              singleLine: {
+                maxItems: 1,
+                spacing: 'never',
+              },
+              multiline: { minItems: 2 },
+            },
+            FunctionDeclaration: {
+              singleLine: {
+                maxItems: 1,
+                spacing: 'never',
+              },
+              multiline: { minItems: 2 },
+            },
+            FunctionExpression: {
+              singleLine: {
+                maxItems: 1,
+                spacing: 'never',
+              },
+              multiline: { minItems: 2 },
+            },
+            TSDeclareFunction: {
+              singleLine: {
+                maxItems: 1,
+                spacing: 'never',
+              },
+              multiline: { minItems: 2 },
+            },
+            TSFunctionType: {
+              singleLine: {
+                maxItems: 1,
+                spacing: 'never',
+              },
+              multiline: { minItems: 2 },
+            },
           },
         },
       ],
@@ -72,14 +197,18 @@ const eslintConfig = [
       ],
       '@stylistic/array-bracket-newline': [
         'error',
-        'always',
+        { minItems: 1 },
       ],
       '@stylistic/array-element-newline': [
         'error',
         'always',
       ],
+      '@stylistic/function-paren-newline': [
+        'error',
+        'multiline',
+      ],
       'destructuring-newline/object-property-newline': 2,
-			
+
       // Import rules
       'import/no-duplicates': 'error',
       'import/order': [
@@ -127,13 +256,17 @@ const eslintConfig = [
             'next',
           ],
           'newlines-between': 'always',
+          named: {
+            enabled: true,
+            types: 'mixed',
+          },
           alphabetize: {
             order: 'asc',
             caseInsensitive: true,
           },
         },
       ],
-			
+
       // React rules
       'react/jsx-indent': [
         'error',
@@ -155,7 +288,7 @@ const eslintConfig = [
       ],
       'react/jsx-first-prop-new-line': [
         'error',
-        'multiline',
+        'multiprop',
       ],
       'react/jsx-max-props-per-line': [
         'error',

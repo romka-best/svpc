@@ -65,15 +65,15 @@ const Sidebar = ({
           data-sidebar="sidebar"
           data-slot="sidebar"
           side={side.toLowerCase() as 'left' | 'right'}
-          style={
-            { '--sidebar-width': '100%' } as React.CSSProperties
-          }
+          style={{ '--sidebar-width': '100%' } as React.CSSProperties}
         >
           <SheetHeader className="sr-only">
             <SheetTitle>Sidebar</SheetTitle>
             <SheetDescription>Displays the mobile sidebar.</SheetDescription>
           </SheetHeader>
-          <div className="flex h-full w-full flex-col">{children}</div>
+          <div className="flex h-full w-full flex-col">
+            {children}
+          </div>
         </SheetContent>
       </Sheet>
     );

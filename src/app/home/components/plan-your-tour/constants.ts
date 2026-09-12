@@ -68,15 +68,13 @@ export const computeTourPriceLines = (answers: PlanYourTourAnswers) => {
   } = answers['select-days'];
 
   if (!startDate || !endDate) {
-    return [
-    ];
+    return [];
   }
 
   const dayCount = getTourDayCount(startDate, endDate);
 
   if (dayCount < 1) {
-    return [
-    ];
+    return [];
   }
 
   const {
@@ -159,8 +157,7 @@ export const INITIAL_ANSWERS: PlanYourTourAnswers = {
   },
   'select-attractions': {
     autoChoice: false,
-    selectedIds: [
-    ],
+    selectedIds: [],
   },
   'car-choice': { carId: null },
   'contact-information': {
@@ -255,12 +252,10 @@ export const PLAN_YOUR_TOUR_STEPS: readonly PlanYourTourStepDefinition[] = [
         participants,
       } = answers['select-participants'];
 
-      return Boolean(
-        groupType
+      return Boolean(groupType
         && participants >= getMinParticipantsForGroup(groupType)
         && adults >= ADULTS_MIN
-        && adults <= participants,
-      );
+        && adults <= participants);
     },
     label: 'Step 2',
     title: 'Guests',

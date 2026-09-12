@@ -37,8 +37,7 @@ const HeroBackground = () => {
       reducedMotion.removeEventListener('change', sync);
       wideViewport.removeEventListener('change', sync);
     };
-  }, [
-  ]);
+  }, []);
 
   const handleLoadedData = () => {
     setIsVideoVisible(true);

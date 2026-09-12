@@ -47,7 +47,11 @@ const Footer = () => {
               @roman_danilov
             </OutboundContactLink>
           </Button>
-          <p className="text-sm font-medium text-muted-foreground">All rights reserved | {new Date().getFullYear()}</p>
+          <p className="text-sm font-medium text-muted-foreground">
+            All rights reserved |
+            {' '}
+            {new Date().getFullYear()}
+          </p>
         </div>
       </div>
 

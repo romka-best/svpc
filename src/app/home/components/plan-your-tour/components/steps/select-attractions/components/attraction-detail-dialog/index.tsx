@@ -18,9 +18,9 @@ import {
 import { cn } from '@/lib/utils';
 
 import {
+  type Attraction,
   ATTRACTIONS_BY_ID,
   getAttractionDetails,
-  type Attraction,
 } from '../../constants';
 import { AttractionPlaceholder } from '../attraction-placeholder';
 
@@ -119,7 +119,9 @@ const AttractionDetailContent = ({
             </DialogTitle>
             <div className="flex items-center gap-0.5 text-sm tracking-tight text-white">
               <MapPin className="size-4 shrink-0 text-light-gray" />
-              <span>{details.location}</span>
+              <span>
+                {details.location}
+              </span>
             </div>
           </div>
 

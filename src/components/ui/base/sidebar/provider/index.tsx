@@ -44,7 +44,7 @@ const SidebarProvider = ({
   const setOpen = useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
       if (isTransitioning) return;
-      
+
       const openState = typeof value === 'function' ? value(open) : value;
       if (setOpenProp) {
         setOpenProp(openState);
@@ -54,7 +54,7 @@ const SidebarProvider = ({
 
       // This sets the cookie to keep the sidebar state.
       document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
-      
+
       // Prevent rapid toggling
       setIsTransitioning(true);
       setTimeout(() => setIsTransitioning(false), 300);
@@ -76,10 +76,7 @@ const SidebarProvider = ({
   // Adds a keyboard shortcut to toggle the sidebar.
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
-        (event.metaKey || event.ctrlKey)
-      ) {
+      if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
         toggleSidebar();
       }

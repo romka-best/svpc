@@ -1,9 +1,5 @@
 import Image from 'next/image';
 
-/**
- * Figma Effect 89:1102 / 89:1108 — exact exports with alpha.
- * Artboard 1920: left 8.8%/33.7%, right 43.5%/76.5%.
- */
 const FaqEffects = () => {
   return (
     <div

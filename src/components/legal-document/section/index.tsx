@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 import {
-  LegalDocumentBlockType,
   type LegalDocumentBlock,
+  LegalDocumentBlockType,
   type LegalDocumentSection,
 } from '../types';
 

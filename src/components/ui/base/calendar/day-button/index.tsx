@@ -1,13 +1,13 @@
 'use client';
 
 import {
+  type ComponentProps,
   useEffect,
   useRef,
-  type ComponentProps,
 } from 'react';
 import {
-  getDefaultClassNames,
   type DayButton,
+  getDefaultClassNames,
 } from 'react-day-picker';
 
 import { cn } from '@/lib/utils';
@@ -48,14 +48,12 @@ const CalendarDayButton = ({
       data-range-end={modifiers.range_end || undefined}
       data-range-middle={modifiers.range_middle || undefined}
       data-range-start={modifiers.range_start || undefined}
-      data-selected-single={
-        modifiers.selected
+      data-selected-single={modifiers.selected
         && !modifiers.range_start
         && !modifiers.range_end
         && !modifiers.range_middle
-          ? true
-          : undefined
-      }
+        ? true
+        : undefined}
       type="button"
       {...props}
     />
