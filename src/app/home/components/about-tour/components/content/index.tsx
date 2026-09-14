@@ -19,7 +19,7 @@ import {
 const AboutTourContent = () => {
   return (
     <motion.div
-      className="flex w-full max-w-167.5 shrink-0 flex-col items-start gap-6 xl:h-165.5"
+      className="flex w-full max-w-167.5 shrink-0 flex-col items-start gap-6 xl:h-166"
       initial={{
         opacity: 0,
         x: 40,

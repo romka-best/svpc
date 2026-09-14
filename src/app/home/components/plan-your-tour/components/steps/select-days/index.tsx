@@ -11,10 +11,6 @@ import type {
 } from 'react-day-picker';
 
 import { Calendar as CalendarIcon } from 'lucide-react';
-import {
-  AnimatePresence,
-  motion,
-} from 'motion/react';
 
 import { Button } from '@/components/ui/base/button';
 import { Calendar } from '@/components/ui/base/calendar';
@@ -192,42 +188,6 @@ const SelectDaysStep = () => {
             </span>
             <CalendarIcon className="size-6" />
           </Button>
-
-          <AnimatePresence initial={false}>
-            {isOpen
-              ? (
-                <motion.div
-                  key="date-range-calendar"
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  className="relative z-50 mt-3 max-lg:hidden"
-                  exit={{
-                    opacity: 0,
-                    y: -8,
-                  }}
-                  initial={{
-                    opacity: 0,
-                    y: -8,
-                  }}
-                  style={{ willChange: 'transform, opacity' }}
-                  transition={{
-                    duration: 0.25,
-                    ease: 'easeOut',
-                  }}
-                >
-                  <DateRangeCalendar
-                    defaultMonth={startDate ? parseDateKey(startDate) : firstAvailableDate}
-                    disabled={disabled}
-                    selected={selected}
-                    startMonth={firstAvailableDate}
-                    onSelect={handleSelect}
-                  />
-                </motion.div>
-              )
-              : null}
-          </AnimatePresence>
 
           <CalendarPopover
             anchorRef={triggerRef}

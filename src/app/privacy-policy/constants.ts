@@ -3,7 +3,7 @@ import {
   type LegalDocumentSection,
 } from '@/components/legal-document/types';
 
-export const PRIVACY_POLICY_UPDATED_ON = 'September 10, 2026';
+export const PRIVACY_POLICY_UPDATED_ON = 'September 14, 2026';
 
 export const PRIVACY_POLICY_SECTIONS: LegalDocumentSection[] = [
   {

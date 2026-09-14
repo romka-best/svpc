@@ -102,7 +102,7 @@ const CalendarPopover = ({
               opacity: 1,
               y: 0,
             }}
-            className="fixed z-70 max-h-[min(32rem,calc(100svh-8rem))] overflow-y-auto lg:hidden"
+            className="fixed z-70 max-h-[min(32rem,calc(100svh-8rem))] overflow-y-auto"
             exit={{
               opacity: 0,
               y: -8,

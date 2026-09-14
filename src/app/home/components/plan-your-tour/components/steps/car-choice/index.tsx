@@ -41,7 +41,7 @@ const CarChoiceStep = () => {
         </p>
 
         <RadioGroup
-          className="flex flex-row flex-wrap gap-4"
+          className="grid grid-cols-2 gap-4"
           value={carId ?? undefined}
           onValueChange={(value) => {
             patchCarChoice({ carId: value as CarId });
@@ -56,19 +56,19 @@ const CarChoiceStep = () => {
               <label
                 key={car.id}
                 className={cn(
-                  'flex flex-col items-start gap-2',
+                  'flex min-w-0 w-full flex-col items-start gap-2',
                   isAvailable ? 'cursor-pointer' : 'cursor-not-allowed opacity-40',
                 )}
                 htmlFor={inputId}
               >
-                <span className="flex items-center gap-2">
+                <span className="flex min-h-10 min-w-0 items-start gap-2">
                   <Radio
                     disabled={!isAvailable}
                     id={inputId}
                     value={car.id}
                   />
                   <span className={cn(
-                    'text-sm font-medium tracking-tight',
+                    'text-sm leading-tight font-medium tracking-tight',
                     isSelected ? 'text-white' : 'text-light-gray',
                   )}
                   >
@@ -76,13 +76,13 @@ const CarChoiceStep = () => {
                   </span>
                 </span>
 
-                <span className="relative h-21 w-36 overflow-hidden">
+                <span className="relative h-21 w-full overflow-hidden">
                   <Image
                     fill
                     unoptimized
                     alt={car.label}
-                    className="bg-transparent object-contain"
-                    sizes="145px"
+                    className="bg-transparent object-contain object-left"
+                    sizes="(max-width: 768px) 40vw, 145px"
                     src={car.image}
                   />
                 </span>
